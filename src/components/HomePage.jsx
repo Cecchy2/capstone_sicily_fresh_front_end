@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRicette } from "../redux/actions";
+import CarouselItems from "./CarouselItems";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -14,24 +15,7 @@ const HomePage = () => {
     <>
       <div className="homePage"></div>
       <div className="striscia">
-        <div className="carousel">
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-        </div>
+        <CarouselItems />
       </div>
     </>
   );

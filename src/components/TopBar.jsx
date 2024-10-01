@@ -1,11 +1,12 @@
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Badge, Button, Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { HiMiniShoppingCart } from "react-icons/hi2";
 
 const Topbar = () => {
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <img src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} />
+          <Image src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
           <Navbar.Brand href="#home">Sicily-Fresh</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -19,6 +20,13 @@ const Topbar = () => {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
               </NavDropdown>
+              <div className="position-relative mx-3">
+                <HiMiniShoppingCart fill="black" size={30} />
+                <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
+                  3
+                </Badge>
+              </div>
+
               <Button variant="outline-warning">Login</Button>
             </Nav>
           </Navbar.Collapse>

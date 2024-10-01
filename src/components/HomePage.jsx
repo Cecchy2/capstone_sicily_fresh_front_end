@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRicette } from "../redux/actions";
 import CarouselItems from "./CarouselItems";
+import { Col, Container, Row } from "react-bootstrap";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,19 @@ const HomePage = () => {
   return (
     <>
       <div className="homePage"></div>
-      <div className="striscia">
+      <div className="striscia mt-4">
         <CarouselItems />
+      </div>
+
+      <div className="middleHome mt-4">
+        <Container>
+          <Row>
+            <Col className="rounded border border-3"></Col>
+            <Col></Col>
+            <Col></Col>
+            <Col></Col>
+          </Row>
+        </Container>
       </div>
     </>
   );

@@ -22,7 +22,7 @@ const HomePage = () => {
       <div className="middleHome mt-4">
         <Container>
           <Row>
-            <Col className="rounded border border-3"></Col>
+            <Col></Col>
             <Col></Col>
             <Col></Col>
             <Col></Col>

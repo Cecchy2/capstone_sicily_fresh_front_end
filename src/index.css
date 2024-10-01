@@ -7,3 +7,51 @@
   line-height: 1.5;
   font-weight: 400;
 } */
+
+.striscia {
+  width: 100%;
+  max-width: 1536px;
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel {
+  display: flex;
+  width: calc(200px * 16 + 20px * 16); /* 8 elementi visibili + 8 duplicati per il ciclo */
+  animation: scrollLeft 40s linear infinite; /* Scorrimento continuo */
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  border-radius: 6px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}

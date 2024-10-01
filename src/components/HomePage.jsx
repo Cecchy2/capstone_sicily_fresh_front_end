@@ -23,6 +23,14 @@ const HomePage = () => {
           <div className="item"></div>
           <div className="item"></div>
           <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
         </div>
       </div>
     </>

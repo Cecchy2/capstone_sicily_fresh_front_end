@@ -18,7 +18,7 @@ const HomePage = () => {
       <div className="striscia mt-4">
         <CarouselItems />
       </div>
-
+      <hr className="border border-5 mt-4" />
       <div className="middleHome mt-4">
         <Container>
           <Row>

@@ -80,16 +80,16 @@ body{
   height: 90vh;
 }
 
-.lateral{
+.lateral {
   width: 100vw;
-  min-height: 100vh ;
-  background-image: 
-  url(../public/assets/pexels-freestockpro-12932209.jpg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; 
+  background-image: url(../public/assets/pexels-freestockpro-12932209.jpg);
   background-size: cover;
   background-repeat: no-repeat;
- 
-  
-  
+  background-position: center; 
+  position: relative;
 }
 
 .cart{

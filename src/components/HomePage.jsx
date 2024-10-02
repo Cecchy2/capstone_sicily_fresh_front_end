@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRicette } from "../redux/actions";
+import { getRicette } from "../redux/actions/ricetteActions";
 import CarouselItems from "./CarouselItems";
 import { Col, Container, Row } from "react-bootstrap";
 

@@ -1,4 +1,4 @@
-import { GET_RICETTE } from "../actions";
+import { GET_RICETTE } from "../actions/ricetteActions";
 
 const initialState = {
   ricette: [],

@@ -1,6 +1,6 @@
 export const GET_PROFILE = "GET_PROFILE";
 
-export const getProfile = () => {
+export const getProfile = (id) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/utenti/${id}`;
     const token = localStorage.getItem("authToken");

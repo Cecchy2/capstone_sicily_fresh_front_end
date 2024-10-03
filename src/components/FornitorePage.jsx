@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { creaRicetta } from "../redux/actions/ricetteActions";
 
 const FornitorePage = () => {
-  const fornitoreId = useParams();
+  const { fornitoreId } = useParams();
+
   const [show, setShow] = useState(false);
   const [formValues, setFormValues] = useState({
     titolo: "",
@@ -11,10 +14,64 @@ const FornitorePage = () => {
     difficolta: "FACILE",
     tempo: "",
     valoriNutrizionali: "",
-    fornitoreId: `${fornitoreId}`,
+    fornitoreId: fornitoreId,
     passaggi: [{ descrizione: "" }],
     ingredienti: [{ nome: "", quantita: "" }],
   });
+
+  const dispatch = useDispatch();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const handleAddIngredient = () => {
+    setFormValues({
+      ...formValues,
+      ingredienti: [...formValues.ingredienti, { nome: "", quantita: "" }],
+    });
+  };
+
+  const handleIngredientChange = (index, e) => {
+    const { name, value } = e.target;
+    const newIngredienti = [...formValues.ingredienti];
+    newIngredienti[index][name] = value;
+    setFormValues({
+      ...formValues,
+      ingredienti: newIngredienti,
+    });
+  };
+
+  const handleAddStep = () => {
+    setFormValues({
+      ...formValues,
+      passaggi: [...formValues.passaggi, { descrizione: "" }],
+    });
+  };
+
+  const handleStepChange = (index, e) => {
+    const { value } = e.target;
+    const newPassaggi = [...formValues.passaggi];
+    newPassaggi[index].descrizione = value;
+    setFormValues({
+      ...formValues,
+      passaggi: newPassaggi,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(creaRicetta(formValues));
+    handleClose();
+  };
+
   return (
     <div>
       <Container>

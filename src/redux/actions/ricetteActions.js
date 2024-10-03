@@ -21,3 +21,28 @@ export const getRicette = () => {
     }
   };
 };
+
+export const creaRicetta = (ricettaPayload) => {
+  return async (dispatch) => {
+    const baseEndPoint = `http://localhost:3001/ricette`;
+    const token = localStorage.getItem("authToken");
+    try {
+      const resp = await fetch(baseEndPoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(ricettaPayload),
+      });
+
+      if (resp.ok) {
+        const result = await resp.json();
+        console.log("Ricetta creata:", result);
+        dispatch({ type: "CREA_RICETTA_SUCCESS", payload: result });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

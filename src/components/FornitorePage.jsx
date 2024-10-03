@@ -15,8 +15,8 @@ const FornitorePage = () => {
     tempo: "",
     valoriNutrizionali: "",
     fornitoreId: fornitoreId,
-    passaggi: [{ descrizione: "" }],
-    ingredienti: [{ nome: "", quantita: "" }],
+    passaggi: [{ descrizione: "", immaginePassaggio: "", ordinePassaggio: 1 }],
+    Ricettaingredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
   });
 
   const dispatch = useDispatch();
@@ -35,31 +35,37 @@ const FornitorePage = () => {
   const handleAddIngredient = () => {
     setFormValues({
       ...formValues,
-      ingredienti: [...formValues.ingredienti, { nome: "", quantita: "" }],
+      Ricettaingredienti: [
+        ...formValues.Ricettaingredienti,
+        { nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" },
+      ],
     });
   };
 
   const handleIngredientChange = (index, e) => {
     const { name, value } = e.target;
-    const newIngredienti = [...formValues.ingredienti];
+    const newIngredienti = [...formValues.Ricettaingredienti];
     newIngredienti[index][name] = value;
     setFormValues({
       ...formValues,
-      ingredienti: newIngredienti,
+      Ricettaingredienti: newIngredienti,
     });
   };
 
   const handleAddStep = () => {
     setFormValues({
       ...formValues,
-      passaggi: [...formValues.passaggi, { descrizione: "" }],
+      passaggi: [
+        ...formValues.passaggi,
+        { descrizione: "", immaginePassaggio: "", ordinePassaggio: formValues.passaggi.length + 1 },
+      ],
     });
   };
 
   const handleStepChange = (index, e) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
     const newPassaggi = [...formValues.passaggi];
-    newPassaggi[index].descrizione = value;
+    newPassaggi[index][name] = value;
     setFormValues({
       ...formValues,
       passaggi: newPassaggi,
@@ -144,7 +150,7 @@ const FornitorePage = () => {
                         </Form.Group>
 
                         <h5>Ingredienti</h5>
-                        {formValues.ingredienti.map((ingrediente, index) => (
+                        {formValues.Ricettaingredienti?.map((ingrediente, index) => (
                           <Row key={index} className="mb-3">
                             <Col>
                               <Form.Control
@@ -153,6 +159,32 @@ const FornitorePage = () => {
                                 value={ingrediente.nome}
                                 onChange={(e) => handleIngredientChange(index, e)}
                                 required
+                              />
+                            </Col>
+                            <Col>
+                              <Form.Control
+                                name="descrizione"
+                                placeholder="Descrizione"
+                                value={ingrediente.descrizione}
+                                onChange={(e) => handleIngredientChange(index, e)}
+                                required
+                              />
+                            </Col>
+                            <Col>
+                              <Form.Control
+                                name="valoriNutrizionali"
+                                placeholder="Valori Nutrizionali"
+                                value={ingrediente.valoriNutrizionali}
+                                onChange={(e) => handleIngredientChange(index, e)}
+                                required
+                              />
+                            </Col>
+                            <Col>
+                              <Form.Control
+                                name="immagine"
+                                placeholder="Link Immagine"
+                                value={ingrediente.immagine}
+                                onChange={(e) => handleIngredientChange(index, e)}
                               />
                             </Col>
                             <Col>
@@ -171,15 +203,37 @@ const FornitorePage = () => {
                         </Button>
 
                         <h5 className="mt-4">Passaggi di Preparazione</h5>
-                        {formValues.passaggi.map((passaggio, index) => (
-                          <Form.Group key={index} className="mb-3">
-                            <Form.Control
-                              placeholder={`Passaggio ${index + 1}`}
-                              value={passaggio.descrizione}
-                              onChange={(e) => handleStepChange(index, e)}
-                              required
-                            />
-                          </Form.Group>
+                        {formValues.passaggi?.map((passaggio, index) => (
+                          <Row key={index} className="mb-3">
+                            <Col>
+                              <Form.Control
+                                name="descrizione"
+                                placeholder={`Descrizione Passaggio ${index + 1}`}
+                                value={passaggio.descrizione}
+                                onChange={(e) => handleStepChange(index, e)}
+                                required
+                              />
+                            </Col>
+                            <Col>
+                              <Form.Control
+                                name="immaginePassaggio"
+                                placeholder="Link Immagine Passaggio"
+                                value={passaggio.immaginePassaggio}
+                                onChange={(e) => handleStepChange(index, e)}
+                              />
+                            </Col>
+                            <Col>
+                              <Form.Control
+                                name="ordinePassaggio"
+                                type="number"
+                                placeholder="Ordine"
+                                value={passaggio.ordinePassaggio}
+                                onChange={(e) => handleStepChange(index, e)}
+                                required
+                                readOnly
+                              />
+                            </Col>
+                          </Row>
                         ))}
                         <Button variant="secondary" onClick={handleAddStep}>
                           Aggiungi Passaggio

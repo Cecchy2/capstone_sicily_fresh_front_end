@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import RegistrazionePage from "./components/RegistrazionePage";
 import UtentiPage from "./components/UtentiPage";
+import FornitorePage from "./components/FornitorePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registrazione" element={<RegistrazionePage />} />
           <Route path="/utenti/:" element={<UtentiPage />} />
+          <Route path="/fornitori/:fornitoreId" element={<FornitorePage />} />
         </Routes>
       </BrowserRouter>
     </>

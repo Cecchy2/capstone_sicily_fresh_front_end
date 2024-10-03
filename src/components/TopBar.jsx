@@ -3,11 +3,14 @@ import { HiMiniShoppingCart } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
+import { useEffect } from "react";
+import { getProfile } from "../redux/actions/utentiActions";
 
 const Topbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const utente = useSelector((state) => state.utente);
 
   const handleLogout = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");
@@ -61,7 +64,7 @@ const Topbar = () => {
                   Fornitori
                 </NavDropdown.Item>
               </NavDropdown>
-
+              {/* {isAuthenticated && <Image src={utente.} roundedCircle />} */}
               {isAuthenticated ? (
                 <Button variant="outline-warning" onClick={handleLogout} className="mx-2">
                   Logout

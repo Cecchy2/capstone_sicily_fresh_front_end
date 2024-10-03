@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { creaRicetta } from "../redux/actions/ricetteActions";
+import { getProfile } from "../redux/actions/utentiActions";
 
 const FornitorePage = () => {
   const { fornitoreId } = useParams();
@@ -292,9 +293,7 @@ const FornitorePage = () => {
                         />
                         <Card.Body>
                           <Card.Title>Modifica una ricetta</Card.Title>
-                          <Button variant="warning" onClick={handleShow}>
-                            Modifica ricetta
-                          </Button>
+                          <Button variant="warning">Modifica ricetta</Button>
                         </Card.Body>
                       </Card>
                     </Col>

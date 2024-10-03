@@ -1,4 +1,5 @@
 export const GET_RICETTE = "GET_RICETTE";
+export const CREA_RICETTA_SUCCESS = "CREA_RICETTA_SUCCESS";
 
 export const getRicette = () => {
   return async (dispatch) => {
@@ -39,7 +40,7 @@ export const creaRicetta = (ricettaPayload) => {
       if (resp.ok) {
         const result = await resp.json();
         console.log("Ricetta creata:", result);
-        dispatch({ type: "CREA_RICETTA_SUCCESS", payload: result });
+        dispatch({ type: CREA_RICETTA_SUCCESS, payload: result });
       }
     } catch (error) {
       console.log(error);

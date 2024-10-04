@@ -21,7 +21,7 @@ const FornitorePage = () => {
     valoriNutrizionali: "",
     fornitoreId: fornitoreId,
     passaggi: [{ descrizione: "", immaginePassaggio: "", ordinePassaggio: 1 }],
-    Ricettaingredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
+    ricetteIngredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
   });
 
   useEffect(() => {

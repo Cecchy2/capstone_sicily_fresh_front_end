@@ -11,6 +11,7 @@ const Topbar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const utente = useSelector((state) => state.utente);
+  console.log(utente);
 
   const handleLogout = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");
@@ -19,6 +20,7 @@ const Topbar = () => {
       navigate("/");
     }
   };
+  console.log("Avatar URL:", utente.utente.avatar);
 
   return (
     <div>
@@ -30,7 +32,7 @@ const Topbar = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto align-items-center d-flex">
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
@@ -49,13 +51,14 @@ const Topbar = () => {
                   3
                 </Badge>
               </div>
-              <NavDropdown title="info" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/chi-siamo">
-                  Chi Siamo
+              <NavDropdown
+                title={isAuthenticated && <Image src={utente.utente.avatar} roundedCircle width={40} fluid />}
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>
+                  Profilo
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/come-funziona">
-                  Come Funziona
-                </NavDropdown.Item>
+
                 <NavDropdown.Item as={Link} to="/contattaci">
                   Contattaci
                 </NavDropdown.Item>
@@ -64,7 +67,7 @@ const Topbar = () => {
                   Fornitori
                 </NavDropdown.Item>
               </NavDropdown>
-              {/* {isAuthenticated && <Image src={utente.} roundedCircle />} */}
+
               {isAuthenticated ? (
                 <Button variant="outline-warning" onClick={handleLogout} className="mx-2">
                   Logout

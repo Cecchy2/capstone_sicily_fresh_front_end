@@ -16,6 +16,15 @@ body{
   height: 40vh;
   
 }
+.utentiPage{
+  background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url("../public/assets/GroceryStore2.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 40vh;
+}
 
 .striscia {
   width: 100%;

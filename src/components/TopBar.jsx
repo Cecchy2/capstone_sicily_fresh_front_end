@@ -51,22 +51,24 @@ const Topbar = () => {
                   3
                 </Badge>
               </div>
-              <NavDropdown
-                title={isAuthenticated && <Image src={utente.utente.avatar} roundedCircle width={40} fluid />}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>
-                  Profilo
-                </NavDropdown.Item>
+              {isAuthenticated && (
+                <NavDropdown
+                  title=<Image src={utente.utente.avatar} roundedCircle width={40} fluid />
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>
+                    Profilo
+                  </NavDropdown.Item>
 
-                <NavDropdown.Item as={Link} to="/contattaci">
-                  Contattaci
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/fornitori">
-                  Fornitori
-                </NavDropdown.Item>
-              </NavDropdown>
+                  <NavDropdown.Item as={Link} to="/contattaci">
+                    Contattaci
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Link} to="/fornitori">
+                    Fornitori
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
 
               {isAuthenticated ? (
                 <Button variant="outline-warning" onClick={handleLogout} className="mx-2">

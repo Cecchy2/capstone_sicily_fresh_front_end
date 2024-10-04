@@ -33,7 +33,7 @@ const Topbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"}>
                 Home
               </Nav.Link>
               <Nav.Link as={Link} to="/chi-siamo">

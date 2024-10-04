@@ -1,3 +1,4 @@
+import { UPLOAD_AVATAR } from "../actions/imagesUploadActions";
 import { GET_PROFILE, UPDATE_PROFILE } from "../actions/utentiActions";
 
 const initialState = {
@@ -15,6 +16,14 @@ const utenteReducer = (state = initialState, action) => {
       return {
         ...state,
         utente: action.payload,
+      };
+    case UPLOAD_AVATAR:
+      return {
+        ...state,
+        utente: {
+          ...state.utente,
+          avatar: action.payload.avatar,
+        },
       };
     default:
       return state;

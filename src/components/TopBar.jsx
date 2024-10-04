@@ -53,7 +53,13 @@ const Topbar = () => {
               </div>
               {isAuthenticated && (
                 <NavDropdown
-                  title=<Image src={utente.utente.avatar} roundedCircle width={40} fluid />
+                  title=<Image
+                    src={utente.utente.avatar}
+                    roundedCircle
+                    width={35}
+                    height={35}
+                    style={{ objectFit: "cover" }}
+                  />
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>

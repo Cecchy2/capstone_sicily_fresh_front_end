@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { creaRicetta } from "../redux/actions/ricetteActions";
 import { getProfile } from "../redux/actions/utentiActions";
 
 const FornitorePage = () => {
   const { fornitoreId } = useParams();
+  const params = useParams();
+  const utente = useSelector((state) => state.utente);
+  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -21,7 +24,11 @@ const FornitorePage = () => {
     Ricettaingredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
   });
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (fornitoreId) {
+      dispatch(getProfile(fornitoreId));
+    }
+  }, [dispatch, fornitoreId]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

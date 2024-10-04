@@ -29,38 +29,54 @@ const LoginPage = () => {
 
   return (
     <div className="lateral">
-      <Container className="d-flex justify-content-center align-items-center h-100 mt-5">
-        <Row className="mt-5 border border-warning rounded bg-dark text-warning mx-2" style={{ maxWidth: "500px" }}>
+      <Container className="d-flex justify-content-center align-items-center h-100">
+        <Row
+          className="border border-warning rounded-4 bg-dark text-warning shadow-lg p-5 mx-2"
+          style={{ maxWidth: "500px" }}
+        >
           <Col xs={12}>
+            <h2 className="text-center mb-4 fw-bold">Accedi</h2>
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email address</Form.Label>
+              <Form.Group className="mb-4" controlId="formGroupEmail">
+                <Form.Label className="fw-bold">Email address</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Inserisci l'email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="bg-light border-0 rounded-3"
+                  required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupPassword">
-                <Form.Label>Password</Form.Label>
+              <Form.Group className="mb-4" controlId="formGroupPassword">
+                <Form.Label className="fw-bold">Password</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Password"
+                  placeholder="Inserisci la password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="bg-light border-0 rounded-3"
+                  required
                 />
               </Form.Group>
               <div className="d-flex justify-content-center">
-                <Button type="submit" variant="outline-warning" size="sm" className="my-2">
-                  Submit
+                <Button
+                  type="submit"
+                  variant="warning"
+                  size="lg"
+                  className="my-3 px-5 fw-bold"
+                  style={{ boxShadow: "0 5px 15px rgba(255, 193, 7, 0.5)" }}
+                >
+                  Accedi
                 </Button>
               </div>
             </Form>
           </Col>
-          <div className="d-flex mt-3">
-            <p>Non sei ancora registrato? •</p>
-            <Link to="/registrazione"> Registrati</Link>
+          <div className="d-flex justify-content-center align-items-center mt-4">
+            <p className="me-2 mb-0">Non sei ancora registrato? •</p>
+            <Link to="/registrazione" className="text-decoration-none fw-bold text-warning">
+              Registrati
+            </Link>
           </div>
         </Row>
       </Container>

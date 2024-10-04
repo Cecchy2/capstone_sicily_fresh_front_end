@@ -55,8 +55,7 @@ const ProfiloUtente = () => {
                 height={300}
                 fluid
                 roundedCircle
-                className="border border-4 border-warning shadow-sm"
-                style={{ objectFit: "cover" }}
+                className="border border-4 border-warning shadow-sm object-fit-cover"
               />
             </Card.Header>
             <Card.Body className="bg-light p-5">

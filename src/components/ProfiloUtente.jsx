@@ -53,8 +53,6 @@ const ProfiloUtente = () => {
                 src={utente.utente.avatar}
                 width={300}
                 height={300}
-                fluid
-                roundedCircle
                 className="border border-4 border-warning shadow-sm object-fit-cover"
               />
             </Card.Header>

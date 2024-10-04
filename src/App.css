@@ -107,11 +107,15 @@ body{
   width: 100%; 
   height: 200px;
   object-fit: cover; 
+  border-radius: 15px 15px 0 0;
 } 
 
 .cardImageProfile{
   background-image: url(../public/assets/pexels-jamie-he-170821-563067.jpg);
   background-size: cover;
   background-position: center;
+}
+.cardFornitore{
+  borderRadius: 15px 15px 0 0;
 }
  

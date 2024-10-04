@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { register } from "../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
 const RegistrazionePage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -9,7 +15,10 @@ const RegistrazionePage = () => {
     nome: "",
     cognome: "",
     dataDiNascita: "",
+    ruolo: "CLIENTE",
   });
+
+  const [avatar, setAvatar] = useState(null);
 
   const handleChange = (e) => {
     setFormValues({
@@ -18,10 +27,20 @@ const RegistrazionePage = () => {
     });
   };
 
+  const handleAvatarChange = (e) => {
+    setAvatar(e.target.files[0]);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form Values:", formValues);
+    const success = dispatch(register(formValues, avatar));
+
+    if (success) {
+      alert("Registrazione avvenuta coon successo");
+      navigate("/login");
+    } else {
+      alert("Registrazione fallita, riprova.");
+    }
   };
 
   return (
@@ -101,6 +120,11 @@ const RegistrazionePage = () => {
                     onChange={handleChange}
                     required
                   />
+                </Form.Group>
+
+                <Form.Group controlId="formAvatar" className="mb-3">
+                  <Form.Label>Avatar (Opzionale)</Form.Label>
+                  <Form.Control type="file" name="avatar" onChange={handleAvatarChange} accept="image/*" />
                 </Form.Group>
 
                 <div className="d-flex justify-content-center">

@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../actions/authActions";
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, REGISTER } from "../actions/authActions";
 
 const initialState = {
   isAuthenticated: false,
@@ -8,6 +8,13 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case REGISTER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
+        error: null,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,

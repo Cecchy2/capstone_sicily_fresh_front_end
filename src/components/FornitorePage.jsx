@@ -7,7 +7,6 @@ import { getProfile } from "../redux/actions/utentiActions";
 
 const FornitorePage = () => {
   const { fornitoreId } = useParams();
-  const params = useParams();
   const utente = useSelector((state) => state.utente);
   const dispatch = useDispatch();
   const navigate = useNavigate();

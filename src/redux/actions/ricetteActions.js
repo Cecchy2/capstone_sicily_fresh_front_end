@@ -116,7 +116,7 @@ export const getRicettaById = (ricettaId) => {
 
 export const getRicetteByFornitoreId = (fornitoreId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette/${fornitoreId}`;
+    const baseEndPoint = `http://localhost:3001/ricette/get/${fornitoreId}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -133,7 +133,7 @@ export const getRicetteByFornitoreId = (fornitoreId) => {
           payload: data,
         });
       } else {
-        throw new Error("Failed to fetch recipes for the specified supplier.");
+        throw new Error("Fallita fetch");
       }
     } catch (error) {
       console.error("Errore nella fetch", error);

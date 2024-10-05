@@ -65,14 +65,14 @@ export const creaRicetta = (ricettaPayload, immaginePiatto) => {
 };
 
 export const deleteRicetta = (ricettaId) => {
-  async (dispatch) => {
-    const confirmDelete = window.confirm("Sei sicuro di voler eliminare la ricetta??");
+  return async (dispatch) => {
+    const confirmDelete = window.confirm("Sei sicuro di voler eliminare la ricetta?");
     if (!confirmDelete) {
       return;
     }
-
     const baseEndPoint = `http://localhost:3001/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
+
     try {
       const resp = await fetch(baseEndPoint, {
         method: "DELETE",
@@ -80,9 +80,13 @@ export const deleteRicetta = (ricettaId) => {
           Authorization: `Bearer ${token}`,
         },
       });
+
       if (resp.ok) {
-        dispatch({ type: DELETE_RICETTA });
-        alert("Profilo eliminato con successo!");
+        dispatch({
+          type: DELETE_RICETTA,
+          payload: ricettaId,
+        });
+        alert("Ricetta eliminata con successo!");
       } else {
         console.log("Errore durante l'eliminazione della ricetta");
       }

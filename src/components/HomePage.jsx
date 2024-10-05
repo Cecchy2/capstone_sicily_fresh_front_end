@@ -34,6 +34,9 @@ const HomePage = () => {
                       <Button variant="warning" className="mt-3">
                         Vai a ricetta
                       </Button>
+                      <Button variant="warning" className="mt-3">
+                        Elimina ricetta
+                      </Button>
                     </Card.Body>
                   </Card>
                 </Col>

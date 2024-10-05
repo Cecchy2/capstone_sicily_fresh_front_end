@@ -2,6 +2,7 @@ export const GET_RICETTE = "GET_RICETTE";
 export const CREA_RICETTA_SUCCESS = "CREA_RICETTA_SUCCESS";
 export const DELETE_RICETTA = "DELETE_RICETTA";
 export const GET_RICETTA_BY_ID = "GET_RICETTA_BY_ID";
+export const GET_RICETTE_BY_FORNITORE = "GET_RICETTE_BY_FORNITORE";
 
 export const getRicette = () => {
   return async (dispatch) => {
@@ -109,6 +110,33 @@ export const getRicettaById = (ricettaId) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const getRicetteByFornitoreId = (fornitoreId) => {
+  return async (dispatch) => {
+    const baseEndPoint = `http://localhost:3001/ricette/${fornitoreId}`;
+    const token = localStorage.getItem("authToken");
+
+    try {
+      const response = await fetch(baseEndPoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        dispatch({
+          type: GET_RICETTE_BY_FORNITORE,
+          payload: data,
+        });
+      } else {
+        throw new Error("Failed to fetch recipes for the specified supplier.");
+      }
+    } catch (error) {
+      console.error("Errore nella fetch", error);
     }
   };
 };

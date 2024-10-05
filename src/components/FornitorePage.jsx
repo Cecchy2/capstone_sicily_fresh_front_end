@@ -44,8 +44,8 @@ const FornitorePage = () => {
   const handleAddIngredient = () => {
     setFormValues({
       ...formValues,
-      Ricettaingredienti: [
-        ...formValues.Ricettaingredienti,
+      ricetteIngredienti: [
+        ...formValues.ricetteIngredienti,
         { nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" },
       ],
     });
@@ -53,11 +53,11 @@ const FornitorePage = () => {
 
   const handleIngredientChange = (index, e) => {
     const { name, value } = e.target;
-    const newIngredienti = [...formValues.Ricettaingredienti];
+    const newIngredienti = [...formValues.ricetteIngredienti];
     newIngredienti[index][name] = value;
     setFormValues({
       ...formValues,
-      Ricettaingredienti: newIngredienti,
+      ricetteIngredienti: newIngredienti,
     });
   };
 
@@ -215,7 +215,7 @@ const FornitorePage = () => {
               </Form.Group>
 
               <h5>Ingredienti</h5>
-              {formValues.Ricettaingredienti?.map((ingrediente, index) => (
+              {formValues.ricetteIngredienti?.map((ingrediente, index) => (
                 <Row key={index} className="mb-3">
                   <Col>
                     <Form.Control

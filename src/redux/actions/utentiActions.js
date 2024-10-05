@@ -29,7 +29,6 @@ export const updateProfile = (id, utentePayload) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/utenti/${id}`;
     const token = localStorage.getItem("authToken");
-    console.log("Auth Token:", token);
     try {
       const resp = await fetch(baseEndPoint, {
         method: "PUT",

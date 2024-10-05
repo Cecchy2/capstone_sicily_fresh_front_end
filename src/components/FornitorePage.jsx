@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { creaRicetta } from "../redux/actions/ricetteActions";
 import { getProfile } from "../redux/actions/utentiActions";
 
@@ -10,6 +10,7 @@ const FornitorePage = () => {
   const params = useParams();
   const utente = useSelector((state) => state.utente);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -94,6 +95,11 @@ const FornitorePage = () => {
     handleClose();
   };
 
+  const handleNavigateRicetteByFornitore = (e) => {
+    e.preventDefault();
+    navigate(`/ricette/${fornitoreId}`);
+  };
+
   return (
     <div>
       <Container>
@@ -148,9 +154,9 @@ const FornitorePage = () => {
                           className="cardImageFornitori"
                         />
                         <Card.Body>
-                          <Card.Title className="fw-bold">Modifica una ricetta</Card.Title>
-                          <Button variant="warning" className="mt-3">
-                            Modifica Ricetta
+                          <Card.Title className="fw-bold">Vai alle tue ricette</Card.Title>
+                          <Button variant="warning" className="mt-3" onClick={handleNavigateRicetteByFornitore}>
+                            Vai a Ricette
                           </Button>
                         </Card.Body>
                       </Card>

@@ -9,6 +9,7 @@ import RegistrazionePage from "./components/RegistrazionePage";
 import UtentiPage from "./components/UtentiPage";
 import FornitorePage from "./components/FornitorePage";
 import ProfiloUtente from "./components/ProfiloUtente";
+import RicetteFornitorePage from "./components/RicetteFornitorePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profili/:id" element={<ProfiloUtente />} />
           <Route path="/utenti/:id" element={<UtentiPage />} />
           <Route path="/fornitori/:fornitoreId" element={<FornitorePage />} />
+          <Route path="/ricette/:fornitoreId" element={<RicetteFornitorePage />} />
         </Routes>
       </BrowserRouter>
     </>

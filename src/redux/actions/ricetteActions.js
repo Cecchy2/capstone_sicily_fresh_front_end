@@ -23,7 +23,7 @@ export const getRicette = () => {
   };
 };
 
-export const creaRicetta = (ricettaPayload) => {
+export const creaRicetta = (ricettaPayload, immaginePiatto) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/ricette`;
     const token = localStorage.getItem("authToken");
@@ -41,6 +41,19 @@ export const creaRicetta = (ricettaPayload) => {
         const result = await resp.json();
         console.log("Ricetta creata:", result);
         dispatch({ type: CREA_RICETTA_SUCCESS, payload: result });
+
+        if (immaginePiatto) {
+          const formData = new FormData();
+          formData.append("immaginePiatto", immaginePiatto);
+          const imageEndpoint = `${baseEndPoint}/${result.ricettaId}/immaginePiatto`;
+          await fetch(imageEndpoint, {
+            method: "PATCH",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+          });
+        }
       }
     } catch (error) {
       console.log(error);

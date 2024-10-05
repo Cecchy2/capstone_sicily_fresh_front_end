@@ -24,6 +24,8 @@ const FornitorePage = () => {
     ricetteIngredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
   });
 
+  const [immaginePiatto, setImmaginePiatto] = useState(null);
+
   useEffect(() => {
     if (fornitoreId) {
       dispatch(getProfile(fornitoreId));
@@ -32,6 +34,10 @@ const FornitorePage = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleImmaginePiattoChange = (e) => {
+    setImmaginePiatto(e.target.files[0]);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,7 +89,7 @@ const FornitorePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(creaRicetta(formValues));
+    dispatch(creaRicetta(formValues, immaginePiatto));
     setShowAlert(true);
     handleClose();
   };
@@ -211,6 +217,16 @@ const FornitorePage = () => {
                   value={formValues.valoriNutrizionali}
                   onChange={handleChange}
                   required
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formImmaginePiatto" className="mb-3">
+                <Form.Label>Immagine piatto (Opzionale)</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="immaginePiatto"
+                  onChange={handleImmaginePiattoChange}
+                  accept="image/*"
                 />
               </Form.Group>
 

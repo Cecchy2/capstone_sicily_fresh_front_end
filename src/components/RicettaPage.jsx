@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { deleteRicetta, getRicettaById } from "../redux/actions/ricetteActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
 
 const RicettaPage = () => {
   const { ricettaId } = useParams();
@@ -42,14 +42,14 @@ const RicettaPage = () => {
           <Container>
             <Row>
               <Col>
-                <h1>{ricetta.titolo}</h1>
-                <h3>{ricetta.descrizione}</h3>
+                <h1 className="display-5 my-5">{ricetta.titolo}</h1>
+                <p>{ricetta.descrizione}</p>
                 {ricetta.passaggi && ricetta.passaggi.length > 0 ? (
                   ricetta.passaggi.map((passaggio, index) => (
-                    <div key={index} className="mb-4">
-                      <h2>
-                        Passaggio {index + 1}: {passaggio.descrizione}
-                      </h2>
+                    <div key={index} className="my-5">
+                      <Image src={passaggio.immaginePassaggio} />
+                      <Badge>Passaggio {index + 1}:</Badge>
+                      <p className="fs-5">{passaggio.descrizione}</p>
                     </div>
                   ))
                 ) : (
@@ -57,7 +57,7 @@ const RicettaPage = () => {
                 )}
               </Col>
             </Row>
-            <Button variant="warning" className="mt-3" onClick={() => handleDelete(ricetta.id)}>
+            <Button variant="danger" className="mt-3" onClick={() => handleDelete(ricetta.id)}>
               Elimina ricetta
             </Button>
           </Container>

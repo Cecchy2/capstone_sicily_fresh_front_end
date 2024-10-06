@@ -3,8 +3,6 @@ import { HiMiniShoppingCart } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
-import { useEffect } from "react";
-import { getProfile } from "../redux/actions/utentiActions";
 
 const Topbar = () => {
   const navigate = useNavigate();

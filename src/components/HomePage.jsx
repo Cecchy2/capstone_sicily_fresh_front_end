@@ -30,13 +30,7 @@ const HomePage = () => {
                   <Card className="h-100 shadow-sm border-0 rounded-4 hover-card">
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
                     <Card.Body>
-                      <Card.Title className="fw-bold">{ricetta.descrizione}</Card.Title>
-                      <Button variant="warning" className="mt-3">
-                        Vai a ricetta
-                      </Button>
-                      <Button variant="warning" className="mt-3">
-                        Elimina ricetta
-                      </Button>
+                      <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
                     </Card.Body>
                   </Card>
                 </Col>

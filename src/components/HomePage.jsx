@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRicette } from "../redux/actions/ricetteActions";
 import CarouselItems from "./CarouselItems";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 
 const HomePage = () => {
   const dispatch = useDispatch();

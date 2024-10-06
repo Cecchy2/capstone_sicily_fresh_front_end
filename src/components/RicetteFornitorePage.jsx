@@ -21,7 +21,7 @@ const RicetteFornitorePage = () => {
 
   return (
     <Container>
-      <Row>
+      <Row className="mt-5">
         {ricette && ricette.ricette && ricette.ricette.length > 0 ? (
           ricette.ricette.map((ricetta, index) => (
             <Col key={index} xs={12} sm={6} md={4} lg={3} className="mb-4">

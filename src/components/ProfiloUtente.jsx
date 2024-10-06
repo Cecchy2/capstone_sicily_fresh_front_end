@@ -54,6 +54,7 @@ const ProfiloUtente = () => {
                 width={300}
                 height={300}
                 className="border border-4 border-warning shadow-sm object-fit-cover"
+                roundedCircle
               />
             </Card.Header>
             <Card.Body className="bg-light p-5">

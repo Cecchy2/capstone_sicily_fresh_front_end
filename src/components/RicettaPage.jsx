@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { deleteRicetta, getRicettaById } from "../redux/actions/ricetteActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Badge, Button, Card, Col, Container, Image, ListGroup, Row } from "react-bootstrap";
+import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
 
 const RicettaPage = () => {
   const { ricettaId } = useParams();
   const dispatch = useDispatch();
 
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const ricetta = useSelector((state) => state.ricette.ricettaDettaglio);
 
   console.log(ricetta);
@@ -69,11 +70,18 @@ const RicettaPage = () => {
                 {ricetta.passaggi && ricetta.passaggi.length > 0 ? (
                   ricetta.passaggi.map((passaggio, index) => (
                     <div key={index} className="mt-5">
-                      <Image src={passaggio.immaginePassaggio} />
-                      <Badge bg="warning" className="text-dark">
+                      <Badge bg="warning" className="text-dark mb-2">
                         Passaggio {index + 1}:
                       </Badge>
-                      <p className="fs-5">{passaggio.descrizione}</p>
+                      <div className="d-flex">
+                        <Image
+                          src={passaggio.immaginePassaggio}
+                          alt="immagine passaggio"
+                          width={300}
+                          className="object-fit-cover me-4"
+                        />
+                        <p className="fs-5">{passaggio.descrizione}</p>
+                      </div>
                     </div>
                   ))
                 ) : (
@@ -81,9 +89,16 @@ const RicettaPage = () => {
                 )}
               </Col>
             </Row>
-            <Button variant="danger" className="my-5" onClick={() => handleDelete(ricetta.id)}>
-              Elimina ricetta
-            </Button>
+            {isAuthenticated && user.role == "FORNITORE" ? (
+              <Button variant="danger" className="my-5" onClick={() => handleDelete(ricetta.id)}>
+                Elimina ricetta
+              </Button>
+            ) : (
+              <Button variant="warning" className="my-5">
+                {" "}
+                Aggiungi al Menù
+              </Button>
+            )}
           </Container>
         </>
       ) : (
@@ -94,28 +109,3 @@ const RicettaPage = () => {
 };
 
 export default RicettaPage;
-
-/* {ricetta.ricettaIngredienti && ricetta.ricettaIngredienti.length > 0 && (
-    <>
-      <h4 className="mt-4">Ingredienti</h4>
-      <ListGroup variant="flush">
-        {ricetta.ricettaIngredienti.map((item, index) => (
-          <ListGroup.Item key={item.id} className="d-flex align-items-center">
-            {item.ingrediente.immagine && (
-              <Image
-                src={item.ingrediente.immagine}
-                alt={item.ingrediente.nome}
-                height={50}
-                width={50}
-                className="me-3"
-                rounded
-              />
-            )}
-            <div>
-              <strong>{item.ingrediente.nome}</strong> - {item.quantita}
-            </div>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-    </>
-  )} */

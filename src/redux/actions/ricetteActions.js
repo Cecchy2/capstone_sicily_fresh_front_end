@@ -26,7 +26,7 @@ export const getRicette = () => {
   };
 };
 
-export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiIngredienti, immaginiPassaggi) => {
+export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/ricette`;
     const token = localStorage.getItem("authToken");
@@ -59,27 +59,11 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiIngredienti,
           });
         }
 
-        if (immaginiIngredienti && immaginiIngredienti.length > 0) {
-          for (let i = 0; i < immaginiIngredienti.length; i++) {
-            const formData = new FormData();
-            formData.append("immagine", immaginiIngredienti[i].immagine);
-            const ingredienteId = immaginiIngredienti[i].ingredienteId;
-            const ingredientEndpoint = `${baseEndPoint}/ingredienti/${ingredienteId}/immagine`;
-            await fetch(ingredientEndpoint, {
-              method: "PATCH",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-              body: formData,
-            });
-          }
-        }
-
         if (immaginiPassaggi && immaginiPassaggi.length > 0) {
           for (let i = 0; i < immaginiPassaggi.length; i++) {
             const formData = new FormData();
-            formData.append("immaginePassaggio", immaginiPassaggi[i].immaginePassaggio);
-            const passaggioDiPreparazioneId = immaginiPassaggi[i].passaggioId;
+            formData.append("immaginePassaggio", immaginiPassaggi[i]);
+            const passaggioDiPreparazioneId = result.passaggi[i].id;
             const passaggioEndpoint = `http://localhost:3001/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
             await fetch(passaggioEndpoint, {
               method: "PATCH",

@@ -104,7 +104,7 @@ const FornitorePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e);
-    dispatch(creaRicetta(formValues, immaginePiatto, immaginiIngredienti, immaginiPassaggi));
+    dispatch(creaRicetta(formValues, immaginePiatto, immaginiPassaggi));
     setShowAlert(true);
     handleClose();
   };

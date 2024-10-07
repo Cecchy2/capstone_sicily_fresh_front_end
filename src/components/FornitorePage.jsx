@@ -25,6 +25,8 @@ const FornitorePage = () => {
   });
 
   const [immaginePiatto, setImmaginePiatto] = useState(null);
+  const [immaginiIngredienti, setImmaginiIngredienti] = useState([]);
+  const [immaginiPassaggi, setImmaginiPassaggi] = useState([]);
 
   useEffect(() => {
     if (fornitoreId) {
@@ -37,6 +39,18 @@ const FornitorePage = () => {
 
   const handleImmaginePiattoChange = (e) => {
     setImmaginePiatto(e.target.files[0]);
+  };
+
+  const handleIngredientImageChange = (index, e) => {
+    const files = [...immaginiIngredienti];
+    files[index] = e.target.files[0];
+    setImmaginiIngredienti(files);
+  };
+
+  const handlePassaggioImageChange = (index, e) => {
+    const files = [...immaginiPassaggi];
+    files[index] = e.target.files[0];
+    setImmaginiPassaggi(files);
   };
 
   const handleChange = (e) => {
@@ -89,7 +103,8 @@ const FornitorePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(creaRicetta(formValues, immaginePiatto));
+    console.log(e);
+    dispatch(creaRicetta(formValues, immaginePiatto, immaginiIngredienti, immaginiPassaggi));
     setShowAlert(true);
     handleClose();
   };
@@ -236,6 +251,7 @@ const FornitorePage = () => {
               </Form.Group>
 
               <h5>Ingredienti</h5>
+
               {formValues.ricetteIngredienti?.map((ingrediente, index) => (
                 <Row key={index} className="mb-3">
                   <Col>
@@ -267,10 +283,10 @@ const FornitorePage = () => {
                   </Col>
                   <Col>
                     <Form.Control
-                      name="immagine"
-                      placeholder="Link Immagine"
-                      value={ingrediente.immagine}
-                      onChange={(e) => handleIngredientChange(index, e)}
+                      type="file"
+                      name="immagineIngrediente"
+                      onChange={(e) => handleIngredientImageChange(index, e)}
+                      accept="image/*"
                     />
                   </Col>
                   <Col>
@@ -289,6 +305,7 @@ const FornitorePage = () => {
               </Button>
 
               <h5 className="mt-4">Passaggi di Preparazione</h5>
+
               {formValues.passaggi?.map((passaggio, index) => (
                 <Row key={index} className="mb-3">
                   <Col>
@@ -302,10 +319,10 @@ const FornitorePage = () => {
                   </Col>
                   <Col>
                     <Form.Control
+                      type="file"
                       name="immaginePassaggio"
-                      placeholder="Link Immagine Passaggio"
-                      value={passaggio.immaginePassaggio}
-                      onChange={(e) => handleStepChange(index, e)}
+                      onChange={(e) => handlePassaggioImageChange(index, e)}
+                      accept="image/*"
                     />
                   </Col>
                   <Col>

@@ -26,10 +26,11 @@ export const getRicette = () => {
   };
 };
 
-export const creaRicetta = (ricettaPayload, immaginePiatto) => {
+export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiIngredienti, immaginiPassaggi) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/ricette`;
     const token = localStorage.getItem("authToken");
+
     try {
       const resp = await fetch(baseEndPoint, {
         method: "POST",
@@ -56,6 +57,38 @@ export const creaRicetta = (ricettaPayload, immaginePiatto) => {
             },
             body: formData,
           });
+        }
+
+        if (immaginiIngredienti && immaginiIngredienti.length > 0) {
+          for (let i = 0; i < immaginiIngredienti.length; i++) {
+            const formData = new FormData();
+            formData.append("immagine", immaginiIngredienti[i].immagine);
+            const ingredienteId = immaginiIngredienti[i].ingredienteId;
+            const ingredientEndpoint = `${baseEndPoint}/ingredienti/${ingredienteId}/immagine`;
+            await fetch(ingredientEndpoint, {
+              method: "PATCH",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              body: formData,
+            });
+          }
+        }
+
+        if (immaginiPassaggi && immaginiPassaggi.length > 0) {
+          for (let i = 0; i < immaginiPassaggi.length; i++) {
+            const formData = new FormData();
+            formData.append("immaginePassaggio", immaginiPassaggi[i].immaginePassaggio);
+            const passaggioDiPreparazioneId = immaginiPassaggi[i].passaggioId;
+            const passaggioEndpoint = `http://localhost:3001/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
+            await fetch(passaggioEndpoint, {
+              method: "PATCH",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              body: formData,
+            });
+          }
         }
       }
     } catch (error) {

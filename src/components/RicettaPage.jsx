@@ -96,7 +96,7 @@ const RicettaPage = () => {
             ) : (
               <Button variant="warning" className="my-5">
                 {" "}
-                Aggiungi al Menù
+                Aggiungi al carrello
               </Button>
             )}
           </Container>

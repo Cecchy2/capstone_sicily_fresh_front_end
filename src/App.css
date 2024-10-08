@@ -216,3 +216,9 @@ input[type="date"]:focus {
   height: 100vh;
 }
 
+.f-lato-thin
+  {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}

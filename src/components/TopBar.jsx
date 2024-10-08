@@ -31,20 +31,25 @@ const Topbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
-              <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"}>
+              <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"} className="translate">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/chi-siamo">
+              <Nav.Link as={Link} to="/chi-siamo" className="translate">
                 Chi Siamo
               </Nav.Link>
-              <Nav.Link as={Link} to="/ricette">
+              <Nav.Link as={Link} to="/ricette" className="translate">
                 Ricette
               </Nav.Link>
-              <Nav.Link as={Link} to="/menu">
+              <Nav.Link as={Link} to="/menu" className="translate">
                 Menù
               </Nav.Link>
-              <div className="position-relative mx-4 cart">
-                <HiMiniShoppingCart fill="black" size={30} />
+              <div className="position-relative mx-3 cart">
+                <HiMiniShoppingCart
+                  fill="black"
+                  size={30}
+                  onClick={() => navigate("/carrello/${clienteId}")}
+                  className="translate"
+                />
                 <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
                   3
                 </Badge>

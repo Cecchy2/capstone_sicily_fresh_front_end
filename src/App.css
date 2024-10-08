@@ -196,3 +196,23 @@ input[type="date"]:focus {
   background-size: contain;
   background-position: center;
 }
+
+.translate{
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+ 
+}
+
+.translate:hover{
+  cursor: pointer;
+  transform: translateY(-4px);
+  
+  
+}
+
+.carrello{
+  background-image: url(../public/assets/istockphoto-1316968335-1024x1024.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+

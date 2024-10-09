@@ -6,14 +6,10 @@ export const GET_RICETTE_BY_FORNITORE = "GET_RICETTE_BY_FORNITORE";
 
 export const getRicette = () => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette`;
-    const token = localStorage.getItem("authToken");
+    const baseEndPoint = `http://localhost:3001/authorization`;
+
     try {
-      const resp = await fetch(baseEndPoint, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const resp = await fetch(baseEndPoint);
 
       if (resp.ok) {
         const result = await resp.json();

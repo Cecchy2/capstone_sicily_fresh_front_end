@@ -9,7 +9,8 @@ const Topbar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const utente = useSelector((state) => state.utente);
-  console.log(utente);
+  console.log(utente.utente);
+  console.log(user);
 
   const handleLogout = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");

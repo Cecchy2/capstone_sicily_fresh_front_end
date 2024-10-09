@@ -1,6 +1,32 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { creaAbbonamento } from "../redux/actions/abbonamentiActions";
 
 const AbbonamentiPage = () => {
+  const utente = useSelector((state) => state.utente);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const oggi = new Date();
+  const prossimoAnno = new Date(oggi.setFullYear(oggi.getFullYear() + 1)).toISOString().split("T")[0];
+
+  const payloadSei = {
+    nome: "6 Ricette",
+    numeroRicette: 6,
+    prezzo: 46.0,
+    dataInizio: new Date().toISOString().split("T")[0],
+    dataScadenza: prossimoAnno,
+    cliente: user.utenteId,
+  };
+
+  const handleclickSei = () => {
+    if (isAuthenticated) {
+      dispatch(creaAbbonamento(payloadSei));
+    } else {
+      window.alert("Devi registrarti per acquistare un abbonamento");
+    }
+  };
+
   return (
     <div className="abbonamentiPage">
       <Container>
@@ -11,7 +37,7 @@ const AbbonamentiPage = () => {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <h1 className="m-3 display-5">6 RICETTE</h1>
+                  <h1 className="m-3 display-5 text-primary">6 RICETTE</h1>
                 </Card.Title>
                 <Card.Subtitle className="mt-4 text-muted">
                   Ordina fino a 6 ricette, equivalgono a 12 porzioni
@@ -23,7 +49,7 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
+                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickSei}>
                     {" "}
                     Acquista ora
                   </Button>
@@ -42,10 +68,10 @@ const AbbonamentiPage = () => {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <h1 className="m-3 display-5">12 RICETTE</h1>
+                  <h1 className="m-3 display-5 text-primary">12 RICETTE</h1>
                 </Card.Title>
                 <Card.Subtitle className="mt-4 text-muted">
-                  Ordina fino a 6 ricette, equivalgono a 24 porzioni
+                  Ordina fino a 12 ricette, equivalgono a 24 porzioni
                 </Card.Subtitle>
                 <Card.Text>
                   <div className="d-flex align-items-center">
@@ -73,10 +99,10 @@ const AbbonamentiPage = () => {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <h1 className="m-3 display-5">24 RICETTE</h1>
+                  <h1 className="m-3 display-5 text-primary">24 RICETTE</h1>
                 </Card.Title>
                 <Card.Subtitle className="mt-4 text-muted">
-                  Ordina fino a 6 ricette, equivalgono a 48 porzioni
+                  Ordina fino a 24 ricette, equivalgono a 48 porzioni
                 </Card.Subtitle>
                 <Card.Text>
                   <div className="d-flex align-items-center">

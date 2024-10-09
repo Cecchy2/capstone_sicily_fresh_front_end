@@ -35,7 +35,7 @@ const Topbar = () => {
               <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"} className="translate">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/abbonamenti" className="translate">
+              <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
                 Abbonamenti
               </Nav.Link>
               <Nav.Link as={Link} to="/chi-siamo" className="translate">

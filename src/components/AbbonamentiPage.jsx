@@ -31,7 +31,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
-                    <p>Abbonamento base • risparmi tempo </p>
+                    <p>Abbonamento base </p>
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -62,7 +62,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
-                    <p>Abbonamento medium • risparmi 12€ sul totale </p>
+                    <p>Abbonamento medium • risparmi 12€ </p>
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -94,7 +94,7 @@ const AbbonamentiPage = () => {
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
                     {/* <p>🥕 Ingredienti selezionati da fornitori locali</p> */}
-                    <p>Abbonamento premium • risparmi 22€ sul totale •</p>
+                    <p>Abbonamento premium • risparmi 22€ </p>
                   </div>
                 </Card.Text>
               </Card.Body>

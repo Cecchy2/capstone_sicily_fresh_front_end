@@ -64,14 +64,14 @@ const HomePage = () => {
                     <Card.Body>
                       <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
                       <Button variant="primary" onClick={() => navigate(`/ricetta/${ricetta.id}`)}>
-                        View Recipe
+                        Vai alla ricetta
                       </Button>
                     </Card.Body>
                   </Card>
                 </Col>
               ))
             ) : (
-              <p>No recipes available at the moment.</p>
+              <p>Nessuna ricetta al momento.</p>
             )}
           </Row>
         </Container>

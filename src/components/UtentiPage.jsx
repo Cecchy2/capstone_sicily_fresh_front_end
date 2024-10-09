@@ -25,7 +25,6 @@ const UtentiPage = () => {
       <div className="striscia ">
         <CarouselItems />
       </div>
-      <hr className="border border-5 mt-4" />
       <div className="middleHome text-center f-lato-thin">
         <Container>
           <Row>

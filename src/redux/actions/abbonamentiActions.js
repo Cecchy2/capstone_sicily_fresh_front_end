@@ -16,7 +16,7 @@ export const creaAbbonamento = (abbonamentoPayload) => {
 
       if (resp.ok) {
         const result = await resp.json();
-        console.log("Ricetta creata:", result);
+        console.log("Abbonamento creato:", result);
         dispatch({ type: CREA_ABBONAMENTO, payload: result });
       }
     } catch (error) {

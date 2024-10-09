@@ -18,10 +18,40 @@ const AbbonamentiPage = () => {
     dataScadenza: prossimoAnno,
     cliente: user.utenteId,
   };
+  const payloadDodici = {
+    nome: "12 Ricette",
+    numeroRicette: 12,
+    prezzo: 80.0,
+    dataInizio: new Date().toISOString().split("T")[0],
+    dataScadenza: prossimoAnno,
+    cliente: user.utenteId,
+  };
+  const payloadVentiquattro = {
+    nome: "24 Ricette",
+    numeroRicette: 24,
+    prezzo: 150.0,
+    dataInizio: new Date().toISOString().split("T")[0],
+    dataScadenza: prossimoAnno,
+    cliente: user.utenteId,
+  };
 
   const handleclickSei = () => {
     if (isAuthenticated) {
       dispatch(creaAbbonamento(payloadSei));
+    } else {
+      window.alert("Devi registrarti per acquistare un abbonamento");
+    }
+  };
+  const handleclickDodici = () => {
+    if (isAuthenticated) {
+      dispatch(creaAbbonamento(payloadDodici));
+    } else {
+      window.alert("Devi registrarti per acquistare un abbonamento");
+    }
+  };
+  const handleclickVentiquattro = () => {
+    if (isAuthenticated) {
+      dispatch(creaAbbonamento(payloadVentiquattro));
     } else {
       window.alert("Devi registrarti per acquistare un abbonamento");
     }
@@ -80,7 +110,7 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
+                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickDodici}>
                     {" "}
                     Acquista ora
                   </Button>
@@ -111,7 +141,7 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
+                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickVentiquattro}>
                     {" "}
                     Acquista ora
                   </Button>

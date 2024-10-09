@@ -24,15 +24,18 @@ const Topbar = () => {
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Image src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
-          <Navbar.Brand as={Link} to="/">
-            Sicily-Fresh
+          <Navbar.Brand as={Link} to={isAuthenticated ? "/utenti/${user.utenteId}" : "/"}>
+            <Image src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
+            Sicily•Fresh
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
               <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"} className="translate">
                 Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/abbonamenti" className="translate">
+                Abbonamenti
               </Nav.Link>
               <Nav.Link as={Link} to="/chi-siamo" className="translate">
                 Chi Siamo
@@ -43,7 +46,7 @@ const Topbar = () => {
               <Nav.Link as={Link} to="/menu" className="translate">
                 Menù
               </Nav.Link>
-              <div className="position-relative mx-3 cart">
+              <div className="position-relative mx-3 mb-2 cart">
                 <HiMiniShoppingCart
                   fill="black"
                   size={30}

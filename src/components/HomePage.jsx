@@ -32,26 +32,22 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="striscia bg-warning">
+      <div className="striscia">
         <CarouselItems />
       </div>
 
       <div className="middleHome text-center f-lato-thin">
         <Container>
           <Row>
-            <Col>
-              <Card className="mt-3 w-75 mx-auto cardHome">
-                <Card.Body className="bg-warning text-dark">
-                  <h2>Scopri le Migliori Ricette Siciliane!</h2>
-                  <p>
-                    Acquista ricette gourmet e ricevi a casa tua gli ingredienti sottovuoto, pronti per essere
-                    utilizzati. Ingredienti selezionati da fornitori locali!
-                  </p>
-                  <Button variant="warning" className="border border-black ms-md-5">
-                    Vai alle Ricette <MdFoodBank size={30} />
-                  </Button>
-                </Card.Body>
-              </Card>
+            <Col className="mt-3  mx-auto cardHome">
+              <h2 className="mt-5">Scopri le Migliori Ricette Siciliane!</h2>
+              <p>
+                Acquista ricette gourmet e ricevi a casa tua gli ingredienti sottovuoto, pronti per essere utilizzati.
+                Ingredienti selezionati da fornitori locali!
+              </p>
+              <Button variant="warning" className="border border-black ms-md-5">
+                Vai alle Ricette <MdFoodBank size={30} />
+              </Button>
             </Col>
           </Row>
         </Container>

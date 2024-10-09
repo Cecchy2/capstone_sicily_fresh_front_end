@@ -22,11 +22,11 @@ const UtentiPage = () => {
   return (
     <>
       <div className="utentiPage"></div>
-      <div className="striscia mt-4">
+      <div className="striscia ">
         <CarouselItems />
       </div>
       <hr className="border border-5 mt-4" />
-      <div className="middleHome mt-4">
+      <div className="middleHome text-center f-lato-thin">
         <Container>
           <Row>
             <Col></Col>

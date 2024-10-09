@@ -31,13 +31,13 @@ const RegistrazionePage = () => {
     setAvatar(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = dispatch(register(formValues, avatar));
+    const result = await dispatch(register(formValues, avatar));
 
-    if (success) {
-      alert("Registrazione avvenuta coon successo");
-      navigate("/login");
+    if (result.success) {
+      alert("Registrazione avvenuta con successo");
+      navigate(`/utenti/${result.userId}`);
     } else {
       alert("Registrazione fallita, riprova.");
     }

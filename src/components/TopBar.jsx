@@ -3,14 +3,29 @@ import { HiMiniShoppingCart } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
+import { useEffect } from "react";
+import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 
 const Topbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const utente = useSelector((state) => state.utente);
+  const carrello = useSelector((state) => state.carrello);
   console.log(utente.utente);
   console.log(user);
+
+  useEffect(() => {
+    if (isAuthenticated && user && user.utenteId) {
+      // Controlla se il carrello esiste già
+      dispatch(getCarrelloByClienteId(user.utenteId)).then((result) => {
+        if (!carrello || !carrello.id) {
+          // Se non esiste, crea il carrello
+          dispatch(creaCarrello(user.utenteId));
+        }
+      });
+    }
+  }, [isAuthenticated, user, dispatch, carrello]);
 
   const handleLogout = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");

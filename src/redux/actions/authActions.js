@@ -66,6 +66,7 @@ export const register = (payload, avatar) => {
         type: REGISTER,
         payload: data,
       });
+      return { success: true, userId: data.id };
     } catch (error) {
       console.log(error);
     }

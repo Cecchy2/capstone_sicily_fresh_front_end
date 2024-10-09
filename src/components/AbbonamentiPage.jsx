@@ -1,9 +1,8 @@
-import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { creaAbbonamento } from "../redux/actions/abbonamentiActions";
 
 const AbbonamentiPage = () => {
-  const utente = useSelector((state) => state.utente);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 

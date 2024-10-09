@@ -37,7 +37,7 @@ const RegistrazionePage = () => {
 
     if (result.success) {
       alert("Registrazione avvenuta con successo");
-      navigate(`/utenti/${result.userId}`);
+      navigate(`/login`);
     } else {
       alert("Registrazione fallita, riprova.");
     }

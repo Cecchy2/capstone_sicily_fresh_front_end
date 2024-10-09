@@ -17,10 +17,8 @@ const Topbar = () => {
 
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
-      // Controlla se il carrello esiste già
       dispatch(getCarrelloByClienteId(user.utenteId)).then((result) => {
         if (!carrello || !carrello.id) {
-          // Se non esiste, crea il carrello
           dispatch(creaCarrello(user.utenteId));
         }
       });

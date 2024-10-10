@@ -66,7 +66,7 @@ const AbbonamentiPage = () => {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <h1 className="m-3 display-5 text-primary">6 RICETTE</h1>
+                  <h1 className="m-3 display-5 text-primary">06 RICETTE</h1>
                 </Card.Title>
                 <Card.Subtitle className="mt-4 text-muted">
                   Ordina fino a 6 ricette, equivalgono a 12 porzioni
@@ -74,7 +74,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo"> 46</h1>
+                    <h1 className="mt-5 prezzo text-success"> 46</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
@@ -86,7 +86,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
-                    <p>Abbonamento base </p>
+                    <p>Abbonamento base • scegli le tue ricette</p>
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -105,7 +105,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo"> 80</h1>
+                    <h1 className="mt-5 prezzo text-success"> 80</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
@@ -136,7 +136,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo"> 150</h1>
+                    <h1 className="mt-5 prezzo text-success"> 150</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">

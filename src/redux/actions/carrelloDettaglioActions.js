@@ -1,4 +1,5 @@
 export const CREA_CARRELLO_DETTAGLIO = "CREA_CARRELLO_DETTAGLIO";
+export const GET_CARRELLO_DETTAGLIO = "GET_CARRELLO_DETTAGLIO";
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
@@ -26,6 +27,27 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
     } catch (error) {
       console.log("Errore durante la creazione del carrelloDettaglio:", error);
       alert("Non ci sono abbastanza ricette disponibili nel tuo abbonamento 😢");
+    }
+  };
+};
+
+export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
+  return async (dispatch) => {
+    const baseEndPoint = `http://localhost:3001/carrelloDettagli/${carrelloId}`;
+    const token = localStorage.getItem("authToken");
+    try {
+      const resp = await fetch(baseEndPoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        console.log("CarrelliDettaglio recuperati:", result);
+        dispatch({ type: GET_CARRELLO_DETTAGLIO, payload: result });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };

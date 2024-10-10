@@ -12,8 +12,11 @@ const Topbar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const utente = useSelector((state) => state.utente);
   const carrello = useSelector((state) => state.carrello);
+  const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
+
   console.log(utente.utente);
   console.log(user);
+  console.log(carrelloDettagli);
 
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
@@ -32,7 +35,6 @@ const Topbar = () => {
       navigate("/");
     }
   };
-  console.log("Avatar URL:", utente.utente.avatar);
 
   return (
     <div>
@@ -68,7 +70,7 @@ const Topbar = () => {
                   className="translate"
                 />
                 <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
-                  3
+                  {carrelloDettagli.carrelliDettagli.length}
                 </Badge>
               </div>
               {isAuthenticated && (

@@ -1,18 +1,9 @@
-import { useEffect } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { findCarrelliDettagliByCarrelloId } from "../redux/actions/carrelloDettaglioActions";
+import { useSelector } from "react-redux";
 
 const CarrelloPage = () => {
-  const dispatch = useDispatch();
-
-  const carrelloId = useSelector((state) => state.carrelli.carrelli[0].id);
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   console.log(carrelloDettagli);
-
-  useEffect(() => {
-    dispatch(findCarrelliDettagliByCarrelloId(carrelloId));
-  }, [dispatch, carrelloId]);
 
   return (
     <div className="paginaCarrello">

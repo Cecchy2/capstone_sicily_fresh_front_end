@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { deleteRicetta, getRicettaById } from "../redux/actions/ricetteActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Button, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
-import { aggiungiCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { aggiungiCarrelloDettaglio, findCarrelliDettagliByCarrelloId } from "../redux/actions/carrelloDettaglioActions";
 
 const RicettaPage = () => {
   const { ricettaId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
   const [quantita, setQuantita] = useState(1);
@@ -21,7 +22,7 @@ const RicettaPage = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const ricetta = useSelector((state) => state.ricette.ricettaDettaglio);
 
-  console.log(ricetta);
+  console.log(user);
 
   useEffect(() => {
     if (ricettaId) {
@@ -44,6 +45,8 @@ const RicettaPage = () => {
       quantita: quantita,
     };
     dispatch(aggiungiCarrelloDettaglio(carrelloDettaglioPayload));
+    dispatch(findCarrelliDettagliByCarrelloId(carrelloId));
+    navigate(`/utenti/${user.utenteId}`);
     handleClose();
   };
 

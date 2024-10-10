@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import CarouselItems from "./CarouselItems";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { findCarrelliDettagliByCarrelloId } from "../redux/actions/carrelloDettaglioActions";
 
 const UtentiPage = () => {
   const utente = useSelector((state) => state.utente);
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(params);
   const ricetteList = useSelector((state) => state.ricette.ricette);
+  const carrelloId = useSelector((state) => state.carrelli.carrelli[0]?.id);
 
   useEffect(() => {
     if (params.id) {
@@ -20,6 +21,10 @@ const UtentiPage = () => {
   }, [dispatch, params.id]);
 
   console.log(utente);
+
+  useEffect(() => {
+    dispatch(findCarrelliDettagliByCarrelloId(carrelloId));
+  }, [dispatch, carrelloId]);
 
   return (
     <>

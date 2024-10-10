@@ -7,7 +7,7 @@ import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
 const RicettaPage = () => {
   const { ricettaId } = useParams();
   const dispatch = useDispatch();
-  const { carrelloId } = useSelector((state) => state.carrelli);
+  const carrelloId = useSelector((state) => state.carrelli.carrelli[0].id);
   console.log(carrelloId);
   //TODO GET -SUL CARRELLO PER AGGIORNARE CARRELLOID-
 

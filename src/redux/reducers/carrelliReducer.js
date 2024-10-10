@@ -1,4 +1,4 @@
-import { CREA_CARRELLO } from "../actions/carrelloAction";
+import { CREA_CARRELLO, GET_CARRELLO } from "../actions/carrelloAction";
 
 const initialState = {
   carrelli: [],
@@ -10,6 +10,11 @@ const carrelliReducer = (state = initialState, action) => {
       return {
         ...state,
         carrelli: [...state.carrelli, action.payload],
+      };
+    case GET_CARRELLO:
+      return {
+        ...state,
+        carrelli: [action.payload],
       };
     default:
       return state;

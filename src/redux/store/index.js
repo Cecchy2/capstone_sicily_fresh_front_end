@@ -4,6 +4,7 @@ import authReducer from "../reducers/authReducer";
 import utenteReducer from "../reducers/utenteReducer";
 import abbonamentiReducer from "../reducers/abbonamentiReducer";
 import carrelliReducer from "../reducers/carrelliReducer";
+import carrelliDettagliReducer from "../reducers/carrelloDettaglioReducer";
 
 const rootReducer = combineReducers({
   ricette: ricetteReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   utente: utenteReducer,
   abbonamenti: abbonamentiReducer,
   carrelli: carrelliReducer,
+  carrelliDettagli: carrelliDettagliReducer,
 });
 
 const store = configureStore({

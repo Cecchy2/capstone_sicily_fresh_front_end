@@ -123,7 +123,7 @@ const FornitorePage = () => {
           <Col md={8}>
             <Card className="shadow-lg border-0 rounded-4 my-5">
               <Card.Body className="p-5">
-                <h1 className="display-5 text-center mb-4">Bentornata, {utente.utente.nome}!</h1>
+                <h1 className="display-5 text-center mb-4">Ciao, {utente.utente.nome}!</h1>
                 <div className="d-flex flex-column align-items-center">
                   <Image
                     src={utente.utente.avatar}

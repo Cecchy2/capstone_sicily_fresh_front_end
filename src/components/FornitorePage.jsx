@@ -20,6 +20,8 @@ const FornitorePage = () => {
     tempo: "",
     valoriNutrizionali: "",
     fornitoreId: fornitoreId,
+    portata: "ANTIPASTO",
+    tipo: "CARNE",
     passaggi: [{ descrizione: "", immaginePassaggio: "", ordinePassaggio: 1 }],
     ricetteIngredienti: [{ nome: "", descrizione: "", valoriNutrizionali: "", immagine: "", quantita: "" }],
   });
@@ -238,6 +240,25 @@ const FornitorePage = () => {
                   onChange={handleChange}
                   required
                 />
+              </Form.Group>
+
+              <Form.Group controlId="formGridPortata" className="mb-3">
+                <Form.Label>Portata</Form.Label>
+                <Form.Select name="portata" value={formValues.portata} onChange={handleChange} required>
+                  <option value="ANTIPASTO">Antipasto</option>
+                  <option value="PRIMO">Primo</option>
+                  <option value="SECONDO">Secondo</option>
+                  <option value="DOLCE">Dolce</option>
+                </Form.Select>
+              </Form.Group>
+
+              <Form.Group controlId="formGridTipo" className="mb-3">
+                <Form.Label>Tipo</Form.Label>
+                <Form.Select name="tipo" value={formValues.tipo} onChange={handleChange} required>
+                  <option value="CARNE">Carne</option>
+                  <option value="PESCE">Pesce</option>
+                  <option value="VEGETALI">Vegetali</option>
+                </Form.Select>
               </Form.Group>
 
               <Form.Group controlId="formImmaginePiatto" className="mb-3">

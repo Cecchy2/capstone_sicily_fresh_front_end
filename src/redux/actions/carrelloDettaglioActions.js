@@ -25,6 +25,7 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
       }
     } catch (error) {
       console.log("Errore durante la creazione del carrelloDettaglio:", error);
+      alert("Non ci sono abbastanza ricette disponibili nel tuo abbonamento 😢");
     }
   };
 };

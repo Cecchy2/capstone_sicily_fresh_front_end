@@ -1,15 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { deleteRicetta, getRicettaById } from "../redux/actions/ricetteActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Badge, Button, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import { aggiungiCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 
 const RicettaPage = () => {
   const { ricettaId } = useParams();
   const dispatch = useDispatch();
+
+  const [show, setShow] = useState(false);
+  const [quantita, setQuantita] = useState(1);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const carrelloId = useSelector((state) => state.carrelli.carrelli[0].id);
   console.log(carrelloId);
-  //TODO GET -SUL CARRELLO PER AGGIORNARE CARRELLOID-
 
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const ricetta = useSelector((state) => state.ricette.ricettaDettaglio);
@@ -28,6 +35,16 @@ const RicettaPage = () => {
       dispatch(deleteRicetta(ricettaId));
       /* AGGIUNGERE NAVIGATE */
     }
+  };
+
+  const handleAggiungiAlCarrello = (carrelloDettaglioPayload) => {
+    carrelloDettaglioPayload = {
+      carrello: carrelloId,
+      ricetta: ricettaId,
+      quantita: quantita,
+    };
+    dispatch(aggiungiCarrelloDettaglio(carrelloDettaglioPayload));
+    handleClose();
   };
 
   return (
@@ -97,10 +114,39 @@ const RicettaPage = () => {
                 Elimina ricetta
               </Button>
             ) : (
-              <Button variant="warning" className="my-5">
-                {" "}
-                Aggiungi al carrello
-              </Button>
+              <div>
+                <Button variant="warning" className="my-5" onClick={handleShow}>
+                  {" "}
+                  Aggiungi al carrello
+                </Button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Scegli la quantità</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <p>Ricordati che ogni ricetta è per 2 porzioni</p>
+                    <Form.Select
+                      aria-label="Seleziona la quantità"
+                      value={quantita}
+                      onChange={(e) => setQuantita(Number(e.target.value))}
+                    >
+                      {[...Array(10).keys()].map((val) => (
+                        <option key={val + 1} value={val + 1}>
+                          {val + 1}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary" onClick={handleAggiungiAlCarrello}>
+                      Aggiungi a Carrello
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
             )}
           </Container>
         </>

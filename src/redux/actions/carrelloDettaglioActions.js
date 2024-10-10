@@ -21,10 +21,10 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
 
         dispatch({ type: CREA_CARRELLO_DETTAGLIO, payload: result });
       } else {
-        throw new Error("Creazione del carrello fallita");
+        throw new Error("Creazione del carrelloDettaglio fallita");
       }
     } catch (error) {
-      console.log("Errore durante la creazione del carrello:", error);
+      console.log("Errore durante la creazione del carrelloDettaglio:", error);
     }
   };
 };

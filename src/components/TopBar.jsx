@@ -15,7 +15,6 @@ const Topbar = () => {
   const utente = useSelector((state) => state.utente);
   const carrello = useSelector((state) => state.carrello);
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
-  const ricetteList = useSelector((state) => state.ricette.ricette);
 
   useEffect(() => {
     dispatch(getRicette());
@@ -23,7 +22,7 @@ const Topbar = () => {
 
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
-      dispatch(getCarrelloByClienteId(user.utenteId)).then((result) => {
+      dispatch(getCarrelloByClienteId(user.utenteId)).then(() => {
         if (!carrello || !carrello.id) {
           dispatch(creaCarrello(user.utenteId));
         }

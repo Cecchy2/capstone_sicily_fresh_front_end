@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../redux/actions/utentiActions";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import { uploadAvatar } from "../redux/actions/imagesUploadActions";
 
 const ProfiloUtente = () => {
   const utente = useSelector((state) => state.utente);
+  const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
@@ -19,6 +20,10 @@ const ProfiloUtente = () => {
     dataDiNascita: utente.utente?.dataDiNascita || "",
     ruolo: "CLIENTE",
   });
+
+  const numeroRicetteRimanenti = abbonamenti
+    .map((abbonamento) => abbonamento.numeroRicette)
+    .reduce((total, ricette) => total + ricette, 0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -63,8 +68,12 @@ const ProfiloUtente = () => {
                   {utente.utente.nome} {utente.utente.cognome}
                 </h1>
               </Card.Title>
+
               <Card.Text className="text-center fs-4 text-muted mb-3">{utente.utente.username}</Card.Text>
               <Card.Text className="text-center fs-5 text-secondary">{utente.utente.dataDiNascita}</Card.Text>
+              <h4 className="text-center  my- ms-auto">
+                Le tue ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
+              </h4>
               <div className="d-flex justify-content-center mt-4">
                 <Button variant="info" onClick={handleShow} className="px-5">
                   Modifica Profilo

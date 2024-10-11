@@ -39,8 +39,8 @@
   display: flex;
   align-items: center;
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
-  background-color: rgb(110, 92, 89)
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) -9%, rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 1) 83%, rgba(0, 0, 0, 0) 105%);
+  background-color: rgb(199, 194, 194);
 }
 
 @keyframes scrollLeft {
@@ -59,8 +59,8 @@
 }
 
 .item {
-  width: 200px;
-  height: 120px;
+  width: 250px;
+  height: 250px;
   background-color: #ff4d4d; 
   border-radius: 10px;
   margin: 20px 20px 20px;
@@ -260,8 +260,6 @@ input[type="date"]:focus {
   background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
 }
 
-
-
 .carrelloCard{
   background-Color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
@@ -272,26 +270,19 @@ input[type="date"]:focus {
   .carrelloCard .order-1 {
     order: 1; 
   }
-
   .carrelloCard .order-2 {
     order: 2; 
   }
-
   .carrelloCard .d-flex {
     flex-direction: column;
   }
-
-  
   .carrelloCard .flex-column .align-self-start {
     width: 100%;
     margin: 0.5rem 0;
   }
-
-  
   .carrelloCard img {
     margin: 0 auto 1rem;
   }
-
   .carrelloCard h1.display-6 {
     font-size: 1.5rem;
     text-align: center;

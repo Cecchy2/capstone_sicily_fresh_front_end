@@ -37,14 +37,33 @@ const CarrelloPage = () => {
 
                     <div className="d-flex flex-column flex-grow-1">
                       <Card.Body>
-                        <Card.Title className="text-center fw-bold mb-3">
+                        <Card.Title className="text-center fw-bold">
                           <h1 className="display-6">
                             {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
                           </h1>
                         </Card.Title>
+
+                        <Card.Text>
+                          <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
+                        </Card.Text>
+
+                        <Card.Text className="d-flex m-0">
+                          <p>
+                            Fornitore:{" "}
+                            {dettaglio.ricetta?.fornitore
+                              ? `${dettaglio.ricetta.fornitore.nome} ${dettaglio.ricetta.fornitore.cognome}`
+                              : "Fornitore non disponibile"}
+                          </p>
+                          <p className="ms-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
+                        </Card.Text>
                         <div className="d-flex">
-                          <Card.Text>
-                            <h3>Quantità: {dettaglio.quantita}</h3>
+                          <Card.Text className="text-muted">
+                            <h5>
+                              Stato:{" "}
+                              {dettaglio.statoOrdine === "INCARRELLO"
+                                ? "IN CARRELLO"
+                                : dettaglio.statoOrdine || "Stato non disponibile"}
+                            </h5>
                           </Card.Text>
                           <Button variant="outline-success" className="align-self-start mx-5">
                             Ordina
@@ -53,25 +72,6 @@ const CarrelloPage = () => {
                             Rimuovi
                           </Button>
                         </div>
-
-                        <Card.Text className="d-flex">
-                          <p>
-                            Fornitore:{" "}
-                            {dettaglio.ricetta?.fornitore
-                              ? `${dettaglio.ricetta.fornitore.nome} ${dettaglio.ricetta.fornitore.cognome}`
-                              : "Fornitore non disponibile"}
-                          </p>
-                          <p className="m-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
-                        </Card.Text>
-
-                        <Card.Text className="text-muted">
-                          <h5>
-                            Stato:{" "}
-                            {dettaglio.statoOrdine === "INCARRELLO"
-                              ? "IN CARRELLO"
-                              : dettaglio.statoOrdine || "Stato non disponibile"}
-                          </h5>
-                        </Card.Text>
                       </Card.Body>
                     </div>
                   </div>

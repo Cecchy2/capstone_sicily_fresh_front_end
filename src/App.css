@@ -267,3 +267,33 @@ input[type="date"]:focus {
   border-radius: 20px;
   
 }
+
+@media (max-width: 767px) {
+  .carrelloCard .order-1 {
+    order: 1; 
+  }
+
+  .carrelloCard .order-2 {
+    order: 2; 
+  }
+
+  .carrelloCard .d-flex {
+    flex-direction: column;
+  }
+
+  
+  .carrelloCard .flex-column .align-self-start {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  
+  .carrelloCard img {
+    margin: 0 auto 1rem;
+  }
+
+  .carrelloCard h1.display-6 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}

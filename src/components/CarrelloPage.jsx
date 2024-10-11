@@ -65,7 +65,7 @@ const CarrelloPage = () => {
                                 : dettaglio.statoOrdine || "Stato non disponibile"}
                             </h5>
                           </Card.Text>
-                          <Button variant="outline-success" className="align-self-start mx-5">
+                          <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
                             Ordina
                           </Button>
                           <Button variant="outline-danger" className="align-self-start">

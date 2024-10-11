@@ -19,6 +19,11 @@
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
+.registrazionePage{
+  background-color: #FBAB7E;
+  background-image: linear-gradient(-37deg, #FBAB7E 0%, #F7CE68 100%);
+}
+
 .homePage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../public/assets/GroceryStore.jpg");
 }

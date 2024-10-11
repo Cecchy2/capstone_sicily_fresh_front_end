@@ -33,13 +33,13 @@ const UtentiPage = () => {
         <CarouselItems />
       </div>
       <div className="middleHome text-center f-lato-thin">
-        <Container className="mt-5 bg-warning">
+        <Container>
           <Row>
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.map((ricetta, index) => (
                 <Col key={index} xs={12} sm={6} md={4} lg={3} className="my-4">
                   <Card
-                    className="h-100 shadow-sm border-0 rounded-4 hover-card"
+                    className="shadow-sm border-0 rounded-4 hover-card mt-5"
                     onClick={() => navigate(`/ricetta/${ricetta.id}`)}
                   >
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />

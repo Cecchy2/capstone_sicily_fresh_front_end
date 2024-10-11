@@ -1,5 +1,6 @@
 export const CREA_CARRELLO_DETTAGLIO = "CREA_CARRELLO_DETTAGLIO";
 export const GET_CARRELLO_DETTAGLIO = "GET_CARRELLO_DETTAGLIO";
+export const RESET_CARRELLO_DETTAGLIO = "RESET_CARRELLO_DETTAGLIO";
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
@@ -49,5 +50,11 @@ export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const resetCarrelloDettaglio = () => {
+  return {
+    type: RESET_CARRELLO_DETTAGLIO,
   };
 };

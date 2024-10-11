@@ -1,4 +1,8 @@
-import { CREA_CARRELLO_DETTAGLIO, GET_CARRELLO_DETTAGLIO } from "../actions/carrelloDettaglioActions";
+import {
+  CREA_CARRELLO_DETTAGLIO,
+  GET_CARRELLO_DETTAGLIO,
+  RESET_CARRELLO_DETTAGLIO,
+} from "../actions/carrelloDettaglioActions";
 
 const initialState = {
   carrelliDettagli: [],
@@ -16,6 +20,8 @@ const carrelliDettagliReducer = (state = initialState, action) => {
         ...state,
         carrelliDettagli: action.payload,
       };
+    case RESET_CARRELLO_DETTAGLIO:
+      return initialState;
     default:
       return state;
   }

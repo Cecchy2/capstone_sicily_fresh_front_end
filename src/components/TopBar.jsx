@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
 import { useEffect } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
+import { resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const Topbar = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");
     if (confirmed) {
       dispatch(logout());
+      dispatch(resetCarrelloDettaglio());
       navigate("/");
     }
   };

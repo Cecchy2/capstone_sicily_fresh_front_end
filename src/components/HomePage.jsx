@@ -58,8 +58,10 @@ const HomePage = () => {
               </Button>
             </Col>
           </Row>
+          <hr className="my-5" />
         </Container>
-        <Container className="mt-5 bg-warning">
+
+        <Container className="mt-5">
           <Row>
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.slice(0, 4).map((ricetta, index) => (

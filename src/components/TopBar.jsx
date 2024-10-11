@@ -6,6 +6,7 @@ import { logout } from "../redux/actions/authActions";
 import { useEffect } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 import { resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { getRicette } from "../redux/actions/ricetteActions";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -14,6 +15,13 @@ const Topbar = () => {
   const utente = useSelector((state) => state.utente);
   const carrello = useSelector((state) => state.carrello);
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
+  const ricetteList = useSelector((state) => state.ricette.ricette);
+
+  console.log(ricetteList);
+
+  useEffect(() => {
+    dispatch(getRicette());
+  }, [dispatch]);
 
   console.log(utente.utente);
   console.log(user);

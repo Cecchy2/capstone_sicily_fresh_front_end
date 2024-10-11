@@ -1,14 +1,41 @@
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Badge, Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { useEffect } from "react";
+import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
 
 const CarrelloPage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
-  console.log(carrelloDettagli);
+  const dispatch = useDispatch();
+
+  const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
+  const { user } = useSelector((state) => state.auth);
+
+  const handleDeleteCarrelloDettaglio = (dettaglioId) => {
+    dispatch(deleteCarrelloDettaglio(dettaglioId));
+  };
+
+  useEffect(() => {
+    if (user && user.utenteId) {
+      dispatch(GetAbbonamentiByClienteId(user.utenteId));
+    }
+  }, [dispatch, user]);
+
+  const numeroRicetteRimanenti = abbonamenti
+    .map((abbonamento) => abbonamento.numeroRicette)
+    .reduce((total, ricette) => total + ricette, 0);
+  console.log(abbonamenti);
 
   return (
     <div className="paginaCarrello">
       <Container className="mt-5">
-        <h1 className="display-6 my-4">IL TUO CARRELLO:</h1>
+        <div>
+          <h1 className="display-6 ">IL TUO CARRELLO</h1>
+
+          <h2 className="display-6  my- ms-auto">
+            Le tue ricette disponibili: <Badge>{numeroRicetteRimanenti}</Badge>
+          </h2>
+        </div>
         {carrelloDettagli && carrelloDettagli.carrelliDettagli.length > 0 ? (
           carrelloDettagli.carrelliDettagli.map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
@@ -68,7 +95,11 @@ const CarrelloPage = () => {
                           <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
                             Ordina
                           </Button>
-                          <Button variant="outline-danger" className="align-self-start">
+                          <Button
+                            variant="outline-danger"
+                            className="align-self-start"
+                            onClick={() => handleDeleteCarrelloDettaglio(dettaglio.id)}
+                          >
                             Rimuovi
                           </Button>
                         </div>

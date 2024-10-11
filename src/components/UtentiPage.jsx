@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CarouselItems from "./CarouselItems";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { findCarrelliDettagliByCarrelloId } from "../redux/actions/carrelloDettaglioActions";
+import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
 
 const UtentiPage = () => {
   const utente = useSelector((state) => state.utente);
@@ -21,6 +22,12 @@ const UtentiPage = () => {
   }, [dispatch, params.id]);
 
   console.log(utente);
+
+  useEffect(() => {
+    if (utente && utente.utente.id) {
+      dispatch(GetAbbonamentiByClienteId(utente.utente.id));
+    }
+  }, [dispatch, utente]);
 
   useEffect(() => {
     dispatch(findCarrelliDettagliByCarrelloId(carrelloId));

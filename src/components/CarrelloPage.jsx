@@ -24,7 +24,6 @@ const CarrelloPage = () => {
   const numeroRicetteRimanenti = abbonamenti
     .map((abbonamento) => abbonamento.numeroRicette)
     .reduce((total, ricette) => total + ricette, 0);
-  console.log(abbonamenti);
 
   return (
     <div className="paginaCarrello">
@@ -33,14 +32,14 @@ const CarrelloPage = () => {
           <h1 className="display-6 ">IL TUO CARRELLO</h1>
 
           <h2 className="display-6  my- ms-auto">
-            Le tue ricette disponibili: <Badge>{numeroRicetteRimanenti}</Badge>
+            Le tue ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
           </h2>
         </div>
         {carrelloDettagli && carrelloDettagli.carrelliDettagli.length > 0 ? (
           carrelloDettagli.carrelliDettagli.map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
               <Col>
-                <Card className="carrelloCard shadow-lg p-2">
+                <Card className="carrelloCard shadow-lg ">
                   <div className="d-flex align-items-center">
                     {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                       <Image
@@ -48,7 +47,7 @@ const CarrelloPage = () => {
                         fluid
                         width={250}
                         height={150}
-                        className="object-fit-contain rounded me-5"
+                        className="object-fit-contain rounded me-4 ms-3"
                         alt="Immagine della ricetta"
                       />
                     ) : (
@@ -64,12 +63,14 @@ const CarrelloPage = () => {
 
                     <div className="d-flex flex-column flex-grow-1">
                       <Card.Body>
-                        <Card.Title className="text-center fw-bold">
-                          <h1 className="display-6">
-                            {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
-                          </h1>
-                        </Card.Title>
-
+                        <div className="d-flex">
+                          <Card.Title className="text-center fw-bold ">
+                            <h1 className="display-6">
+                              {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
+                            </h1>
+                          </Card.Title>
+                          <p className="ms-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
+                        </div>
                         <Card.Text>
                           <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
                         </Card.Text>
@@ -81,7 +82,6 @@ const CarrelloPage = () => {
                               ? `${dettaglio.ricetta.fornitore.nome} ${dettaglio.ricetta.fornitore.cognome}`
                               : "Fornitore non disponibile"}
                           </p>
-                          <p className="ms-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
                         </Card.Text>
                         <div className="d-flex">
                           <Card.Text className="text-muted">

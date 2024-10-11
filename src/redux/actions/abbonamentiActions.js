@@ -37,7 +37,6 @@ export const GetAbbonamentiByClienteId = (clienteId) => {
       });
       if (resp.ok) {
         const result = await resp.json();
-        console.log("Dati abbonamenti ricevuti:", result); // Debug della risposta API
         dispatch({ type: GET_ABBONAMENTO_CLIENTE, payload: result });
       } else {
         console.error("Errore nella risposta API:", resp.status);

@@ -17,15 +17,9 @@ const Topbar = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const ricetteList = useSelector((state) => state.ricette.ricette);
 
-  console.log(ricetteList);
-
   useEffect(() => {
     dispatch(getRicette());
   }, [dispatch]);
-
-  console.log(utente.utente);
-  console.log(user);
-  console.log(carrelloDettagli);
 
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {

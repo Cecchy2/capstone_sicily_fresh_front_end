@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { Alert, Button, Card, Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { creaRicetta } from "../redux/actions/ricetteActions";
+import { creaRicetta, getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
 import { getProfile } from "../redux/actions/utentiActions";
+import { getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
 
 const FornitorePage = () => {
   const { fornitoreId } = useParams();
@@ -29,6 +30,21 @@ const FornitorePage = () => {
   const [immaginePiatto, setImmaginePiatto] = useState(null);
   const [immaginiIngredienti, setImmaginiIngredienti] = useState([]);
   const [immaginiPassaggi, setImmaginiPassaggi] = useState([]);
+
+  const ricette = useSelector((state) => state.ricette);
+  useEffect(() => {
+    if (fornitoreId) {
+      dispatch(getRicetteByFornitoreId(fornitoreId));
+    }
+  }, [dispatch, fornitoreId]);
+
+  useEffect(() => {
+    if (ricette.ricette.length > 0) {
+      ricette.ricette.forEach((ricetta) => {
+        dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
+      });
+    }
+  }, [dispatch, ricette]);
 
   useEffect(() => {
     if (fornitoreId) {

@@ -35,16 +35,25 @@ const UtentiPage = () => {
 
   return (
     <>
-      <div className="utentiPage"></div>
+      <div className="utentiPage">
+        <h1>
+          <span className="text-warning">Acquista il tuo abbonamento </span>
+          <br />
+          aggiungi le tue ricette preferite al carrello
+          <br />
+          ordinale e ricevi la spesa a casa !!!
+        </h1>
+      </div>
       <div className="striscia ">
         <CarouselItems />
       </div>
       <div className="middleHome text-center f-lato-thin">
         <Container>
           <Row>
+            <h3 className="mt-3">Le ultime novità</h3>
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.map((ricetta, index) => (
-                <Col key={index} xs={12} sm={6} md={4} lg={3} className="my-4">
+                <Col key={index} xs={12} sm={6} md={4} lg={3} className="">
                   <Card
                     className="shadow-sm border-0 rounded-4 hover-card mt-5"
                     onClick={() => navigate(`/ricetta/${ricetta.id}`)}

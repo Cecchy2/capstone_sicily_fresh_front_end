@@ -2,6 +2,7 @@ export const CREA_CARRELLO_DETTAGLIO = "CREA_CARRELLO_DETTAGLIO";
 export const GET_CARRELLO_DETTAGLIO = "GET_CARRELLO_DETTAGLIO";
 export const RESET_CARRELLO_DETTAGLIO = "RESET_CARRELLO_DETTAGLIO";
 export const DELETE_CARRELLO_DETTAGLIO = "DELETE_CARRELLO_DETTAGLIO";
+export const GET_CARRELLO_DETTAGLIO_BY_RICETTA = "GET_CARRELLO_DETTAGLIO_BY_RICETTA";
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
@@ -53,11 +54,13 @@ export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
     }
   };
 };
+
 export const resetCarrelloDettaglio = () => {
   return {
     type: RESET_CARRELLO_DETTAGLIO,
   };
 };
+
 export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
   return async (dispatch) => {
     const confirmDelete = window.confirm("Sei sicuro di voler eliminare la ricetta?");
@@ -82,6 +85,27 @@ export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
         alert("Ricetta eliminata dal carrello");
       } else {
         console.log("Errore durante l'eliminazione della ricetta");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getCarrelloDettaglioByRicetta = (ricettaId) => {
+  return async (dispatch) => {
+    const baseEndPoint = `http://localhost:3001/carrelloDettagli/ricetta/${ricettaId}`;
+    const token = localStorage.getItem("authToken");
+    try {
+      const resp = await fetch(baseEndPoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        console.log("CarrelliDettaglio recuperati da ricetta:", result);
+        dispatch({ type: GET_CARRELLO_DETTAGLIO_BY_RICETTA, payload: result });
       }
     } catch (error) {
       console.log(error);

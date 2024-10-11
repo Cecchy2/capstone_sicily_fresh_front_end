@@ -1,29 +1,34 @@
-import { Badge, Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
-import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
+import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
 
-const CarrelloPage = () => {
+const CarrelloFornitorePage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const dispatch = useDispatch();
 
-  const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
-  const { user } = useSelector((state) => state.auth);
+  const { fornitoreId } = useParams();
 
-  const handleDeleteCarrelloDettaglio = (dettaglioId) => {
-    dispatch(deleteCarrelloDettaglio(dettaglioId));
-  };
+  const ricette = useSelector((state) => state.ricette);
+  const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
+
+  console.log(carrelliDettaglio);
 
   useEffect(() => {
-    if (user && user.utenteId) {
-      dispatch(GetAbbonamentiByClienteId(user.utenteId));
+    if (fornitoreId) {
+      dispatch(getRicetteByFornitoreId(fornitoreId));
     }
-  }, [dispatch, user]);
+  }, [dispatch, fornitoreId]);
 
-  const numeroRicetteRimanenti = abbonamenti
-    .map((abbonamento) => abbonamento.numeroRicette)
-    .reduce((total, ricette) => total + ricette, 0);
+  useEffect(() => {
+    if (ricette.ricette.length > 0) {
+      ricette.ricette.forEach((ricetta) => {
+        dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
+      });
+    }
+  }, [dispatch, ricette]);
 
   return (
     <div className="paginaCarrello">
@@ -31,11 +36,7 @@ const CarrelloPage = () => {
         <Row>
           <Col>
             <div>
-              <h1 className="display-6 mt-5">IL TUO CARRELLO</h1>
-
-              <h2 className="display-6  my- ms-auto">
-                Le tue ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
-              </h2>
+              <h1 className="display-6 mt-5">ORDINI</h1>
             </div>
           </Col>
         </Row>
@@ -80,12 +81,19 @@ const CarrelloPage = () => {
                           <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
                         </Card.Text>
 
-                        <Card.Text className="d-flex m-0">
+                        <Card.Text className="d-flex m-0 ">
                           <p>
-                            Fornitore:{" "}
-                            {dettaglio.ricetta?.fornitore
-                              ? `${dettaglio.ricetta.fornitore.nome} ${dettaglio.ricetta.fornitore.cognome}`
-                              : "Fornitore non disponibile"}
+                            Cliente:{" "}
+                            {dettaglio.carrello.cliente
+                              ? `${dettaglio.carrello.cliente.nome} ${dettaglio.carrello.cliente.cognome}`
+                              : "cliente non disponibile"}
+                          </p>
+
+                          <p className="ms-5">
+                            Email:
+                            {dettaglio.carrello.cliente
+                              ? `${dettaglio.carrello.cliente.email} `
+                              : "email non disponibile"}
                           </p>
                         </Card.Text>
                         <div className="d-flex">
@@ -97,16 +105,13 @@ const CarrelloPage = () => {
                                 : dettaglio.statoOrdine || "Stato non disponibile"}
                             </h5>
                           </Card.Text>
-                          <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
-                            Ordina
-                          </Button>
-                          <Button
-                            variant="outline-danger"
-                            className="align-self-start"
-                            onClick={() => handleDeleteCarrelloDettaglio(dettaglio.id)}
-                          >
-                            Rimuovi
-                          </Button>
+                          {dettaglio.statoOrdine === "ORDINATO" ? (
+                            <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
+                              Spedisci
+                            </Button>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </Card.Body>
                     </div>
@@ -123,4 +128,4 @@ const CarrelloPage = () => {
   );
 };
 
-export default CarrelloPage;
+export default CarrelloFornitorePage;

@@ -3,6 +3,7 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
+import { getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
 
 const RicetteFornitorePage = () => {
   const { fornitoreId } = useParams();
@@ -10,6 +11,7 @@ const RicetteFornitorePage = () => {
   const navigate = useNavigate();
 
   const ricette = useSelector((state) => state.ricette);
+  const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
 
   console.log(ricette);
 
@@ -18,6 +20,14 @@ const RicetteFornitorePage = () => {
       dispatch(getRicetteByFornitoreId(fornitoreId));
     }
   }, [dispatch, fornitoreId]);
+
+  useEffect(() => {
+    if (ricette.ricette.length > 0) {
+      ricette.ricette.forEach((ricetta) => {
+        dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
+      });
+    }
+  }, [dispatch, ricette]);
 
   return (
     <Container>

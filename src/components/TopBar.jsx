@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 import { resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 import { getRicette } from "../redux/actions/ricetteActions";
+import { FaSackDollar } from "react-icons/fa6";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -39,6 +40,18 @@ const Topbar = () => {
     }
   };
 
+  let userPath = "/";
+
+  if (isAuthenticated) {
+    if (user.role === "ADMIN") {
+      userPath = "/admin";
+    } else if (user.role === "CLIENTE") {
+      userPath = `/utenti/${user.utenteId}`;
+    } else if (user.role === "FORNITORE") {
+      userPath = `/fornitori/${user.utenteId}`;
+    }
+  }
+
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -50,7 +63,7 @@ const Topbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
-              <Nav.Link as={Link} to={isAuthenticated ? `/utenti/${user.utenteId}` : "/"} className="translate">
+              <Nav.Link as={Link} to={userPath} className="translate">
                 Home
               </Nav.Link>
               <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
@@ -66,15 +79,31 @@ const Topbar = () => {
                 Menù
               </Nav.Link>
               <div className="position-relative mx-3 mb-2 cart">
-                <HiMiniShoppingCart
-                  fill="black"
-                  size={30}
-                  onClick={() => navigate("/carrello/${clienteId}")}
-                  className="translate"
-                />
-                <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
-                  {carrelloDettagli.carrelliDettagli.length}
-                </Badge>
+                {isAuthenticated && user.role === "CLIENTE" ? (
+                  <div>
+                    <HiMiniShoppingCart
+                      fill="black"
+                      size={30}
+                      onClick={() => navigate(`/carrello/${user.utenteId}`)}
+                      className="translate"
+                    />
+                    <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
+                      {carrelloDettagli.carrelliDettagli.length}
+                    </Badge>
+                  </div>
+                ) : isAuthenticated && user.role === "FORNITORE" ? (
+                  <div>
+                    <FaSackDollar
+                      fill="black"
+                      size={30}
+                      onClick={() => navigate(`/carrello/fornitore/${user.utenteId}`)}
+                      className="translate"
+                    />
+                    <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
+                      {carrelloDettagli.carrelliDettagli.length}
+                    </Badge>
+                  </div>
+                ) : null}
               </div>
               {isAuthenticated && (
                 <NavDropdown

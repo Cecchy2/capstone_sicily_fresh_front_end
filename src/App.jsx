@@ -13,6 +13,7 @@ import RicetteFornitorePage from "./components/RicetteFornitorePage";
 import RicettaPage from "./components/RicettaPage";
 import CarrelloPage from "./components/CarrelloPage";
 import AbbonamentiPage from "./components/AbbonamentiPage";
+import CarrelloFornitorePage from "./components/CarrelloFornitorePage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/ricetta/:ricettaId" element={<RicettaPage />} />
           <Route path="/carrello/:clienteId" element={<CarrelloPage />} />
           <Route path="/abbonamenti" element={<AbbonamentiPage />} />
+          <Route path="/carrello/fornitore/:fornitoreId" element={<CarrelloFornitorePage />} />
         </Routes>
       </BrowserRouter>
     </>

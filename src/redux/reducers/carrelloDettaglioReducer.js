@@ -2,6 +2,7 @@ import {
   CREA_CARRELLO_DETTAGLIO,
   DELETE_CARRELLO_DETTAGLIO,
   GET_CARRELLO_DETTAGLIO,
+  GET_CARRELLO_DETTAGLIO_BY_RICETTA,
   RESET_CARRELLO_DETTAGLIO,
 } from "../actions/carrelloDettaglioActions";
 
@@ -11,6 +12,11 @@ const initialState = {
 
 const carrelliDettagliReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_CARRELLO_DETTAGLIO_BY_RICETTA:
+      return {
+        ...state,
+        carrelliDettagli: action.payload,
+      };
     case DELETE_CARRELLO_DETTAGLIO:
       return {
         ...state,

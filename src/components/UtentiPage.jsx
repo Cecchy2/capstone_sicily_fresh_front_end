@@ -50,7 +50,9 @@ const UtentiPage = () => {
       <div className="middleHome text-center f-lato-thin">
         <Container>
           <Row>
-            <h3 className="mt-3">Le ultime novità</h3>
+            <hr className="my-5" />
+            <h3 className="my-3">• 🥕 Ingredienti selezionati da fornitori locali •</h3>
+            <hr className="mt-5 mb-3" />
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.map((ricetta, index) => (
                 <Col key={index} xs={12} sm={6} md={4} lg={3} className="">

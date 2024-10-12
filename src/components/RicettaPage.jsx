@@ -59,8 +59,7 @@ const RicettaPage = () => {
               src={ricetta.immaginePiatto}
               alt="Immagine del piatto"
               height={400}
-              width={1200}
-              className="object-fit-cover"
+              className="object-fit-cover w-100"
             />
           </div>
           <Container>
@@ -78,8 +77,8 @@ const RicettaPage = () => {
                           src={item.ingrediente.immagine}
                           alt={item.ingrediente.nome}
                           roundedCircle
-                          height={40}
-                          width={40}
+                          height={30}
+                          width={30}
                           style={{ objectFit: "cover" }}
                         />
                         <div>

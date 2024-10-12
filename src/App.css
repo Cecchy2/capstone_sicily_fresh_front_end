@@ -10,7 +10,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@
   align-items: center;
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) -9%, rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 1) 83%, rgba(0, 0, 0, 0) 105%);
-  background-image: url(../public/assets/pexels-dom-j-7304-310452.jpg);
+/*   background-image: url(../public/assets/pexels-dom-j-7304-310452.jpg); */
 }
 
 @keyframes scrollLeft {
@@ -63,7 +63,7 @@
   height: 250px;
   background-color: #ff4d4d; 
   border-radius: 10px;
-  margin: 20px 20px 20px;
+  margin: 10px 10px 10px;
   flex-shrink: 0;
   box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
   

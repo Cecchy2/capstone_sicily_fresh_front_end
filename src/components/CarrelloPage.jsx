@@ -34,7 +34,7 @@ const CarrelloPage = () => {
               <h1 className="display-6 mt-5">IL TUO CARRELLO</h1>
 
               <h2 className="display-6  my- ms-auto">
-                Le tue ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
+                Il tuo saldo ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
               </h2>
             </div>
           </Col>

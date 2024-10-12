@@ -149,7 +149,6 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
-                    <p>🥕 Ingredienti selezionati da fornitori locali</p>
                     <p>Abbonamento premium • risparmi 20€ </p>
                   </div>
                 </Card.Text>

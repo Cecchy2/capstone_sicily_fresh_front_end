@@ -55,7 +55,7 @@ const UtentiPage = () => {
             <hr className="mt-5 mb-3" />
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.map((ricetta, index) => (
-                <Col key={index} xs={12} sm={6} md={4} lg={3} className="">
+                <Col key={index} xs={12} sm={12} md={4} lg={4} className="">
                   <Card
                     className="shadow-sm border-0 rounded-4 hover-card mt-5"
                     onClick={() => navigate(`/ricetta/${ricetta.id}`)}

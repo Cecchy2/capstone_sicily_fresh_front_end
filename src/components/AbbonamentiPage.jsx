@@ -60,7 +60,8 @@ const AbbonamentiPage = () => {
     <div className="abbonamentiPage">
       <Container>
         <Row>
-          <h1 className="text-center my-5 titoloAbbonamenti">Scegli il tuo Abbonamento</h1>
+          <h1 className="text-center mt-5 mb-0 titoloAbbonamenti">Scegli il tuo Abbonamento</h1>
+          <h2 className="text-center mt-0 mb-5">(Ogni ricetta equivale a 2 porzioni)</h2>
           <Col lg={4}>
             <Card className="cardsAbbonamenti">
               <Card.Body>
@@ -74,7 +75,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo text-success"> 46</h1>
+                    <h1 className="mt-5 prezzo text-success"> 60</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
@@ -105,7 +106,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo text-success"> 80</h1>
+                    <h1 className="mt-5 prezzo text-success"> 110</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
@@ -117,7 +118,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
-                    <p>Abbonamento medium • risparmi 12€ </p>
+                    <p>Abbonamento medium • risparmi 10€ </p>
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -136,7 +137,7 @@ const AbbonamentiPage = () => {
                 <Card.Text>
                   <div className="d-flex align-items-center">
                     <h2>€</h2>
-                    <h1 className="mt-5 prezzo text-success"> 150</h1>
+                    <h1 className="mt-5 prezzo text-success"> 200</h1>
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
@@ -149,7 +150,7 @@ const AbbonamentiPage = () => {
                   <hr className="mt-5" />
                   <div className="d-flex align-items-center mt-5">
                     {/* <p>🥕 Ingredienti selezionati da fornitori locali</p> */}
-                    <p>Abbonamento premium • risparmi 22€ </p>
+                    <p>Abbonamento premium • risparmi 20€ </p>
                   </div>
                 </Card.Text>
               </Card.Body>

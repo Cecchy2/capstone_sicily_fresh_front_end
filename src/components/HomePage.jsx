@@ -21,7 +21,7 @@ const HomePage = () => {
     <>
       <div className="homePage">
         <div className="f-lato-thin">
-          <h1 className=" mt-5">SCEGLI LE TUE RICETTE</h1>
+          <h1 className=" mt-5 text-warning">SCEGLI LE TUE RICETTE</h1>
           <div className="d-flex flex-column flex-md-row align-items-md-center ">
             <h2 className="mb-3 mb-md-0 ">TI PORTIAMO LA SPESA A CASA</h2>
             <Button

@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
 
 const CarrelloFornitorePage = () => {
-  const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const dispatch = useDispatch();
 
   const { fornitoreId } = useParams();
@@ -14,7 +13,9 @@ const CarrelloFornitorePage = () => {
   const ricette = useSelector((state) => state.ricette);
   const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
 
-  console.log(carrelliDettaglio);
+  const carrelloFornitore = carrelliDettaglio.carrelliDettagli.filter(
+    (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
+  );
 
   useEffect(() => {
     if (fornitoreId) {
@@ -41,8 +42,8 @@ const CarrelloFornitorePage = () => {
           </Col>
         </Row>
 
-        {carrelloDettagli && carrelloDettagli.carrelliDettagli.length > 0 ? (
-          carrelloDettagli.carrelliDettagli.map((dettaglio) => (
+        {carrelloFornitore && carrelloFornitore.length > 0 ? (
+          carrelloFornitore.map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
               <Col>
                 <Card className="carrelloCard shadow-lg ">

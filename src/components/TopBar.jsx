@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
 import { useEffect } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
-import { resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { getCarrelloDettaglioByRicetta, resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 import { getRicette } from "../redux/actions/ricetteActions";
 import { FaSackDollar } from "react-icons/fa6";
 
@@ -16,6 +16,12 @@ const Topbar = () => {
   const utente = useSelector((state) => state.utente);
   const carrello = useSelector((state) => state.carrello);
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
+  const ricette = useSelector((state) => state.ricette);
+
+  const carrelloFornitore = carrelloDettagli.carrelliDettagli.filter(
+    (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
+  );
+  console.log(carrelloFornitore);
 
   useEffect(() => {
     dispatch(getRicette());
@@ -30,6 +36,14 @@ const Topbar = () => {
       });
     }
   }, [isAuthenticated, user, dispatch, carrello]);
+
+  useEffect(() => {
+    if (ricette.ricette.length > 0) {
+      ricette.ricette.forEach((ricetta) => {
+        dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
+      });
+    }
+  }, [dispatch, ricette]);
 
   const handleLogout = () => {
     const confirmed = window.confirm("Sei sicuro di voler uscire?");
@@ -100,7 +114,7 @@ const Topbar = () => {
                       className="translate"
                     />
                     <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
-                      {carrelloDettagli.carrelliDettagli.length}
+                      {carrelloFornitore.length}
                     </Badge>
                   </div>
                 ) : null}

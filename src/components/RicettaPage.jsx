@@ -22,6 +22,8 @@ const RicettaPage = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const ricetta = useSelector((state) => state.ricette.ricettaDettaglio);
 
+  const fornitoreId = user.utenteId;
+
   console.log(user);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const RicettaPage = () => {
     const confirmDelete = window.confirm("Sei sicuro di voler eliminare questa ricetta?");
     if (confirmDelete) {
       dispatch(deleteRicetta(ricettaId));
-      /* AGGIUNGERE NAVIGATE */
+      navigate(`/ricette/:${fornitoreId}`);
     }
   };
 

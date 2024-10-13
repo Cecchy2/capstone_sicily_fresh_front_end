@@ -79,10 +79,6 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) =>
 
 export const deleteRicetta = (ricettaId) => {
   return async (dispatch) => {
-    const confirmDelete = window.confirm("Sei sicuro di voler eliminare la ricetta?");
-    if (!confirmDelete) {
-      return;
-    }
     const baseEndPoint = `http://localhost:3001/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
 

@@ -47,7 +47,7 @@ const RicetteFornitorePage = () => {
             </Col>
           ))
         ) : (
-          <p>No recipes available at the moment.</p>
+          <p>Nessuna ricetta al momento.</p>
         )}
       </Row>
     </Container>

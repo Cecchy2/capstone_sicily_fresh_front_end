@@ -80,9 +80,13 @@ const Topbar = () => {
               <Nav.Link as={Link} to={userPath} className="translate">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
-                Abbonamenti
-              </Nav.Link>
+              {isAuthenticated && user.role === "CLIENTE" ? (
+                <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
+                  Abbonamenti
+                </Nav.Link>
+              ) : (
+                ""
+              )}
               <Nav.Link as={Link} to="/chi-siamo" className="translate">
                 Chi Siamo
               </Nav.Link>

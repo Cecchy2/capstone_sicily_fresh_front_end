@@ -52,7 +52,7 @@ const CarrelloPage = () => {
                         fluid
                         width={250}
                         height={150}
-                        className="object-fit-contain rounded me-4 ms-3"
+                        className="object-fit-contain rounded me-4 "
                         alt="Immagine della ricetta"
                       />
                     ) : (

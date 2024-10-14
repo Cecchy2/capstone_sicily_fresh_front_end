@@ -23,14 +23,14 @@ const AllRicettePage = () => {
 
   return (
     <>
-      <div>
+      <div className="bg-dark">
         <div className="allRicettePage">
-          <h1 className="text-center">
+          <h1 className="text-center ">
             <span className="text-warning">Scopri le nostre Ricette</span>
           </h1>
         </div>
 
-        <div className="filterSection text-center my-4">
+        <div className="filterSection text-center text-warning">
           <label className="mx-3">
             Filtra per Portata:
             <select value={selectedPortata} onChange={handlePortataChange} className="form-select mx-2">
@@ -63,30 +63,30 @@ const AllRicettePage = () => {
             />
           </label>
         </div>
+      </div>
 
-        <div className="middleHome text-center f-lato-thin">
-          <Container>
-            <Row>
-              {filteredRicette.length > 0 ? (
-                filteredRicette.map((ricetta, index) => (
-                  <Col key={index} xs={12} sm={12} md={4} lg={4} className="mt-5">
-                    <Card className="shadow-sm border-0 rounded-4 hover-card">
-                      <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
-                      <Card.Body>
-                        <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
+      <div className="middleHome text-center f-lato-thin">
+        <Container>
+          <Row>
+            {filteredRicette.length > 0 ? (
+              filteredRicette.map((ricetta, index) => (
+                <Col key={index} xs={12} sm={12} md={4} lg={4} className="mt-5">
+                  <Card className="shadow-sm border-0 rounded-4 hover-card">
+                    <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
+                    <Card.Body>
+                      <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
 
-                        <p>Portata: {ricetta.portata}</p>
-                        <p>Tipo: {ricetta.tipo}</p>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))
-              ) : (
-                <p>Nessuna ricetta trovata</p>
-              )}
-            </Row>
-          </Container>
-        </div>
+                      <p>Portata: {ricetta.portata}</p>
+                      <p>Tipo: {ricetta.tipo}</p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))
+            ) : (
+              <p>Nessuna ricetta trovata</p>
+            )}
+          </Row>
+        </Container>
       </div>
     </>
   );

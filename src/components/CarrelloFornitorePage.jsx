@@ -20,6 +20,7 @@ const CarrelloFornitorePage = () => {
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+    dispatch(getRicetteByFornitoreId(fornitoreId));
   };
 
   useEffect(() => {

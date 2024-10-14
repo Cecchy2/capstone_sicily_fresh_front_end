@@ -50,7 +50,10 @@ const CarrelloPage = () => {
         </Row>
 
         {carrelloDettagli && carrelloDettagli.carrelliDettagli.length > 0 ? (
-          carrelloDettagli.carrelliDettagli.map((dettaglio) => (
+          (user.role === "CLIENTE"
+            ? carrelloDettagli.carrelliDettagli.filter((dettaglio) => dettaglio.statoOrdine === "INCARRELLO")
+            : carrelloDettagli.carrelliDettagli
+          ).map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
               <Col>
                 <Card className="carrelloCard shadow-lg ">

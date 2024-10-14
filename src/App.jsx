@@ -15,6 +15,7 @@ import CarrelloPage from "./components/CarrelloPage";
 import AbbonamentiPage from "./components/AbbonamentiPage";
 import CarrelloFornitorePage from "./components/CarrelloFornitorePage";
 import AllRicettePage from "./components/AllRicettePage";
+import OrdiniPage from "./components/OrdiniPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/abbonamenti" element={<AbbonamentiPage />} />
           <Route path="/carrello/fornitore/:fornitoreId" element={<CarrelloFornitorePage />} />
           <Route path="/allRicettePage" element={<AllRicettePage />} />
+          <Route path="/ordini" element={<OrdiniPage />} />
         </Routes>
       </BrowserRouter>
     </>

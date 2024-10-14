@@ -91,15 +91,24 @@ const Topbar = () => {
               <Nav.Link as={Link} to="/chi-siamo" className="translate">
                 👩🏼‍🍳Chi Siamo
               </Nav.Link>
-              <Nav.Link as={Link} to="/allRicettePage" className="translate">
-                🍝Ricette
-              </Nav.Link>
+              {isAuthenticated && user.role === "CLIENTE" ? (
+                <Nav.Link as={Link} to="/allRicettePage" className="translate">
+                  🍝Ricette
+                </Nav.Link>
+              ) : (
+                ""
+              )}
               <Nav.Link as={Link} to="/menu" className="translate">
                 🥙Menù
               </Nav.Link>
-              <Nav.Link as={Link} to="/menu" className="translate">
-                🧺Ordini
-              </Nav.Link>
+              {isAuthenticated && user.role === "CLIENTE" ? (
+                <Nav.Link as={Link} to="/ordini" className="translate">
+                  🧺Ordini
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+
               <div className="position-relative mx-3 mb-2 cart">
                 {isAuthenticated && user.role === "CLIENTE" ? (
                   <div>
@@ -110,7 +119,10 @@ const Topbar = () => {
                       className="translate"
                     />
                     <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
-                      {carrelloDettagli.carrelliDettagli.length}
+                      {
+                        carrelloDettagli.carrelliDettagli.filter((dettaglio) => dettaglio.statoOrdine === "INCARRELLO")
+                          .length
+                      }
                     </Badge>
                   </div>
                 ) : isAuthenticated && user.role === "FORNITORE" ? (

@@ -3,6 +3,7 @@ export const GET_CARRELLO_DETTAGLIO = "GET_CARRELLO_DETTAGLIO";
 export const RESET_CARRELLO_DETTAGLIO = "RESET_CARRELLO_DETTAGLIO";
 export const DELETE_CARRELLO_DETTAGLIO = "DELETE_CARRELLO_DETTAGLIO";
 export const GET_CARRELLO_DETTAGLIO_BY_RICETTA = "GET_CARRELLO_DETTAGLIO_BY_RICETTA";
+export const CHANGE_STATO_CARRELLO_DETTAGLIO = "CHANGE_STATO_CARRELLO_DETTAGLIO";
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
@@ -107,6 +108,36 @@ export const getCarrelloDettaglioByRicetta = (ricettaId) => {
         console.log("CarrelliDettaglio recuperati da ricetta:", result);
         dispatch({ type: GET_CARRELLO_DETTAGLIO_BY_RICETTA, payload: result });
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdine) => {
+  return async (dispatch) => {
+    const baseEndPoint = `http://localhost:3001/carrelloDettagli/${carrelloDettaglioId}/stato`;
+    const token = localStorage.getItem("authToken");
+    try {
+      const resp = await fetch(baseEndPoint, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          statoOrdine: nuovoStatoOrdine,
+        }),
+      });
+
+      if (!resp.ok) {
+        throw new Error("Failed to update order status");
+      }
+      const data = await resp.json();
+      dispatch({
+        type: CHANGE_STATO_CARRELLO_DETTAGLIO,
+        payload: data,
+      });
     } catch (error) {
       console.log(error);
     }

@@ -1,18 +1,27 @@
 import { Badge, Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import { changeStatoCarrelloDettaglio, deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
+import { useNavigate } from "react-router-dom";
 
 const CarrelloPage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
   const { user } = useSelector((state) => state.auth);
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId));
+  };
+
+  const handleChangeStato = (dettaglioId) => {
+    const nuovoStatoOrdine = "ORDINATO";
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+    navigate(`/utenti/${user.utenteId}`);
   };
 
   useEffect(() => {
@@ -74,7 +83,10 @@ const CarrelloPage = () => {
                               {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
                             </h1>
                           </Card.Title>
-                          <p className="ms-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
+                          <p className="ms-auto">
+                            Portata:{" "}
+                            <Badge bg="warning">{dettaglio.ricetta?.portata || "Portata non disponibile"}</Badge>
+                          </p>
                         </div>
                         <Card.Text>
                           <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
@@ -97,16 +109,24 @@ const CarrelloPage = () => {
                                 : dettaglio.statoOrdine || "Stato non disponibile"}
                             </h5>
                           </Card.Text>
-                          <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
-                            Ordina
-                          </Button>
-                          <Button
-                            variant="outline-danger"
-                            className="align-self-start"
-                            onClick={() => handleDeleteCarrelloDettaglio(dettaglio.id)}
-                          >
-                            Rimuovi
-                          </Button>
+                          {dettaglio.statoOrdine === "INCARRELLO" && (
+                            <div>
+                              <Button
+                                variant="outline-success"
+                                className="align-self-start mx-0 mx-lg-5"
+                                onClick={() => handleChangeStato(dettaglio.id)}
+                              >
+                                Ordina
+                              </Button>
+                              <Button
+                                variant="outline-danger"
+                                className="align-self-start"
+                                onClick={() => handleDeleteCarrelloDettaglio(dettaglio.id)}
+                              >
+                                Rimuovi
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       </Card.Body>
                     </div>

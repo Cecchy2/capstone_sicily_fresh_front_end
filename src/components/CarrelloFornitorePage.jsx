@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
+import { changeStatoCarrelloDettaglio, getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -14,8 +14,13 @@ const CarrelloFornitorePage = () => {
   const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
 
   const carrelloFornitore = carrelliDettaglio.carrelliDettagli.filter(
-    (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
+    (carrelloDettaglio) => carrelloDettaglio.statoOrdine !== "INCARRELLO"
   );
+
+  const handleChangeStato = (dettaglioId) => {
+    const nuovoStatoOrdine = "SPEDITO";
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+  };
 
   useEffect(() => {
     if (fornitoreId) {
@@ -107,7 +112,11 @@ const CarrelloFornitorePage = () => {
                             </h5>
                           </Card.Text>
                           {dettaglio.statoOrdine === "ORDINATO" ? (
-                            <Button variant="outline-success" className="align-self-start mx-0 mx-lg-5">
+                            <Button
+                              variant="outline-success"
+                              className="align-self-start mx-0 mx-lg-5"
+                              onClick={() => handleChangeStato(dettaglio.id)}
+                            >
                               Spedisci
                             </Button>
                           ) : (

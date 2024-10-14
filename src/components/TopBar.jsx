@@ -91,7 +91,7 @@ const Topbar = () => {
               <Nav.Link as={Link} to="/chi-siamo" className="translate">
                 Chi Siamo
               </Nav.Link>
-              <Nav.Link as={Link} to="/ricette" className="translate">
+              <Nav.Link as={Link} to="/allRicettePage" className="translate">
                 Ricette
               </Nav.Link>
               <Nav.Link as={Link} to="/menu" className="translate">

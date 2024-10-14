@@ -13,9 +13,14 @@ const CarrelloFornitorePage = () => {
   const ricette = useSelector((state) => state.ricette);
   const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
 
+  console.log(ricette);
+
   const carrelloFornitore = carrelliDettaglio.carrelliDettagli.filter(
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine !== "INCARRELLO"
   );
+
+  console.log(carrelloFornitore); // Mi da ogni volta le ricette diverse, non me le da mai tutte insieme
+  console.log(carrelliDettaglio); // Mi da ogni volta le ricette diverse, non me le da mai tutte insieme
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";

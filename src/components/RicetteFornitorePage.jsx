@@ -11,7 +11,6 @@ const RicetteFornitorePage = () => {
   const navigate = useNavigate();
 
   const ricette = useSelector((state) => state.ricette);
-  const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
 
   console.log(ricette);
 

@@ -21,7 +21,7 @@ const UtentiPage = () => {
     }
   }, [dispatch, params.id]);
 
-  console.log(utente);
+  console.log(ricetteList);
 
   useEffect(() => {
     if (utente && utente.utente.id) {

@@ -16,6 +16,8 @@ const RegistrazionePage = () => {
     cognome: "",
     dataDiNascita: "",
     ruolo: "CLIENTE",
+    indirizzo: "",
+    citta: "",
   });
 
   const [avatar, setAvatar] = useState(null);
@@ -119,6 +121,29 @@ const RegistrazionePage = () => {
                       name="dataDiNascita"
                       value={formValues.dataDiNascita}
                       onChange={handleChange}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formIndirizzo" className="mb-3">
+                    <Form.Label>indirizzo</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="indirizzo"
+                      value={formValues.indirizzo}
+                      onChange={handleChange}
+                      placeholder="Inserisci il tuo indirizzo"
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formCitta" className="mb-3">
+                    <Form.Label>citta</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="citta"
+                      value={formValues.citta}
+                      onChange={handleChange}
+                      placeholder="Inserisci la tua citta"
                       required
                     />
                   </Form.Group>

@@ -22,6 +22,7 @@ const Topbar = () => {
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
   );
   console.log(carrelloFornitore);
+  console.log(ricette);
 
   useEffect(() => {
     dispatch(getRicette());

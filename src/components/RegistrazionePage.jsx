@@ -125,7 +125,7 @@ const RegistrazionePage = () => {
                     />
                   </Form.Group>
                   <Form.Group controlId="formIndirizzo" className="mb-3">
-                    <Form.Label>indirizzo</Form.Label>
+                    <Form.Label>Indirizzo</Form.Label>
                     <Form.Control
                       type="text"
                       name="indirizzo"
@@ -137,7 +137,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formCitta" className="mb-3">
-                    <Form.Label>citta</Form.Label>
+                    <Form.Label>Città</Form.Label>
                     <Form.Control
                       type="text"
                       name="citta"
@@ -149,7 +149,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formAvatar" className="mb-3">
-                    <Form.Label>Avatar (Opzionale)</Form.Label>
+                    <Form.Label>Immagine Profilo (Opzionale)</Form.Label>
                     <Form.Control type="file" name="avatar" onChange={handleAvatarChange} accept="image/*" />
                   </Form.Group>
 

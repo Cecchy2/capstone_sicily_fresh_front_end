@@ -4,6 +4,8 @@ import { changeStatoCarrelloDettaglio, deleteCarrelloDettaglio } from "../redux/
 import { useEffect } from "react";
 import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
 import { useNavigate } from "react-router-dom";
+import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
+import { getRicette } from "../redux/actions/ricetteActions";
 
 const CarrelloPage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
@@ -11,12 +13,23 @@ const CarrelloPage = () => {
 
   const navigate = useNavigate();
 
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const carrello = useSelector((state) => state.carrello);
+
   const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
-  const { user } = useSelector((state) => state.auth);
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId));
   };
+  useEffect(() => {
+    if (isAuthenticated && user && user.utenteId) {
+      dispatch(getCarrelloByClienteId(user.utenteId)).then(() => {
+        if (!carrello || !carrello.id) {
+          dispatch(creaCarrello(user.utenteId));
+        }
+      });
+    }
+  }, [isAuthenticated, user, dispatch, carrello]);
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
@@ -29,6 +42,10 @@ const CarrelloPage = () => {
       dispatch(GetAbbonamentiByClienteId(user.utenteId));
     }
   }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getRicette());
+  }, [dispatch]);
 
   const numeroRicetteRimanenti = abbonamenti
     .map((abbonamento) => abbonamento.numeroRicette)

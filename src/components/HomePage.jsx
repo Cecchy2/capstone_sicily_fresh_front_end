@@ -32,7 +32,7 @@ const HomePage = () => {
               Registrati subito
             </Button>
           </div>
-          <p className="f-lato-thin mt-1 fs-3">Registrati Ora e Ricevi uno Sconto del 10% sul Primo Acquisto</p>
+          <p className="f-lato-thin mt-1 fs-3">Registrati Ora e Ricevi uno Sconto del 10% sul Primo Abbonamento</p>
         </div>
       </div>
 

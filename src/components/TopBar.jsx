@@ -79,31 +79,31 @@ const Topbar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
               <Nav.Link as={Link} to={userPath} className="translate">
-                🏠Home
+                🏠 Home
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
                 <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
-                  💳Abbonamenti
+                  💳 Abbonamenti
                 </Nav.Link>
               ) : (
                 ""
               )}
               <Nav.Link as={Link} to="/chi-siamo" className="translate">
-                👩🏼‍🍳Chi Siamo
+                👩🏼‍🍳 Chi Siamo
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
                 <Nav.Link as={Link} to="/allRicettePage" className="translate">
-                  🍝Ricette
+                  🍝 Ricette
                 </Nav.Link>
               ) : (
                 ""
               )}
               <Nav.Link as={Link} to="/menu" className="translate">
-                🥙Menù
+                🥙 Menù
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
                 <Nav.Link as={Link} to="/ordini" className="translate">
-                  🧺Ordini
+                  🧺 Ordini
                 </Nav.Link>
               ) : (
                 ""

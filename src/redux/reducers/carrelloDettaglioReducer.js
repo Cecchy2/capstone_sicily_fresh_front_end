@@ -4,11 +4,13 @@ import {
   DELETE_CARRELLO_DETTAGLIO,
   GET_CARRELLO_DETTAGLIO,
   GET_CARRELLO_DETTAGLIO_BY_RICETTA,
+  GET_CARRELLO_DETTAGLIO_FORNITORE,
   RESET_CARRELLO_DETTAGLIO,
 } from "../actions/carrelloDettaglioActions";
 
 const initialState = {
   carrelliDettagli: [],
+  carrelloDettagliFornitore: [],
 };
 
 const carrelliDettagliReducer = (state = initialState, action) => {
@@ -37,6 +39,11 @@ const carrelliDettagliReducer = (state = initialState, action) => {
       return {
         ...state,
         carrelliDettagli: action.payload,
+      };
+    case GET_CARRELLO_DETTAGLIO_FORNITORE:
+      return {
+        ...state,
+        carrelloDettagliFornitore: action.payload,
       };
     case RESET_CARRELLO_DETTAGLIO:
       return initialState;

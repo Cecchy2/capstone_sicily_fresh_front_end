@@ -4,6 +4,7 @@ export const RESET_CARRELLO_DETTAGLIO = "RESET_CARRELLO_DETTAGLIO";
 export const DELETE_CARRELLO_DETTAGLIO = "DELETE_CARRELLO_DETTAGLIO";
 export const GET_CARRELLO_DETTAGLIO_BY_RICETTA = "GET_CARRELLO_DETTAGLIO_BY_RICETTA";
 export const CHANGE_STATO_CARRELLO_DETTAGLIO = "CHANGE_STATO_CARRELLO_DETTAGLIO";
+export const GET_CARRELLO_DETTAGLIO_FORNITORE = "GET_CARRELLO_DETTAGLIO_FORNITORE";
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
@@ -138,6 +139,28 @@ export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdi
         type: CHANGE_STATO_CARRELLO_DETTAGLIO,
         payload: data,
       });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getCarrelloDettagliFornitore = (fornitoreId) => {
+  return async (dispatch) => {
+    const baseEndpoint = `http://localhost:3001/carrelloDettagli/fornitore/${fornitoreId}`;
+    const token = localStorage.getItem("authToken");
+
+    try {
+      const resp = await fetch(baseEndpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        console.log("CarrelliDettaglio recuperati da fornitore:", result);
+        dispatch({ type: GET_CARRELLO_DETTAGLIO_FORNITORE, payload: result });
+      }
     } catch (error) {
       console.log(error);
     }

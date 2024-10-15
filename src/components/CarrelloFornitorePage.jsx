@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeStatoCarrelloDettaglio, getCarrelloDettaglioByRicetta } from "../redux/actions/carrelloDettaglioActions";
+import {
+  changeStatoCarrelloDettaglio,
+  getCarrelloDettagliFornitore,
+  getCarrelloDettaglioByRicetta,
+} from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -10,17 +14,13 @@ const CarrelloFornitorePage = () => {
 
   const { fornitoreId } = useParams();
 
-  const ricette = useSelector((state) => state.ricette);
-  const carrelliDettaglio = useSelector((state) => state.carrelliDettagli);
+  /* const ricette = useSelector((state) => state.ricette); */
+  /* const carrelliDettaglio = useSelector((state) => state.carrelliDettagli); */
+  const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
 
-  console.log(ricette);
-
-  const carrelloFornitore = carrelliDettaglio.carrelliDettagli.filter(
+  /* const carrelliDettaglioFornitoreDaSpedire = carrelliDettaglio.carrelliDettagli.filter(
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine !== "INCARRELLO"
-  );
-
-  console.log(carrelloFornitore); // Mi da ogni volta le ricette diverse, non me le da mai tutte insieme
-  console.log(carrelliDettaglio); // Mi da ogni volta le ricette diverse, non me le da mai tutte insieme
+  ); */
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";
@@ -28,19 +28,27 @@ const CarrelloFornitorePage = () => {
     dispatch(getRicetteByFornitoreId(fornitoreId));
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (fornitoreId) {
       dispatch(getRicetteByFornitoreId(fornitoreId));
     }
-  }, [dispatch, fornitoreId]);
+  }, [dispatch, fornitoreId]); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (ricette.ricette.length > 0) {
       ricette.ricette.forEach((ricetta) => {
         dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
       });
     }
-  }, [dispatch, ricette]);
+  }, [dispatch, ricette]); */
+
+  useEffect(() => {
+    if (fornitoreId) {
+      dispatch(getCarrelloDettagliFornitore(fornitoreId));
+    }
+  }, [dispatch, fornitoreId]);
+
+  console.log(carrelliDettaglioFornitore);
 
   return (
     <div className="paginaCarrello">
@@ -53,8 +61,8 @@ const CarrelloFornitorePage = () => {
           </Col>
         </Row>
 
-        {carrelloFornitore && carrelloFornitore.length > 0 ? (
-          carrelloFornitore.map((dettaglio) => (
+        {carrelliDettaglioFornitore && carrelliDettaglioFornitore.length > 0 ? (
+          carrelliDettaglioFornitore.map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
               <Col>
                 <Card className="carrelloCard shadow-lg ">

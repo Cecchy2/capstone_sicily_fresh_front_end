@@ -1,46 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  changeStatoCarrelloDettaglio,
-  getCarrelloDettagliFornitore,
-  getCarrelloDettaglioByRicetta,
-} from "../redux/actions/carrelloDettaglioActions";
+import { changeStatoCarrelloDettaglio, getCarrelloDettagliFornitore } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
 
 const CarrelloFornitorePage = () => {
-  const dispatch = useDispatch();
-
   const { fornitoreId } = useParams();
 
-  /* const ricette = useSelector((state) => state.ricette); */
-  /* const carrelliDettaglio = useSelector((state) => state.carrelliDettagli); */
-  const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
+  const dispatch = useDispatch();
 
-  /* const carrelliDettaglioFornitoreDaSpedire = carrelliDettaglio.carrelliDettagli.filter(
-    (carrelloDettaglio) => carrelloDettaglio.statoOrdine !== "INCARRELLO"
-  ); */
+  const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
     dispatch(getRicetteByFornitoreId(fornitoreId));
+    dispatch(getCarrelloDettagliFornitore(fornitoreId));
   };
-
-  /* useEffect(() => {
-    if (fornitoreId) {
-      dispatch(getRicetteByFornitoreId(fornitoreId));
-    }
-  }, [dispatch, fornitoreId]); */
-
-  /* useEffect(() => {
-    if (ricette.ricette.length > 0) {
-      ricette.ricette.forEach((ricetta) => {
-        dispatch(getCarrelloDettaglioByRicetta(ricetta.id));
-      });
-    }
-  }, [dispatch, ricette]); */
 
   useEffect(() => {
     if (fornitoreId) {

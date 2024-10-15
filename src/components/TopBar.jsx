@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
 import { useEffect } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
-import { getCarrelloDettaglioByRicetta, resetCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import {
+  getCarrelloDettagliFornitore,
+  getCarrelloDettaglioByRicetta,
+  resetCarrelloDettaglio,
+} from "../redux/actions/carrelloDettaglioActions";
 import { getRicette } from "../redux/actions/ricetteActions";
 import { FaSackDollar } from "react-icons/fa6";
 
@@ -17,6 +21,7 @@ const Topbar = () => {
   const carrello = useSelector((state) => state.carrello);
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const ricette = useSelector((state) => state.ricette);
+  const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
 
   const carrelloFornitore = carrelloDettagli.carrelliDettagli.filter(
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
@@ -27,6 +32,12 @@ const Topbar = () => {
   useEffect(() => {
     dispatch(getRicette());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (user && user.utenteId) {
+      dispatch(getCarrelloDettagliFornitore(user.utenteId));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
@@ -134,7 +145,8 @@ const Topbar = () => {
                       className="translate"
                     />
                     <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
-                      {carrelloFornitore.length}
+                      {Array.isArray(carrelliDettaglioFornitore) &&
+                        carrelliDettaglioFornitore.filter((carrello) => carrello.statoOrdine !== "INCARRELLO").length}
                     </Badge>
                   </div>
                 ) : null}

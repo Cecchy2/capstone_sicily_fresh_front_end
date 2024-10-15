@@ -20,6 +20,8 @@ const ProfiloUtente = () => {
     cognome: utente.utente?.cognome || "",
     dataDiNascita: utente.utente?.dataDiNascita || "",
     ruolo: "CLIENTE",
+    indirizzo: utente.utente?.indirizzo || "",
+    citta: utente.utente?.citta || "",
   });
 
   const numeroRicetteRimanenti = abbonamenti
@@ -125,6 +127,24 @@ const ProfiloUtente = () => {
                           type="email"
                           value={payload.email}
                           onChange={(e) => setPayload({ ...payload, email: e.target.value })}
+                        />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formIndirizzo">
+                        <Form.Label>Indirizzo</Form.Label>
+                        <Form.Control
+                          type="text"
+                          value={payload.indirizzo}
+                          onChange={(e) => setPayload({ ...payload, indirizzo: e.target.value })}
+                        />
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="formCitta">
+                        <Form.Label>Città</Form.Label>
+                        <Form.Control
+                          type="text"
+                          value={payload.citta}
+                          onChange={(e) => setPayload({ ...payload, citta: e.target.value })}
                         />
                       </Form.Group>
 

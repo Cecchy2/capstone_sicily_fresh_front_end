@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatoCarrelloDettaglio, getCarrelloDettagliFornitore } from "../redux/actions/carrelloDettaglioActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
+import Form from "react-bootstrap/Form";
 
 const CarrelloFornitorePage = () => {
   const { fornitoreId } = useParams();
+  const [statoFiltro, setStatoFiltro] = useState("Tutti");
 
   const dispatch = useDispatch();
 
@@ -18,6 +20,14 @@ const CarrelloFornitorePage = () => {
     dispatch(getRicetteByFornitoreId(fornitoreId));
     dispatch(getCarrelloDettagliFornitore(fornitoreId));
   };
+
+  const handleFilterChange = (e) => {
+    setStatoFiltro(e.target.value); // Aggiorna lo stato con il valore selezionato nel filtro
+  };
+
+  const filteredCarrelliDettaglio = carrelliDettaglioFornitore.filter((dettaglio) =>
+    statoFiltro === "Tutti" ? true : dettaglio.statoOrdine === statoFiltro
+  );
 
   useEffect(() => {
     if (fornitoreId) {
@@ -32,14 +42,28 @@ const CarrelloFornitorePage = () => {
       <Container>
         <Row>
           <Col>
-            <div>
+            <div className="d-flex align-items-center">
               <h1 className="display-6 mt-5">ORDINI</h1>
+              <div>
+                <Form.Select
+                  aria-label="Filtra per stato"
+                  className="mt-5 ms-5"
+                  onChange={handleFilterChange}
+                  value={statoFiltro}
+                >
+                  <option>Filtra per stato</option>
+                  <option value="Tutti">Tutti</option>
+                  <option value="ORDINATO">ordinato</option>
+                  <option value="SPEDITO">spedito</option>
+                  <option value="CONSEGNATO">consegnato</option>
+                </Form.Select>
+              </div>
             </div>
           </Col>
         </Row>
 
-        {carrelliDettaglioFornitore && carrelliDettaglioFornitore.length > 0 ? (
-          carrelliDettaglioFornitore.map((dettaglio) => (
+        {filteredCarrelliDettaglio && filteredCarrelliDettaglio.length > 0 ? (
+          filteredCarrelliDettaglio.map((dettaglio) => (
             <Row key={dettaglio.id} className="mb-4">
               <Col>
                 <Card className="carrelloCard shadow-lg ">

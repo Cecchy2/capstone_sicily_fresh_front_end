@@ -39,7 +39,7 @@ const UtentiPage = () => {
         <h1>
           <span className="text-warning">Acquista il tuo abbonamento </span>
           <br />
-          aggiungi le tue ricette preferite al carrello
+          aggiungi le tue ricette preferite al carrello,
           <br />
           ordinale e ricevi la spesa a casa !!!
         </h1>

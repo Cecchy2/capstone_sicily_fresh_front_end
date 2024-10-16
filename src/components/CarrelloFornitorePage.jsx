@@ -21,8 +21,15 @@ const CarrelloFornitorePage = () => {
     dispatch(getCarrelloDettagliFornitore(fornitoreId));
   };
 
+  const handleChangeStatoConsegnato = (dettaglioId) => {
+    const nuovoStatoOrdine = "CONSEGNATO";
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+    dispatch(getRicetteByFornitoreId(fornitoreId));
+    dispatch(getCarrelloDettagliFornitore(fornitoreId));
+  };
+
   const handleFilterChange = (e) => {
-    setStatoFiltro(e.target.value); // Aggiorna lo stato con il valore selezionato nel filtro
+    setStatoFiltro(e.target.value);
   };
 
   const filteredCarrelliDettaglio = carrelliDettaglioFornitore.filter((dettaglio) =>
@@ -63,88 +70,103 @@ const CarrelloFornitorePage = () => {
         </Row>
 
         {filteredCarrelliDettaglio && filteredCarrelliDettaglio.length > 0 ? (
-          filteredCarrelliDettaglio.map((dettaglio) => (
-            <Row key={dettaglio.id} className="mb-4">
-              <Col>
-                <Card className="carrelloCard shadow-lg ">
-                  <div className="d-flex align-items-center">
-                    {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
-                      <Image
-                        src={dettaglio.ricetta.immaginePiatto}
-                        fluid
-                        width={250}
-                        height={150}
-                        className="object-fit-contain rounded me-4 ms-3"
-                        alt="Immagine della ricetta"
-                      />
-                    ) : (
-                      <Image
-                        src="defaultImage.jpg"
-                        fluid
-                        width={250}
-                        height={150}
-                        className="object-fit-contain rounded me-5"
-                        alt="Default immagine"
-                      />
-                    )}
+          filteredCarrelliDettaglio
+            .filter((carrelloD) => carrelloD.statoOrdine !== "INCARRELLO")
+            .map((dettaglio) => (
+              <Row key={dettaglio.id} className="mb-4">
+                <Col>
+                  <Card className="carrelloCard shadow-lg mb-5">
+                    <div className="d-flex align-items-center">
+                      {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
+                        <Image
+                          src={dettaglio.ricetta.immaginePiatto}
+                          fluid
+                          width={250}
+                          height={150}
+                          className="object-fit-contain rounded me-4 ms-3"
+                          alt="Immagine della ricetta"
+                        />
+                      ) : (
+                        <Image
+                          src="defaultImage.jpg"
+                          fluid
+                          width={250}
+                          height={150}
+                          className="object-fit-contain rounded me-5"
+                          alt="Default immagine"
+                        />
+                      )}
 
-                    <div className="d-flex flex-column flex-grow-1">
-                      <Card.Body>
-                        <div className="d-flex">
-                          <Card.Title className="text-center fw-bold ">
-                            <h1 className="display-6">
-                              {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
-                            </h1>
-                          </Card.Title>
-                          <p className="ms-auto">Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}</p>
-                        </div>
-                        <Card.Text>
-                          <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
-                        </Card.Text>
-
-                        <Card.Text className="d-flex m-0 ">
-                          <p>
-                            Cliente:{" "}
-                            {dettaglio.carrello.cliente
-                              ? `${dettaglio.carrello.cliente.nome} ${dettaglio.carrello.cliente.cognome}`
-                              : "cliente non disponibile"}
-                          </p>
-
-                          <p className="ms-5">
-                            Email:
-                            {dettaglio.carrello.cliente
-                              ? `${dettaglio.carrello.cliente.email} `
-                              : "email non disponibile"}
-                          </p>
-                        </Card.Text>
-                        <div className="d-flex">
-                          <Card.Text className="text-muted">
-                            <h5>
-                              Stato:{" "}
-                              {dettaglio.statoOrdine === "INCARRELLO"
-                                ? "IN CARRELLO"
-                                : dettaglio.statoOrdine || "Stato non disponibile"}
-                            </h5>
+                      <div className="d-flex flex-column flex-grow-1">
+                        <Card.Body>
+                          <div className="d-flex">
+                            <Card.Title className="text-center fw-bold ">
+                              <h1 className="display-6">
+                                {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
+                              </h1>
+                            </Card.Title>
+                            <p className="ms-auto">
+                              Portata: {dettaglio.ricetta?.portata || "Portata non disponibile"}
+                            </p>
+                          </div>
+                          <Card.Text>
+                            <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
                           </Card.Text>
-                          {dettaglio.statoOrdine === "ORDINATO" ? (
-                            <Button
-                              variant="outline-success"
-                              className="align-self-start mx-0 mx-lg-5"
-                              onClick={() => handleChangeStato(dettaglio.id)}
-                            >
-                              Spedisci
-                            </Button>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </Card.Body>
+
+                          <Card.Text className="d-flex m-0 ">
+                            <p>
+                              Cliente:{" "}
+                              {dettaglio.carrello.cliente
+                                ? `${dettaglio.carrello.cliente.nome} ${dettaglio.carrello.cliente.cognome}`
+                                : "cliente non disponibile"}
+                            </p>
+
+                            <p className="ms-5">
+                              Email:
+                              {dettaglio.carrello.cliente
+                                ? `${dettaglio.carrello.cliente.email} `
+                                : "email non disponibile"}
+                            </p>
+                          </Card.Text>
+                          <div className="d-flex">
+                            <Card.Text className="text-muted">
+                              <h5>
+                                Stato:{" "}
+                                {dettaglio.statoOrdine === "INCARRELLO"
+                                  ? "IN CARRELLO"
+                                  : dettaglio.statoOrdine || "Stato non disponibile"}
+                              </h5>
+                            </Card.Text>
+                            {dettaglio.statoOrdine === "ORDINATO" ? (
+                              <Button
+                                variant="outline-success"
+                                className="align-self-start mx-0 mx-lg-5"
+                                onClick={() => handleChangeStato(dettaglio.id)}
+                              >
+                                Spedisci
+                              </Button>
+                            ) : (
+                              ""
+                            )}
+                            {dettaglio.statoOrdine === "SPEDITO" ? (
+                              <Button
+                                variant="outline-success"
+                                className="align-self-start mx-0 mx-lg-5"
+                                onClick={() => handleChangeStatoConsegnato(dettaglio.id)}
+                              >
+                                Consegnato
+                              </Button>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </Card.Body>
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
-          ))
+                  </Card>
+                </Col>
+              </Row>
+            ))
         ) : (
           <p className="text-center">Il carrello è vuoto.</p>
         )}

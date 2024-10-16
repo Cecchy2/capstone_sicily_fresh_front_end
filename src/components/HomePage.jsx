@@ -68,7 +68,7 @@ const HomePage = () => {
         <Container className="mt-5">
           <Row>
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
-              ricetteList.content.slice(0, 4).map((ricetta, index) => (
+              ricetteList.content.slice(0, 6).map((ricetta, index) => (
                 <Col key={index} xs={12} sm={6} md={4} lg={4} className="my-4">
                   <Card className="h-100 shadow-sm border-0 rounded-4 hover-card">
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />

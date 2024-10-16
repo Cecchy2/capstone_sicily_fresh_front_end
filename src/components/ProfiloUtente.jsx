@@ -54,7 +54,7 @@ const ProfiloUtente = () => {
   return (
     <div className="profiloUtentePage">
       <Container>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center vh-100">
           <Col md={10}>
             <Card className="shadow-lg border-0 rounded-4 mt-5">
               <Card.Header className="bg-light d-flex justify-content-center p-4 rounded-top border-bottom-0">
@@ -73,8 +73,13 @@ const ProfiloUtente = () => {
                   </h1>
                 </Card.Title>
 
-                <Card.Text className="text-center fs-4 text-muted mb-3">{utente.utente.username}</Card.Text>
-                <Card.Text className="text-center fs-5 text-secondary">{utente.utente.dataDiNascita}</Card.Text>
+                <Card.Text className="text-center fs-4 text-muted mb-3">UserName: {utente.utente.username}</Card.Text>
+                <Card.Text className="text-center fs-5 text-secondary">
+                  Nato il: {utente.utente.dataDiNascita}
+                </Card.Text>
+                <Card.Text className="text-center fs-5 text-secondary">
+                  Indirizzo: {utente.utente.indirizzo} , {utente.utente.citta}
+                </Card.Text>
                 {isAuthenticated && user.role === "CLIENTE" ? (
                   <h4 className="text-center  my- ms-auto">
                     Le tue ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>

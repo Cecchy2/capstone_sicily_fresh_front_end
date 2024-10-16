@@ -125,7 +125,7 @@ const CarrelloPage = () => {
                             <h5>
                               Stato:{" "}
                               {dettaglio.statoOrdine === "INCARRELLO"
-                                ? "IN CARRELLO"
+                                ? "PRENOTATA"
                                 : dettaglio.statoOrdine || "Stato non disponibile"}
                             </h5>
                           </Card.Text>

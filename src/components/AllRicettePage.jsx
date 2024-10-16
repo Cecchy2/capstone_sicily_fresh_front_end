@@ -91,6 +91,7 @@ const AllRicettePage = () => {
             ) : (
               <p>Nessuna ricetta trovata</p>
             )}
+            <div className="mt-5"></div>
           </Row>
         </Container>
       </div>

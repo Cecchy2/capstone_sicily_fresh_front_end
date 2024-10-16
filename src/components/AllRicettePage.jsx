@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const AllRicettePage = () => {
   const ricette = useSelector((state) => state.ricette);
@@ -8,6 +9,8 @@ const AllRicettePage = () => {
   const [selectedPortata, setSelectedPortata] = useState("");
   const [selectedTipo, setSelectedTipo] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
+
+  const navigate = useNavigate();
 
   const handlePortataChange = (e) => setSelectedPortata(e.target.value);
   const handleTipoChange = (e) => setSelectedTipo(e.target.value);
@@ -70,7 +73,15 @@ const AllRicettePage = () => {
           <Row>
             {filteredRicette.length > 0 ? (
               filteredRicette.map((ricetta, index) => (
-                <Col key={index} xs={12} sm={12} md={4} lg={4} className="mt-5">
+                <Col
+                  key={index}
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  lg={4}
+                  className="mt-5"
+                  onClick={() => navigate(`/ricetta/${ricetta.id}`)}
+                >
                   <Card className="shadow-sm border-0 rounded-4 hover-card">
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
                     <Card.Body>

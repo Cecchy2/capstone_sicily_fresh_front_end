@@ -1,56 +1,30 @@
 import { Image } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CarouselItems = () => {
+  const ricette = useSelector((state) => state.ricette.ricette.content);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+  const handleCarouselClick = (ricetta) => {
+    {
+      isAuthenticated ? navigate(`/ricetta/${ricetta.id}`) : alert("Devi registrarti per vedere le ricette 🤪");
+    }
+  };
+
   return (
     <div className="carousel">
-      <div className="item">
-        <Image src="../../public/assets/piatti/ortigia-sicily-siracusa-IMG_5334-scaled.jpeg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-abdus-salam-1835604653-28587332.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-angeloxwu-1559986-3116848.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-dana-tentis-118658-691114.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-dapur-melodi-192125-1109197.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-karolina-grabowska-4197447.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-n-voitkevich-5426108.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-nadin-sh-78971847-28594603.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/ortigia-sicily-siracusa-IMG_5334-scaled.jpeg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-abdus-salam-1835604653-28587332.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-angeloxwu-1559986-3116848.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-dana-tentis-118658-691114.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-dapur-melodi-192125-1109197.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-karolina-grabowska-4197447.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-n-voitkevich-5426108.jpg" alt="" />
-      </div>
-      <div className="item">
-        <Image src="../../public/assets/piatti/pexels-nadin-sh-78971847-28594603.jpg" alt="" />
-      </div>
+      {ricette && ricette.length > 0 ? (
+        ricette.map((ricetta) => (
+          <div className="item" key={ricetta.id}>
+            <Image src={ricetta.immaginePiatto} alt={ricetta.titolo} onClick={() => handleCarouselClick(ricetta)} />
+          </div>
+        ))
+      ) : (
+        <p>No ricette available</p>
+      )}
     </div>
   );
 };

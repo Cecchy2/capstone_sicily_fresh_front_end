@@ -54,7 +54,7 @@ const UtentiPage = () => {
             <h3 className="my-3">• 🥕 Ingredienti selezionati da fornitori locali •</h3>
             <hr className="mt-5 mb-3" />
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
-              ricetteList.content.map((ricetta, index) => (
+              ricetteList.content.slice(0, 6).map((ricetta, index) => (
                 <Col key={index} xs={12} sm={12} md={4} lg={4} className="">
                   <Card
                     className="shadow-sm border-0 rounded-4 hover-card mt-5"
@@ -67,6 +67,30 @@ const UtentiPage = () => {
                   </Card>
                 </Col>
               ))
+            ) : (
+              <p>Nessuna ricetta al momento.</p>
+            )}
+            <hr className="my-5" />
+            <Col xs={12}>
+              <h2>🐟 Le nostre ultime ricette di Pesce</h2>
+            </Col>
+            {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
+              ricetteList.content
+                .filter((ricetta) => ricetta.tipo === "PESCE")
+                .slice(0, 3)
+                .map((ricetta, index) => (
+                  <Col key={index} xs={12} sm={12} md={4} lg={4} className="mb-5">
+                    <Card
+                      className="shadow-sm border-0 rounded-4 hover-card mt-5"
+                      onClick={() => navigate(`/ricetta/${ricetta.id}`)}
+                    >
+                      <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
+                      <Card.Body>
+                        <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))
             ) : (
               <p>Nessuna ricetta al momento.</p>
             )}

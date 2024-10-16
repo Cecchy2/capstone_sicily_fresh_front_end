@@ -66,6 +66,10 @@ const Topbar = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("Stato aggiornato:", carrelloDettagli.carrelliDettagli);
+  }, [carrelloDettagli]);
+
   let userPath = "/";
 
   if (isAuthenticated) {

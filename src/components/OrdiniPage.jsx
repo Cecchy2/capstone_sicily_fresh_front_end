@@ -54,9 +54,9 @@ const OrdiniPage = () => {
             ? carrelloDettagli.carrelliDettagli.filter((dettaglio) => dettaglio.statoOrdine !== "INCARRELLO")
             : carrelloDettagli.carrelliDettagli
           ).map((dettaglio) => (
-            <Row key={dettaglio.id} className="mb-4">
+            <Row key={dettaglio.id} className="mt-4">
               <Col>
-                <Card className="carrelloCard shadow-lg ">
+                <Card className="carrelloCard shadow-lg mb-4">
                   <div className="d-flex align-items-center">
                     {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                       <Image

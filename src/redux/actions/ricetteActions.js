@@ -4,7 +4,7 @@ export const DELETE_RICETTA = "DELETE_RICETTA";
 export const GET_RICETTA_BY_ID = "GET_RICETTA_BY_ID";
 export const GET_RICETTE_BY_FORNITORE = "GET_RICETTE_BY_FORNITORE";
 
-export const getRicette = () => {
+export const getRicette = (page = 0, size = 100) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/authorization`;
 

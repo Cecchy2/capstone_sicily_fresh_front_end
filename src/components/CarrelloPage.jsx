@@ -57,7 +57,7 @@ const CarrelloPage = () => {
         <Row>
           <Col>
             <div>
-              <h1 className="display-6 mt-5">I TUOI ORDINI</h1>
+              <h1 className="display-6 mt-5">IL TUO CARRELLO</h1>
 
               <h2 className="display-6  my- ms-auto">
                 Il tuo saldo ricette disponibili: <Badge bg="info">{numeroRicetteRimanenti}</Badge>
@@ -71,9 +71,9 @@ const CarrelloPage = () => {
             ? carrelloDettagli.carrelliDettagli.filter((dettaglio) => dettaglio.statoOrdine === "INCARRELLO")
             : carrelloDettagli.carrelliDettagli
           ).map((dettaglio) => (
-            <Row key={dettaglio.id} className="mb-4">
+            <Row key={dettaglio.id} className="mt-4">
               <Col>
-                <Card className="carrelloCard shadow-lg ">
+                <Card className="carrelloCard shadow-lg mb-5">
                   <div className="d-flex align-items-center">
                     {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                       <Image

@@ -133,8 +133,8 @@ const FornitorePage = () => {
   };
 
   return (
-    <div>
-      <Container className="fornitoreBG">
+    <div className="fornitoreBG">
+      <Container>
         <Row className="justify-content-center">
           <Col md={8}>
             <Card className="shadow-lg border-0 rounded-4 my-5">
@@ -153,7 +153,7 @@ const FornitorePage = () => {
                       {utente.utente.nome} {utente.utente.cognome}
                     </h3>
                     <h5 className="text-muted">{utente.utente.email}</h5>
-                    <h6 className="badge bg-secondary p-2 mt-2">{utente.utente.ruolo}</h6>
+                    <h6 className="badge bg-success p-2 mt-2">{utente.utente.ruolo}</h6>
                   </div>
                 </div>
                 {showAlert && (

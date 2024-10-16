@@ -101,46 +101,37 @@ const CarrelloFornitorePage = () => {
                         <Card.Body>
                           <div className="d-flex">
                             <Card.Title className="text-center fw-bold ">
-                              <h1 className="display-6">
-                                {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
-                              </h1>
+                              <h3>{dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}</h3>
                             </Card.Title>
 
                             <Card.Text className="ms-auto">
-                              <h3>Quantità: {dettaglio.quantita} ricetta</h3>
+                              <p className="fs-4">Quantità: {dettaglio.quantita} ricetta</p>
                             </Card.Text>
                           </div>
 
                           <Card.Text className="d-flex m-0 ">
-                            <h4>
-                              Cliente:{" "}
+                            <h5>
+                              • Cliente:{" "}
                               {dettaglio.carrello.cliente
                                 ? `${dettaglio.carrello.cliente.nome} ${dettaglio.carrello.cliente.cognome}`
                                 : "cliente non disponibile"}
-                            </h4>
-
-                            {/* <h4 className="ms-5">
-                              Email:
-                              {dettaglio.carrello.cliente
-                                ? `${dettaglio.carrello.cliente.email} `
-                                : "email non disponibile"}
-                            </h4> */}
+                            </h5>
                           </Card.Text>
                           <Card.Text className="d-flex m-0 ">
-                            <h4>
-                              Indirizzo :{" "}
+                            <h5>
+                              • Indirizzo :{" "}
                               {dettaglio.carrello.cliente
                                 ? `${dettaglio.carrello.cliente.indirizzo} , ${dettaglio.carrello.cliente.citta}`
                                 : "indirizzo non disponibile"}
-                            </h4>
+                            </h5>
                           </Card.Text>
                           <Card.Text className="d-flex m-0 ">
-                            <h4>
-                              Email:
+                            <h5>
+                              • Email:
                               {dettaglio.carrello.cliente
                                 ? `${dettaglio.carrello.cliente.email} `
                                 : "email non disponibile"}
-                            </h4>
+                            </h5>
                           </Card.Text>
                           <div className="d-flex">
                             <Card.Text className="text-muted ms-auto">

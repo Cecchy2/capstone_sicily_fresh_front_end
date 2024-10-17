@@ -16,6 +16,7 @@ const CarrelloFornitorePage = () => {
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";
+    window.confirm("Hai spedito gli ingredienti al cliente?");
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
     dispatch(getRicetteByFornitoreId(fornitoreId));
     dispatch(getCarrelloDettagliFornitore(fornitoreId));
@@ -23,6 +24,7 @@ const CarrelloFornitorePage = () => {
 
   const handleChangeStatoConsegnato = (dettaglioId) => {
     const nuovoStatoOrdine = "CONSEGNATO";
+    window.confirm("Gli ingredienti sono stati consegnati?");
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
     dispatch(getRicetteByFornitoreId(fornitoreId));
     dispatch(getCarrelloDettagliFornitore(fornitoreId));
@@ -45,7 +47,7 @@ const CarrelloFornitorePage = () => {
   console.log(carrelliDettaglioFornitore);
 
   return (
-    <div className="paginaCarrello">
+    <div className="paginaCarrello pb-5">
       <Container>
         <Row>
           <Col>
@@ -98,10 +100,10 @@ const CarrelloFornitorePage = () => {
                       )}
 
                       <div className="d-flex flex-column flex-grow-1">
-                        <Card.Body>
+                        <Card.Body className="p-0">
                           <div className="d-flex">
-                            <Card.Title className="text-center fw-bold ">
-                              <h3>{dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}</h3>
+                            <Card.Title className="text-center fw-bold mt-4">
+                              <h1>{dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}</h1>
                             </Card.Title>
 
                             <Card.Text className="ms-auto">

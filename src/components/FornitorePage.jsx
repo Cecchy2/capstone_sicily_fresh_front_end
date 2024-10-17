@@ -165,11 +165,7 @@ const FornitorePage = () => {
                   <Row>
                     <Col md={12} lg={6} className="mb-4">
                       <Card className="h-100 shadow-sm border-0 rounded-4 hover-card ">
-                        <Card.Img
-                          variant="top"
-                          src="../../public/assets/piatti/ortigia-sicily-siracusa-IMG_5334-scaled.jpeg"
-                          className="cardImageFornitori"
-                        />
+                        <Card.Img variant="top" src="../../public/assets/padella.avif" className="cardImageFornitori" />
                         <Card.Body>
                           <Card.Title className="fw-bold">Crea una ricetta</Card.Title>
                           <Button variant="warning" onClick={handleShow} className="mt-3">
@@ -182,7 +178,7 @@ const FornitorePage = () => {
                       <Card className="h-100 shadow-sm border-0 rounded-4 hover-card">
                         <Card.Img
                           variant="top"
-                          src="../../public/assets/piatti/pexels-abdus-salam-1835604653-28587332.jpg"
+                          src="../../public/assets/gettyimages-1446478805-612x612.jpg"
                           className="cardImageFornitori"
                         />
                         <Card.Body>

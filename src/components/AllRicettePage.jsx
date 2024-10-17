@@ -84,7 +84,7 @@ const AllRicettePage = () => {
                 >
                   <Card className="shadow-sm border-0 rounded-4 hover-card">
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
-                    <Card.Body>
+                    <Card.Body className="p-1">
                       <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
 
                       <p>Portata: {ricetta.portata}</p>

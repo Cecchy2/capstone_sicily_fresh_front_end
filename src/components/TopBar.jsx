@@ -171,6 +171,9 @@ const Topbar = () => {
                   <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>
                     Profilo
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/come-funziona">
+                    Come Funziona?
+                  </NavDropdown.Item>
 
                   <NavDropdown.Item as={Link} to="/contattaci">
                     Contattaci

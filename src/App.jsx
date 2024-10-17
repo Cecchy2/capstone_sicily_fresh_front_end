@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import ChiSiamoPage from "./components/ChiSiamoPage";
 import ContattaciPage from "./components/ContattaciPage";
 import Fornitori from "./components/Fornitori";
+import ComeFunzionaPage from "./components/ComeFunzionaPage";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/chi_siamo" element={<ChiSiamoPage />} />
           <Route path="/contattaci" element={<ContattaciPage />} />
           <Route path="/fornitori" element={<Fornitori />} />
+          <Route path="/come-funziona" element={<ComeFunzionaPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -25,17 +25,18 @@ const HomePage = () => {
       <div className="homePage">
         <div className="f-lato-thin">
           <h1 className=" mt-5 text-warning">SCEGLI LE TUE RICETTE</h1>
+
+          <h2 className="mb-3 mb-md-0 ">TI PORTIAMO LA SPESA A CASA</h2>
           <div className="d-flex flex-column flex-md-row align-items-md-center ">
-            <h2 className="mb-3 mb-md-0 ">TI PORTIAMO LA SPESA A CASA</h2>
+            <p className="f-lato-thin mt-1 fs-3">La registrazione è gratuita</p>
             <Button
               variant="warning"
-              className="border border-black ms-md-5"
-              onClick={() => navigate("/registrazione")}
+              className="border border-black ms-md-3"
+              onClick={() => navigate("/come-funziona")}
             >
-              Registrati subito
+              Come Funziona?
             </Button>
           </div>
-          <p className="f-lato-thin mt-1 fs-3">Registrati Ora e Ricevi uno Sconto del 10% sul Primo Abbonamento</p>
         </div>
       </div>
 

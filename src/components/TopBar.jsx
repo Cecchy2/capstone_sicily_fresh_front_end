@@ -105,7 +105,7 @@ const Topbar = () => {
               ) : (
                 ""
               )}
-              <Nav.Link as={Link} to="/chi-siamo" className="translate">
+              <Nav.Link as={Link} to="/chi_siamo" className="translate">
                 👩🏼‍🍳 Chi Siamo
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (

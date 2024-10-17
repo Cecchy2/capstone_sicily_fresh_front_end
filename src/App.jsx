@@ -17,6 +17,9 @@ import CarrelloFornitorePage from "./components/CarrelloFornitorePage";
 import AllRicettePage from "./components/AllRicettePage";
 import OrdiniPage from "./components/OrdiniPage";
 import Footer from "./components/Footer";
+import ChiSiamoPage from "./components/ChiSiamoPage";
+import ContattaciPage from "./components/ContattaciPage";
+import Fornitori from "./components/Fornitori";
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
           <Route path="/carrello/fornitore/:fornitoreId" element={<CarrelloFornitorePage />} />
           <Route path="/allRicettePage" element={<AllRicettePage />} />
           <Route path="/ordini" element={<OrdiniPage />} />
+          <Route path="/chi_siamo" element={<ChiSiamoPage />} />
+          <Route path="/contattaci" element={<ContattaciPage />} />
+          <Route path="/fornitori" element={<Fornitori />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -26,7 +26,7 @@ const AllRicettePage = () => {
 
   return (
     <>
-      <div className="bg-dark">
+      <div className="bg-dark py-5">
         <div className="allRicettePage">
           <h1 className="text-center ">
             <span className="text-warning">Scopri le nostre Ricette</span>
@@ -68,7 +68,7 @@ const AllRicettePage = () => {
         </div>
       </div>
 
-      <div className="middleHome text-center f-lato-thin">
+      <div className="middleHome text-center f-lato-thin pb-5">
         <Container>
           <Row>
             {filteredRicette.length > 0 ? (

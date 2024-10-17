@@ -48,6 +48,7 @@ const RicettaPage = () => {
     };
     dispatch(aggiungiCarrelloDettaglio(carrelloDettaglioPayload));
     dispatch(findCarrelliDettagliByCarrelloId(carrelloId));
+    alert("Hai aggiunto le ricette al 🛒");
     navigate(`/utenti/${user.utenteId}`);
     handleClose();
   };

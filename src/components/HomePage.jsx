@@ -70,7 +70,10 @@ const HomePage = () => {
             {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
               ricetteList.content.slice(0, 6).map((ricetta, index) => (
                 <Col key={index} xs={12} sm={6} md={4} lg={4} className="my-4">
-                  <Card className="h-100 shadow-sm border-0 rounded-4 hover-card">
+                  <Card
+                    className="h-100 shadow-sm border-0 rounded-4 hover-card"
+                    onClick={() => alert("Devi registrarti per vedere le ricette 🤪")}
+                  >
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
                     <Card.Body>
                       <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>

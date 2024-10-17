@@ -33,6 +33,7 @@ const CarrelloPage = () => {
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
+    alert("Hai ordinato le ricette  🍽️");
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
     navigate(`/utenti/${user.utenteId}`);
   };
@@ -52,7 +53,7 @@ const CarrelloPage = () => {
     .reduce((total, ricette) => total + ricette, 0);
 
   return (
-    <div className="paginaCarrello">
+    <div className="paginaCarrello pb-5">
       <Container>
         <Row>
           <Col>
@@ -73,7 +74,7 @@ const CarrelloPage = () => {
           ).map((dettaglio) => (
             <Row key={dettaglio.id} className="mt-4">
               <Col>
-                <Card className="carrelloCard shadow-lg mb-5">
+                <Card className="carrelloCard shadow-lg ">
                   <div className="d-flex align-items-center">
                     {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                       <Image
@@ -96,24 +97,24 @@ const CarrelloPage = () => {
                     )}
 
                     <div className="d-flex flex-column flex-grow-1">
-                      <Card.Body>
+                      <Card.Body className="p-0">
                         <div className="d-flex">
                           <Card.Title className="text-center fw-bold ">
-                            <h1 className="display-6">
-                              {dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}
-                            </h1>
+                            <h1>{dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}</h1>
                           </Card.Title>
-                          <p className="ms-auto">
+                          <p className="ms-auto mt-3">
                             Portata:{" "}
                             <Badge bg="warning">{dettaglio.ricetta?.portata || "Portata non disponibile"}</Badge>
                           </p>
                         </div>
-                        <Card.Text>
-                          <h3 className="m-0">Quantità: {dettaglio.quantita}</h3>
+                        <Card.Text className="m-0 fs-4">
+                          <p className="m-0 fs-4">
+                            Quantità: <Badge bg="warning"> {dettaglio.quantita}</Badge>
+                          </p>
                         </Card.Text>
 
                         <Card.Text className="d-flex m-0">
-                          <p>
+                          <p className="m-0 fs-4">
                             Fornitore:{" "}
                             {dettaglio.ricetta?.fornitore
                               ? `${dettaglio.ricetta.fornitore.nome} ${dettaglio.ricetta.fornitore.cognome}`

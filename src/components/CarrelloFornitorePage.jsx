@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatoCarrelloDettaglio, getCarrelloDettagliFornitore } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getRicetteByFornitoreId } from "../redux/actions/ricetteActions";
 import Form from "react-bootstrap/Form";
@@ -75,7 +75,7 @@ const CarrelloFornitorePage = () => {
             .map((dettaglio) => (
               <Row key={dettaglio.id} className="mb-4">
                 <Col>
-                  <Card className="carrelloCard shadow-lg mb-5">
+                  <Card className="carrelloCard shadow-lg ">
                     <div className="d-flex align-items-center">
                       {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                         <Image
@@ -105,7 +105,9 @@ const CarrelloFornitorePage = () => {
                             </Card.Title>
 
                             <Card.Text className="ms-auto">
-                              <p className="fs-4">Quantità: {dettaglio.quantita} ricetta</p>
+                              <p className="fs-4 mt-5">
+                                Quantità: <Badge bg="warning">{dettaglio.quantita} </Badge>ricetta
+                              </p>
                             </Card.Text>
                           </div>
 

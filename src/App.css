@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 .homePage,
 .utentiPage {
   background-size: cover;
@@ -300,3 +301,10 @@ input[type="date"]:focus {
   margin-top: 100px;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
+.item{
+  cursor: pointer;
+}

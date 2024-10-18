@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRicette } from "../redux/actions/ricetteActions";
 import CarouselItems from "./CarouselItems";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { MdFoodBank } from "react-icons/md";
+import { GrInstagram } from "react-icons/gr";
+import { ImFacebook2 } from "react-icons/im";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="homePage">
+      <div className="homePage position-relative">
         <div className="f-lato-thin">
           <h1 className=" mt-5 text-warning">SCEGLI LE TUE RICETTE</h1>
 
@@ -37,6 +39,25 @@ const HomePage = () => {
               Come Funziona?
             </Button>
           </div>
+        </div>
+        <div className="d-flex position-absolute bottom-0 end-0">
+          <Nav.Link
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white me-3"
+          >
+            <GrInstagram size={40} className="me-2 mb-3" bg="secondary" />
+          </Nav.Link>
+
+          <Nav.Link
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white me-3"
+          >
+            <ImFacebook2 size={40} className="me-5" />
+          </Nav.Link>
         </div>
       </div>
 
@@ -96,27 +117,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-{
-  /* <Container>
-          <Row>
-            {ricetteList && ricetteList.content && ricetteList.content.length > 0 ? (
-              ricetteList.content.map((ricetta, index) => (
-                <Col key={index} xs={12} sm={6} md={4} lg={3} className="mb-4">
-                  <Card
-                    className="h-100 shadow-sm border-0 rounded-4 hover-card"
-                    onClick={() => navigate(`/ricetta/${ricetta.id}`)}
-                  >
-                    <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
-                    <Card.Body>
-                      <Card.Title className="fw-bold">{ricetta.titolo}</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))
-            ) : (
-              <p>No recipes available at the moment.</p>
-            )}
-          </Row>
-        </Container> */
-}

@@ -5,6 +5,12 @@ import { FaFacebook } from "react-icons/fa6";
 const ContattaciPage = () => {
   return (
     <Container className="my-5">
+      <Row className="justify-content-center mt-5">
+        <Col xs={12} md={6} className="text-center">
+          <h1 className="mt-5 display-4">Sicily•Fresh</h1>
+          <Image src="../../public/assets/limoni.svg" width={250} className="mt-3" />
+        </Col>
+      </Row>
       <Row className="justify-content-center">
         <Col xs={12} md={8} className="text-center">
           <h1 className="display-3 mb-4">Contattaci</h1>
@@ -41,13 +47,6 @@ const ContattaciPage = () => {
               <FaFacebook />
             </a>
           </div>
-        </Col>
-      </Row>
-
-      <Row className="justify-content-center mt-5">
-        <Col xs={12} md={6} className="text-center">
-          <h1 className="mt-5 display-4">Sicily•Fresh</h1>
-          <Image src="../../public/assets/limoni.svg" width={250} className="mt-3" />
         </Col>
       </Row>
     </Container>

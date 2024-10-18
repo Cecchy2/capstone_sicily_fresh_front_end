@@ -6,7 +6,7 @@ import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { MdFoodBank } from "react-icons/md";
 import { GrInstagram } from "react-icons/gr";
-import { ImFacebook2 } from "react-icons/im";
+import { FaSquareFacebook } from "react-icons/fa6";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const HomePage = () => {
             rel="noopener noreferrer"
             className="text-white me-3"
           >
-            <GrInstagram size={40} className="me-2 mb-3" bg="secondary" />
+            <GrInstagram size={40} className="me-2 mb-3" />
           </Nav.Link>
 
           <Nav.Link
@@ -56,7 +56,7 @@ const HomePage = () => {
             rel="noopener noreferrer"
             className="text-white me-3"
           >
-            <ImFacebook2 size={40} className="me-5" />
+            <FaSquareFacebook size={40} className="me-5" />
           </Nav.Link>
         </div>
       </div>

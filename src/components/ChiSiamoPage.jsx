@@ -13,7 +13,9 @@ const ChiSiamoPage = () => {
           <p className="mt-5 fs-4">
             <strong>Sicily Fresh</strong> è un progetto sviluppato da Dario Cecchinato come capstone finale per il
             diploma FullStack presso Epicode. L'applicazione consente agli utenti di registrarsi come Clienti e,
-            successivamente, di contattare l'amministratore per richiedere l'accesso come Fornitori.
+            successivamente, di contattare l'amministratore per richiedere l'accesso come Fornitori. Dopo la
+            registrazione e dopo avere completato un ordine l' utente riceverà una email (ancora la funzione è in
+            modalità test di Mailgun, quindi funziona solo su emails verificate).
           </p>
 
           <p className="fs-4">

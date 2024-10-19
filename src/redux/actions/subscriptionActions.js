@@ -1,16 +1,17 @@
-export const createCheckoutSession = (price) => async (dispatch, getState) => {
+export const CREATE_CHECKOUT_SESSION_SUCCESS = "CREATE_CHECKOUT_SESSION_SUCCESS";
+export const CREATE_CHECKOUT_SESSION_FAIL = "CREATE_CHECKOUT_SESSION_FAIL";
+
+export const createCheckoutSession = (price) => async (dispatch) => {
   try {
     dispatch({ type: "CREATE_CHECKOUT_SESSION_REQUEST" });
 
-    // Prendi il token dal Redux store (se stai salvando l'autenticazione nello stato)
-    const { auth } = getState();
-    const token = localStorage.getItem("authToken"); // Assumi che il token JWT sia memorizzato qui
+    const token = localStorage.getItem("authToken");
 
     const response = await fetch("http://localhost:3001/stripe/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Aggiungi l'header Authorization con il token JWT
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ price }),
     });
@@ -27,10 +28,10 @@ export const createCheckoutSession = (price) => async (dispatch, getState) => {
       throw new Error("URL non trovato nella risposta");
     }
 
-    dispatch({ type: "CREATE_CHECKOUT_SESSION_SUCCESS" });
+    dispatch({ type: CREATE_CHECKOUT_SESSION_SUCCESS });
   } catch (error) {
     dispatch({
-      type: "CREATE_CHECKOUT_SESSION_FAIL",
+      type: CREATE_CHECKOUT_SESSION_FAIL,
       payload: error.message,
     });
   }

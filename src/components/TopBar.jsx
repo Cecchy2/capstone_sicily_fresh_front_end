@@ -23,6 +23,7 @@ const Topbar = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const ricette = useSelector((state) => state.ricette);
   const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
+  const carrelloId = useSelector((state) => state.carrelli.carrelli[0]?.id);
 
   const carrelloFornitore = carrelloDettagli.carrelliDettagli.filter(
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
@@ -45,11 +46,14 @@ const Topbar = () => {
       dispatch(getCarrelloByClienteId(user.utenteId)).then(() => {
         if (!carrello || !carrello.id) {
           dispatch(creaCarrello(user.utenteId));
-          dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
         }
       });
     }
   }, [isAuthenticated, user, dispatch, carrello]);
+
+  useEffect(() => {
+    dispatch(findCarrelliDettagliByCarrelloId(carrelloId));
+  }, [dispatch, carrelloId]);
 
   useEffect(() => {
     if (ricette.ricette.length > 0) {

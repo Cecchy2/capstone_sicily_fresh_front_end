@@ -21,6 +21,7 @@ import ChiSiamoPage from "./components/ChiSiamoPage";
 import ContattaciPage from "./components/ContattaciPage";
 import Fornitori from "./components/Fornitori";
 import ComeFunzionaPage from "./components/ComeFunzionaPage";
+import SuccessPage from "./components/SuccessPage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/contattaci" element={<ContattaciPage />} />
           <Route path="/fornitori" element={<Fornitori />} />
           <Route path="/come-funziona" element={<ComeFunzionaPage />} />
+          <Route path="/success" element={<SuccessPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

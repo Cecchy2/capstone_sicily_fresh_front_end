@@ -1,6 +1,7 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { creaAbbonamento } from "../redux/actions/abbonamentiActions";
+import { createCheckoutSession } from "../redux/actions/subscriptionActions";
 
 const AbbonamentiPage = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
@@ -34,7 +35,11 @@ const AbbonamentiPage = () => {
     cliente: user.utenteId,
   };
 
-  const handleclickSei = () => {
+  const handleSubscription = (priceId) => {
+    dispatch(createCheckoutSession(priceId));
+  };
+
+  /* const handleclickSei = () => {
     if (isAuthenticated) {
       dispatch(creaAbbonamento(payloadSei));
     } else {
@@ -54,7 +59,7 @@ const AbbonamentiPage = () => {
     } else {
       window.alert("Devi registrarti per acquistare un abbonamento");
     }
-  };
+  }; */
 
   return (
     <div className="abbonamentiPage">
@@ -79,7 +84,11 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickSei}>
+                  <Button
+                    className="rounded-pill mt-3 w-50"
+                    variant="outline-dark"
+                    onClick={() => handleSubscription("price_1QBMhyRtBWiMZPoBvhrdx9AT")}
+                  >
                     {" "}
                     Acquista ora
                   </Button>
@@ -110,7 +119,7 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickDodici}>
+                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
                     {" "}
                     Acquista ora
                   </Button>
@@ -141,7 +150,7 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark" onClick={handleclickVentiquattro}>
+                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
                     {" "}
                     Acquista ora
                   </Button>

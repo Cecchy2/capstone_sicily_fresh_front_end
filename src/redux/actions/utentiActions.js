@@ -3,7 +3,7 @@ export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 export const getProfile = (id) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/utenti/${id}`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/utenti/${id}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -26,7 +26,7 @@ export const getProfile = (id) => {
 
 export const updateProfile = (id, utentePayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/utenti/${id}`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/utenti/${id}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

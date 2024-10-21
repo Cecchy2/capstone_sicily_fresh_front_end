@@ -3,7 +3,7 @@ export const GET_ABBONAMENTO_CLIENTE = "GET_ABBONAMENTO_CLIENTE";
 
 export const creaAbbonamento = (abbonamentoPayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/abbonamenti`;
+    const baseEndPoint = `http://https://sicilyfresh.netlify.app/abbonamenti`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -27,7 +27,7 @@ export const creaAbbonamento = (abbonamentoPayload) => {
 };
 export const GetAbbonamentiByClienteId = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/abbonamenti/${clienteId}`;
+    const baseEndPoint = `http://https://sicilyfresh.netlify.app/abbonamenti/${clienteId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

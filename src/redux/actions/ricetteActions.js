@@ -6,7 +6,7 @@ export const GET_RICETTE_BY_FORNITORE = "GET_RICETTE_BY_FORNITORE";
 
 export const getRicette = () => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/authorization`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/authorization`;
 
     try {
       const resp = await fetch(baseEndPoint);
@@ -24,7 +24,7 @@ export const getRicette = () => {
 
 export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/ricette`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -60,7 +60,7 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) =>
             const formData = new FormData();
             formData.append("immaginePassaggio", immaginiPassaggi[i]);
             const passaggioDiPreparazioneId = result.passaggi[i].id;
-            const passaggioEndpoint = `http://localhost:3001/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
+            const passaggioEndpoint = `http://sicilyfresh.netlify.app/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
             await fetch(passaggioEndpoint, {
               method: "PATCH",
               headers: {
@@ -79,7 +79,7 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) =>
 
 export const deleteRicetta = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette/${ricettaId}`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -107,7 +107,7 @@ export const deleteRicetta = (ricettaId) => {
 
 export const getRicettaById = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette/${ricettaId}`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -129,7 +129,7 @@ export const getRicettaById = (ricettaId) => {
 
 export const getRicetteByFornitoreId = (fornitoreId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/ricette/get/${fornitoreId}`;
+    const baseEndPoint = `http://sicilyfresh.netlify.app/ricette/get/${fornitoreId}`;
     const token = localStorage.getItem("authToken");
 
     try {

@@ -44,7 +44,7 @@ export const logout = () => {
 
 export const register = (payload, avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://localhost:3001/authorization/register`;
+    const baseEndPoint = `http://https://sicilyfresh.netlify.app/authorization/register`;
     const formData = new FormData();
 
     Object.keys(payload).forEach((key) => {

@@ -115,9 +115,6 @@ const Topbar = () => {
               ) : (
                 ""
               )}
-              <Nav.Link as={Link} to="/menu" className="translate">
-                🥙 Menù
-              </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
                 <Nav.Link as={Link} to="/ordini" className="translate">
                   🧺 Ordini

@@ -29,7 +29,7 @@ const AllRicettePage = () => {
       <div className="bg-dark py-5">
         <div className="allRicettePage">
           <h1 className="text-center ">
-            <span className="text-warning">Scopri le nostre Ricette</span>
+            <span className="text-warning">Scopri le nostre Ricette 🥙 </span>
           </h1>
         </div>
 

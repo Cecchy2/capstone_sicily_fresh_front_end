@@ -8,7 +8,7 @@ export const GET_CARRELLO_DETTAGLIO_FORNITORE = "GET_CARRELLO_DETTAGLIO_FORNITOR
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -38,7 +38,7 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
 
 export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloId}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -68,7 +68,7 @@ export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
     if (!confirmDelete) {
       return;
     }
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloDettaglioId}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloDettaglioId}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -95,7 +95,7 @@ export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
 
 export const getCarrelloDettaglioByRicetta = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/ricetta/${ricettaId}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/ricetta/${ricettaId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -115,7 +115,7 @@ export const getCarrelloDettaglioByRicetta = (ricettaId) => {
 
 export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdine) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloDettaglioId}/stato`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/${carrelloDettaglioId}/stato`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -145,7 +145,7 @@ export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdi
 
 export const getCarrelloDettagliFornitore = (fornitoreId) => {
   return async (dispatch) => {
-    const baseEndpoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/fornitore/${fornitoreId}`;
+    const baseEndpoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelloDettagli/fornitore/${fornitoreId}`;
     const token = localStorage.getItem("authToken");
 
     try {

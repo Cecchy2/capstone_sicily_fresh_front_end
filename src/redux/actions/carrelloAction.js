@@ -3,7 +3,7 @@ export const GET_CARRELLO = "GET_CARRELLO";
 
 export const creaCarrello = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelli`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelli`;
     const token = localStorage.getItem("authToken");
 
     const carrelloPayload = {
@@ -35,7 +35,7 @@ export const creaCarrello = (clienteId) => {
 
 export const getCarrelloByClienteId = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelli/${clienteId}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/carrelli/${clienteId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

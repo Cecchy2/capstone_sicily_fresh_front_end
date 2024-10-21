@@ -3,7 +3,7 @@ export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 export const getProfile = (id) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/${id}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/${id}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -26,7 +26,7 @@ export const getProfile = (id) => {
 
 export const updateProfile = (id, utentePayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/${id}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/${id}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

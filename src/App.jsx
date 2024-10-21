@@ -46,7 +46,7 @@ function App() {
           <Route path="/contattaci" element={<ContattaciPage />} />
           <Route path="/fornitori" element={<Fornitori />} />
           <Route path="/come-funziona" element={<ComeFunzionaPage />} />
-          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/success/:price" element={<SuccessPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

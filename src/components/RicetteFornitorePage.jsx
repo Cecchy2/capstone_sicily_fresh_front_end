@@ -12,8 +12,6 @@ const RicetteFornitorePage = () => {
 
   const ricette = useSelector((state) => state.ricette);
 
-  console.log(ricette);
-
   useEffect(() => {
     if (fornitoreId) {
       dispatch(getRicetteByFornitoreId(fornitoreId));

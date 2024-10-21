@@ -13,8 +13,6 @@ const HomePage = () => {
   const navigate = useNavigate();
   const ricetteList = useSelector((state) => state.ricette.ricette);
 
-  console.log(ricetteList);
-
   useEffect(() => {
     dispatch(getRicette());
   }, [dispatch]);

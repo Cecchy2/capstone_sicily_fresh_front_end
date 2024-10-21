@@ -17,14 +17,11 @@ const RicettaPage = () => {
   const handleShow = () => setShow(true);
 
   const carrelloId = useSelector((state) => state.carrelli.carrelli[0].id);
-  console.log(carrelloId);
 
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const ricetta = useSelector((state) => state.ricette.ricettaDettaglio);
 
   const fornitoreId = user.utenteId;
-
-  console.log(user);
 
   useEffect(() => {
     if (ricettaId) {

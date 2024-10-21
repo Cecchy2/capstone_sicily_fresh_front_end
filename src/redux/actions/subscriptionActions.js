@@ -1,9 +1,10 @@
+export const CREATE_CHECKOUT_SESSION_REQUEST = "CREATE_CHECKOUT_SESSION_REQUEST";
 export const CREATE_CHECKOUT_SESSION_SUCCESS = "CREATE_CHECKOUT_SESSION_SUCCESS";
 export const CREATE_CHECKOUT_SESSION_FAIL = "CREATE_CHECKOUT_SESSION_FAIL";
 
 export const createCheckoutSession = (price) => async (dispatch) => {
   try {
-    dispatch({ type: "CREATE_CHECKOUT_SESSION_REQUEST" });
+    dispatch({ type: CREATE_CHECKOUT_SESSION_REQUEST });
 
     const token = localStorage.getItem("authToken");
 

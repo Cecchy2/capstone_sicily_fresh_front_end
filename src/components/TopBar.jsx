@@ -28,8 +28,6 @@ const Topbar = () => {
   const carrelloFornitore = carrelloDettagli.carrelliDettagli.filter(
     (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
   );
-  console.log(carrelloFornitore);
-  console.log(ricette);
 
   useEffect(() => {
     dispatch(getRicette());
@@ -72,9 +70,7 @@ const Topbar = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("Stato aggiornato:", carrelloDettagli.carrelliDettagli);
-  }, [carrelloDettagli]);
+  useEffect(() => {}, [carrelloDettagli]);
 
   let userPath = "/";
 

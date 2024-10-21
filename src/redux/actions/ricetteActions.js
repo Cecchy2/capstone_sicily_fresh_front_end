@@ -13,7 +13,7 @@ export const getRicette = () => {
 
       if (resp.ok) {
         const result = await resp.json();
-        console.log("Dati delle ricette:", result);
+
         dispatch({ type: GET_RICETTE, payload: result });
       }
     } catch (error) {

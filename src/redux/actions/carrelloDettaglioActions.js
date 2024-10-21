@@ -48,7 +48,6 @@ export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
       });
       if (resp.ok) {
         const result = await resp.json();
-        console.log("CarrelliDettaglio recuperati:", result);
         dispatch({ type: GET_CARRELLO_DETTAGLIO, payload: result });
       }
     } catch (error) {
@@ -106,7 +105,6 @@ export const getCarrelloDettaglioByRicetta = (ricettaId) => {
       });
       if (resp.ok) {
         const result = await resp.json();
-        console.log("CarrelliDettaglio recuperati da ricetta:", result);
         dispatch({ type: GET_CARRELLO_DETTAGLIO_BY_RICETTA, payload: result });
       }
     } catch (error) {
@@ -158,7 +156,6 @@ export const getCarrelloDettagliFornitore = (fornitoreId) => {
       });
       if (resp.ok) {
         const result = await resp.json();
-        console.log("CarrelliDettaglio recuperati da fornitore:", result);
         dispatch({ type: GET_CARRELLO_DETTAGLIO_FORNITORE, payload: result });
       }
     } catch (error) {

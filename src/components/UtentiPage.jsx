@@ -21,8 +21,6 @@ const UtentiPage = () => {
     }
   }, [dispatch, params.id]);
 
-  console.log(ricetteList);
-
   useEffect(() => {
     if (utente && utente.utente.id) {
       dispatch(GetAbbonamentiByClienteId(utente.utente.id));

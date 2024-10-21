@@ -22,7 +22,6 @@ export const creaCarrello = (clienteId) => {
 
       if (resp.ok) {
         const result = await resp.json();
-        console.log("Carrello creato:", result);
 
         dispatch({ type: CREA_CARRELLO, payload: result });
       } else {
@@ -49,7 +48,7 @@ export const getCarrelloByClienteId = (clienteId) => {
         throw new Error(`Failed to fetch profile: ${resp.status} ${resp.statusText}`);
       }
       const result = await resp.json();
-      console.log(result);
+
       dispatch({ type: GET_CARRELLO, payload: result });
     } catch (error) {
       console.log(error);

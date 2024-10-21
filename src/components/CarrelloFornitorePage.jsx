@@ -44,8 +44,6 @@ const CarrelloFornitorePage = () => {
     }
   }, [dispatch, fornitoreId]);
 
-  console.log(carrelliDettaglioFornitore);
-
   return (
     <div className="paginaCarrello pb-5">
       <Container>
@@ -77,7 +75,7 @@ const CarrelloFornitorePage = () => {
             .map((dettaglio) => (
               <Row key={dettaglio.id} className="mb-4">
                 <Col>
-                  <Card className="carrelloCard shadow-lg ">
+                  <Card className="carrelloCard shadow-lg">
                     <div className="d-flex align-items-center">
                       {dettaglio.ricetta && dettaglio.ricetta.immaginePiatto ? (
                         <Image

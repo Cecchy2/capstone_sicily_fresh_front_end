@@ -5,7 +5,7 @@ export const getProfile = (id) => {
   return async (dispatch) => {
     const baseEndPoint = `http://localhost:3001/utenti/${id}`;
     const token = localStorage.getItem("authToken");
-    console.log("Auth Token:", token);
+
     try {
       const resp = await fetch(baseEndPoint, {
         headers: {
@@ -17,7 +17,6 @@ export const getProfile = (id) => {
         throw new Error(`Failed to fetch profile: ${resp.status} ${resp.statusText}`);
       }
       const result = await resp.json();
-      console.log(result);
       dispatch({ type: GET_PROFILE, payload: result });
     } catch (error) {
       console.log(error);

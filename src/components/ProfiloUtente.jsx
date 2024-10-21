@@ -50,7 +50,6 @@ const ProfiloUtente = () => {
     }
   };
 
-  console.log(utente);
   return (
     <div className="profiloUtentePage">
       <Container>

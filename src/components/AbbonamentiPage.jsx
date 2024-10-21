@@ -1,65 +1,14 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { creaAbbonamento } from "../redux/actions/abbonamentiActions";
+import { useDispatch } from "react-redux";
+
 import { createCheckoutSession } from "../redux/actions/subscriptionActions";
 
 const AbbonamentiPage = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
-  const oggi = new Date();
-  const prossimoAnno = new Date(oggi.setFullYear(oggi.getFullYear() + 1)).toISOString().split("T")[0];
-
-  const payloadSei = {
-    nome: "6 Ricette",
-    numeroRicette: 6,
-    prezzo: 46.0,
-    dataInizio: new Date().toISOString().split("T")[0],
-    dataScadenza: prossimoAnno,
-    cliente: user.utenteId,
-  };
-  const payloadDodici = {
-    nome: "12 Ricette",
-    numeroRicette: 12,
-    prezzo: 80.0,
-    dataInizio: new Date().toISOString().split("T")[0],
-    dataScadenza: prossimoAnno,
-    cliente: user.utenteId,
-  };
-  const payloadVentiquattro = {
-    nome: "24 Ricette",
-    numeroRicette: 24,
-    prezzo: 150.0,
-    dataInizio: new Date().toISOString().split("T")[0],
-    dataScadenza: prossimoAnno,
-    cliente: user.utenteId,
-  };
 
   const handleSubscription = (priceId) => {
     dispatch(createCheckoutSession(priceId));
   };
-
-  /* const handleclickSei = () => {
-    if (isAuthenticated) {
-      dispatch(creaAbbonamento(payloadSei));
-    } else {
-      window.alert("Devi registrarti per acquistare un abbonamento");
-    }
-  };
-  const handleclickDodici = () => {
-    if (isAuthenticated) {
-      dispatch(creaAbbonamento(payloadDodici));
-    } else {
-      window.alert("Devi registrarti per acquistare un abbonamento");
-    }
-  };
-  const handleclickVentiquattro = () => {
-    if (isAuthenticated) {
-      dispatch(creaAbbonamento(payloadVentiquattro));
-    } else {
-      window.alert("Devi registrarti per acquistare un abbonamento");
-    }
-  }; */
 
   return (
     <div className="abbonamentiPage">
@@ -119,7 +68,11 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
+                  <Button
+                    className="rounded-pill mt-3 w-50"
+                    variant="outline-dark"
+                    onClick={() => handleSubscription("price_1QAYbBRtBWiMZPoBmqPekkR2")}
+                  >
                     {" "}
                     Acquista ora
                   </Button>
@@ -150,7 +103,11 @@ const AbbonamentiPage = () => {
                   </div>
                 </Card.Text>
                 <div className="d-flex justify-content-center">
-                  <Button className="rounded-pill mt-3 w-50" variant="outline-dark">
+                  <Button
+                    className="rounded-pill mt-3 w-50"
+                    variant="outline-dark"
+                    onClick={() => handleSubscription("price_1QCGyfRtBWiMZPoBVKE9pyhj")}
+                  >
                     {" "}
                     Acquista ora
                   </Button>

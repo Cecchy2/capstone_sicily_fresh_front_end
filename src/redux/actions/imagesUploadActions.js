@@ -2,7 +2,7 @@ export const UPLOAD_AVATAR = "UPLOAD_AVATAR";
 
 export const uploadAvatar = (avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://sicilyfresh.netlify.app/utenti/me`;
+    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/me`;
     const token = localStorage.getItem("authToken");
     const formData = new FormData();
     formData.append("avatar", avatar);

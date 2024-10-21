@@ -8,7 +8,7 @@ export const createCheckoutSession = (price) => async (dispatch) => {
 
     const token = localStorage.getItem("authToken");
 
-    const response = await fetch("http://sicilyfresh.netlify.app/stripe/create-checkout-session", {
+    const response = await fetch("http://occupational-rubia-cecchy-98f537b0.koyeb.app/stripe/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

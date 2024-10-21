@@ -22,6 +22,7 @@ import ContattaciPage from "./components/ContattaciPage";
 import Fornitori from "./components/Fornitori";
 import ComeFunzionaPage from "./components/ComeFunzionaPage";
 import SuccessPage from "./components/SuccessPage";
+import CancelPage from "./components/CancelPage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/fornitori" element={<Fornitori />} />
           <Route path="/come-funziona" element={<ComeFunzionaPage />} />
           <Route path="/success/:price" element={<SuccessPage />} />
+          <Route path="/cancel" element={<CancelPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

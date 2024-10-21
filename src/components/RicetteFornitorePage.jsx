@@ -27,7 +27,7 @@ const RicetteFornitorePage = () => {
   }, [dispatch, ricette]);
 
   return (
-    <Container className="vh-100">
+    <Container>
       <Row className="mt-5">
         {ricette && ricette.ricette && ricette.ricette.length > 0 ? (
           ricette.ricette.map((ricetta, index) => (

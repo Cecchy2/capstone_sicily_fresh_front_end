@@ -79,7 +79,7 @@ const OrdiniPage = () => {
                     )}
 
                     <div className="d-flex flex-column flex-grow-1">
-                      <Card.Body className="p-0">
+                      <Card.Body className="p-3">
                         <div className="d-flex">
                           <Card.Title className="text-center fw-bold ">
                             <h1>{dettaglio.ricetta ? dettaglio.ricetta.titolo : "Titolo non disponibile"}</h1>

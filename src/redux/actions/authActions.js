@@ -5,7 +5,7 @@ export const REGISTER = "REGISTER";
 export const login = (email, password) => {
   return async (dispatch) => {
     try {
-      const response = await fetch("http://localhost:3001/authorization/login", {
+      const response = await fetch("https://sicilyfresh.netlify.app/authorization/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const logout = () => {
 
 export const register = (payload, avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://https://sicilyfresh.netlify.app/authorization/register`;
+    const baseEndPoint = `https://sicilyfresh.netlify.app/authorization/register`;
     const formData = new FormData();
 
     Object.keys(payload).forEach((key) => {

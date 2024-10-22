@@ -95,12 +95,12 @@ const RicettaPage = () => {
                       <Badge bg="warning" className="text-dark mb-2">
                         Passaggio {index + 1}:
                       </Badge>
-                      <div className="d-flex">
+                      <div className="d-flex flex-column flex-md-row align-items-center">
                         <Image
                           src={passaggio.immaginePassaggio}
                           alt="immagine passaggio"
                           width={300}
-                          className="object-fit-cover me-4"
+                          className="img-fluid mb-3 mb-md-0 me-md-4"
                         />
                         <p className="fs-5">{passaggio.descrizione}</p>
                       </div>

@@ -10,7 +10,7 @@ const Footer = () => {
         <Row className="text-center text-md-start">
           <Col xs={12} md={4} className="mb-4">
             <div className="d-flex align-items-center justify-content-center justify-content-md-start">
-              <Image src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} fluid className="me-2" />
+              <Image src="/assets/limoni.svg" alt="Logo limoni" width={40} fluid className="me-2" />
               <h5>Sicily•Fresh</h5>
             </div>
           </Col>

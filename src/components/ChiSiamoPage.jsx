@@ -7,7 +7,7 @@ const ChiSiamoPage = () => {
         <Col xs={12} md={10}>
           <div className="text-center">
             <h1 className="mt-5">Sicily•Fresh</h1>
-            <Image src="../../public/assets/limoni.svg" width={200} className="mt-3" />
+            <Image src="/assets/limoni.svg" width={200} className="mt-3" />
           </div>
 
           <p className="mt-5 fs-4">

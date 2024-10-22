@@ -89,7 +89,7 @@ const Topbar = () => {
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand as={Link} to={isAuthenticated && user.role !== "FORNITORE" ? `/utenti/${user.utenteId}` : "/"}>
-            <Image src="../../public/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
+            <Image src="/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
             Sicily•Fresh
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

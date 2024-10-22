@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRicette } from "../redux/actions/ricetteActions";
 import CarouselItems from "./CarouselItems";
-import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { MdFoodBank } from "react-icons/md";
-import { GrInstagram } from "react-icons/gr";
-import { FaSquareFacebook } from "react-icons/fa6";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -37,25 +35,6 @@ const HomePage = () => {
               Come Funziona?
             </Button>
           </div>
-        </div>
-        <div className="d-flex position-absolute bottom-0 end-0">
-          <Nav.Link
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <GrInstagram size={40} className="me-2 mb-3" />
-          </Nav.Link>
-
-          <Nav.Link
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <FaSquareFacebook size={40} className="me-5" />
-          </Nav.Link>
         </div>
       </div>
 

@@ -25,10 +25,6 @@ const Topbar = () => {
   const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
   const carrelloId = useSelector((state) => state.carrelli.carrelli[0]?.id);
 
-  const carrelloFornitore = carrelloDettagli.carrelliDettagli.filter(
-    (carrelloDettaglio) => carrelloDettaglio.statoOrdine === "ORDINATO"
-  );
-
   useEffect(() => {
     dispatch(getRicette());
   }, [dispatch]);

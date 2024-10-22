@@ -3,7 +3,7 @@ export const GET_ABBONAMENTO_CLIENTE = "GET_ABBONAMENTO_CLIENTE";
 
 export const creaAbbonamento = (abbonamentoPayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -27,7 +27,7 @@ export const creaAbbonamento = (abbonamentoPayload) => {
 };
 export const GetAbbonamentiByClienteId = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `http://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti/${clienteId}`;
+    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti/${clienteId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

@@ -7,6 +7,8 @@ import { login } from "../redux/actions/authActions";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,6 +16,7 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     dispatch(login(email, password));
   };
 
@@ -67,7 +70,14 @@ const LoginPage = () => {
                   className="my-3 px-5 fw-bold"
                   style={{ boxShadow: "0 5px 15px rgba(255, 193, 7, 0.5)" }}
                 >
-                  Accedi
+                  {loading ? (
+                    <>
+                      <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Registrazione in corso...
+                    </>
+                  ) : (
+                    "Accedi"
+                  )}
                 </Button>
               </div>
             </Form>

@@ -1,9 +1,12 @@
 export const CREA_ABBONAMENTO = "CREA_ABBONAMENTO";
 export const GET_ABBONAMENTO_CLIENTE = "GET_ABBONAMENTO_CLIENTE";
 
+const local = `http:////localhost:3001`;
+const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+
 export const creaAbbonamento = (abbonamentoPayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti`;
+    const baseEndPoint = `${local}/abbonamenti`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -27,7 +30,7 @@ export const creaAbbonamento = (abbonamentoPayload) => {
 };
 export const GetAbbonamentiByClienteId = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/abbonamenti/${clienteId}`;
+    const baseEndPoint = `${local}/abbonamenti/${clienteId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

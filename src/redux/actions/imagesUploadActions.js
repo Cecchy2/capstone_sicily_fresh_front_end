@@ -1,8 +1,11 @@
 export const UPLOAD_AVATAR = "UPLOAD_AVATAR";
 
+const local = `http:////localhost:3001`;
+const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+
 export const uploadAvatar = (avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/utenti/me`;
+    const baseEndPoint = `${local}/utenti/me`;
     const token = localStorage.getItem("authToken");
     const formData = new FormData();
     formData.append("avatar", avatar);

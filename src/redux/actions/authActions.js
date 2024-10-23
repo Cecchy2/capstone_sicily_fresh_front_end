@@ -1,11 +1,14 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const REGISTER = "REGISTER";
+const local = `http:////localhost:3001`;
+const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
 
 export const login = (email, password) => {
   return async (dispatch) => {
     try {
-      const response = await fetch("https://occupational-rubia-cecchy-98f537b0.koyeb.app/authorization/login", {
+      const baseEndPoint = `${local}/authorization/login`;
+      const response = await fetch(baseEndPoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +47,7 @@ export const logout = () => {
 
 export const register = (payload, avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/authorization/register`;
+    const baseEndPoint = `${local}/authorization/register`;
 
     const formData = new FormData();
     Object.keys(payload).forEach((key) => {

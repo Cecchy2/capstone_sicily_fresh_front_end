@@ -4,9 +4,12 @@ export const DELETE_RICETTA = "DELETE_RICETTA";
 export const GET_RICETTA_BY_ID = "GET_RICETTA_BY_ID";
 export const GET_RICETTE_BY_FORNITORE = "GET_RICETTE_BY_FORNITORE";
 
+const local = `http:////localhost:3001`;
+const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+
 export const getRicette = () => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/authorization`;
+    const baseEndPoint = `${local}/authorization`;
 
     try {
       const resp = await fetch(baseEndPoint);
@@ -24,7 +27,7 @@ export const getRicette = () => {
 
 export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/ricette`;
+    const baseEndPoint = `${local}/ricette`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -60,7 +63,7 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) =>
             const formData = new FormData();
             formData.append("immaginePassaggio", immaginiPassaggi[i]);
             const passaggioDiPreparazioneId = result.passaggi[i].id;
-            const passaggioEndpoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
+            const passaggioEndpoint = `${local}/passaggidipreparazione/${passaggioDiPreparazioneId}/immaginePassaggio`;
             await fetch(passaggioEndpoint, {
               method: "PATCH",
               headers: {
@@ -79,7 +82,7 @@ export const creaRicetta = (ricettaPayload, immaginePiatto, immaginiPassaggi) =>
 
 export const deleteRicetta = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/ricette/${ricettaId}`;
+    const baseEndPoint = `${local}/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -107,7 +110,7 @@ export const deleteRicetta = (ricettaId) => {
 
 export const getRicettaById = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/ricette/${ricettaId}`;
+    const baseEndPoint = `${local}/ricette/${ricettaId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -129,7 +132,7 @@ export const getRicettaById = (ricettaId) => {
 
 export const getRicetteByFornitoreId = (fornitoreId) => {
   return async (dispatch) => {
-    const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/ricette/get/${fornitoreId}`;
+    const baseEndPoint = `${local}/ricette/get/${fornitoreId}`;
     const token = localStorage.getItem("authToken");
 
     try {

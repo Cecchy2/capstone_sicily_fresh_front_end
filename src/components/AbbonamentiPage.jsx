@@ -2,11 +2,15 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import { createCheckoutSession } from "../redux/actions/subscriptionActions";
+import { useState } from "react";
 
 const AbbonamentiPage = () => {
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubscription = (priceId) => {
+    setLoading(true);
     dispatch(createCheckoutSession(priceId));
   };
 
@@ -38,8 +42,14 @@ const AbbonamentiPage = () => {
                     variant="outline-dark"
                     onClick={() => handleSubscription("price_1QBMhyRtBWiMZPoBvhrdx9AT")}
                   >
-                    {" "}
-                    Acquista ora
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                      </>
+                    ) : (
+                      "Acquista ora"
+                    )}
                   </Button>
                 </div>
                 <Card.Text>
@@ -73,8 +83,14 @@ const AbbonamentiPage = () => {
                     variant="outline-dark"
                     onClick={() => handleSubscription("price_1QAYbBRtBWiMZPoBmqPekkR2")}
                   >
-                    {" "}
-                    Acquista ora
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                      </>
+                    ) : (
+                      "Acquista ora"
+                    )}
                   </Button>
                 </div>
                 <Card.Text>
@@ -108,8 +124,14 @@ const AbbonamentiPage = () => {
                     variant="outline-dark"
                     onClick={() => handleSubscription("price_1QCGyfRtBWiMZPoBVKE9pyhj")}
                   >
-                    {" "}
-                    Acquista ora
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                      </>
+                    ) : (
+                      "Acquista ora"
+                    )}
                   </Button>
                 </div>
                 <Card.Text>

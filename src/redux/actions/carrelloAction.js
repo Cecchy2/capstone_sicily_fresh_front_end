@@ -1,12 +1,11 @@
 export const CREA_CARRELLO = "CREA_CARRELLO";
 export const GET_CARRELLO = "GET_CARRELLO";
 
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const creaCarrello = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelli`;
+    const baseEndPoint = `${baseURL}/carrelli`;
     const token = localStorage.getItem("authToken");
 
     const carrelloPayload = {
@@ -38,7 +37,7 @@ export const creaCarrello = (clienteId) => {
 
 export const getCarrelloByClienteId = (clienteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelli/${clienteId}`;
+    const baseEndPoint = `${baseURL}/carrelli/${clienteId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

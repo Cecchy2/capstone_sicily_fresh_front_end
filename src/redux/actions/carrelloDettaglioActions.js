@@ -6,12 +6,11 @@ export const GET_CARRELLO_DETTAGLIO_BY_RICETTA = "GET_CARRELLO_DETTAGLIO_BY_RICE
 export const CHANGE_STATO_CARRELLO_DETTAGLIO = "CHANGE_STATO_CARRELLO_DETTAGLIO";
 export const GET_CARRELLO_DETTAGLIO_FORNITORE = "GET_CARRELLO_DETTAGLIO_FORNITORE";
 
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelloDettagli`;
+    const baseEndPoint = `${baseURL}/carrelloDettagli`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -41,7 +40,7 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
 
 export const findCarrelliDettagliByCarrelloId = (carrelloId) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelloDettagli/${carrelloId}`;
+    const baseEndPoint = `${baseURL}/carrelloDettagli/${carrelloId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -71,7 +70,7 @@ export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
     if (!confirmDelete) {
       return;
     }
-    const baseEndPoint = `${local}/carrelloDettagli/${carrelloDettaglioId}`;
+    const baseEndPoint = `${baseURL}/carrelloDettagli/${carrelloDettaglioId}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -98,7 +97,7 @@ export const deleteCarrelloDettaglio = (carrelloDettaglioId) => {
 
 export const getCarrelloDettaglioByRicetta = (ricettaId) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelloDettagli/ricetta/${ricettaId}`;
+    const baseEndPoint = `${baseURL}/carrelloDettagli/ricetta/${ricettaId}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -118,7 +117,7 @@ export const getCarrelloDettaglioByRicetta = (ricettaId) => {
 
 export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdine) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/carrelloDettagli/${carrelloDettaglioId}/stato`;
+    const baseEndPoint = `${baseURL}/carrelloDettagli/${carrelloDettaglioId}/stato`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -148,7 +147,7 @@ export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdi
 
 export const getCarrelloDettagliFornitore = (fornitoreId) => {
   return async (dispatch) => {
-    const baseEndpoint = `${local}/carrelloDettagli/fornitore/${fornitoreId}`;
+    const baseEndpoint = `${baseURL}/carrelloDettagli/fornitore/${fornitoreId}`;
     const token = localStorage.getItem("authToken");
 
     try {

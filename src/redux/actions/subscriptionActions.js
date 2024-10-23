@@ -2,8 +2,7 @@ export const CREATE_CHECKOUT_SESSION_REQUEST = "CREATE_CHECKOUT_SESSION_REQUEST"
 export const CREATE_CHECKOUT_SESSION_SUCCESS = "CREATE_CHECKOUT_SESSION_SUCCESS";
 export const CREATE_CHECKOUT_SESSION_FAIL = "CREATE_CHECKOUT_SESSION_FAIL";
 
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const createCheckoutSession = (price) => async (dispatch) => {
   try {
@@ -11,7 +10,7 @@ export const createCheckoutSession = (price) => async (dispatch) => {
 
     const token = localStorage.getItem("authToken");
 
-    const response = await fetch(`${local}/stripe/create-checkout-session`, {
+    const response = await fetch(`${baseURL}/stripe/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

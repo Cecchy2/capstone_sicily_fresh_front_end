@@ -1,11 +1,10 @@
 export const UPLOAD_AVATAR = "UPLOAD_AVATAR";
 
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const uploadAvatar = (avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/utenti/me`;
+    const baseEndPoint = `${baseURL}/utenti/me`;
     const token = localStorage.getItem("authToken");
     const formData = new FormData();
     formData.append("avatar", avatar);

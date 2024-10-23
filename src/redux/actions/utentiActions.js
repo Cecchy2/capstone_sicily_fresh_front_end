@@ -1,12 +1,11 @@
 export const GET_PROFILE = "GET_PROFILE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const getProfile = (id) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/utenti/${id}`;
+    const baseEndPoint = `${baseURL}/utenti/${id}`;
     const token = localStorage.getItem("authToken");
 
     try {
@@ -29,7 +28,7 @@ export const getProfile = (id) => {
 
 export const updateProfile = (id, utentePayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/utenti/${id}`;
+    const baseEndPoint = `${baseURL}/utenti/${id}`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {

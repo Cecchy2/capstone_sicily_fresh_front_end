@@ -1,13 +1,13 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const REGISTER = "REGISTER";
-const local = `http:////localhost:3001`;
-const prod = `https://occupational-rubia-cecchy-98f537b0.koyeb.app`;
+
+const baseURL = import.meta.env.VITE_API_URL;
 
 export const login = (email, password) => {
   return async (dispatch) => {
     try {
-      const baseEndPoint = `${local}/authorization/login`;
+      const baseEndPoint = `${baseURL}/authorization/login`;
       const response = await fetch(baseEndPoint, {
         method: "POST",
         headers: {
@@ -47,7 +47,7 @@ export const logout = () => {
 
 export const register = (payload, avatar) => {
   return async (dispatch) => {
-    const baseEndPoint = `${local}/authorization/register`;
+    const baseEndPoint = `${baseURL}/authorization/register`;
 
     const formData = new FormData();
     Object.keys(payload).forEach((key) => {

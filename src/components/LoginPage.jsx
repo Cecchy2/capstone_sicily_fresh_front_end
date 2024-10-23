@@ -73,7 +73,7 @@ const LoginPage = () => {
                   {loading ? (
                     <>
                       <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                      Registrazione in corso...
+                      Login in corso...
                     </>
                   ) : (
                     "Accedi"

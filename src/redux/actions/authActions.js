@@ -45,8 +45,8 @@ export const logout = () => {
 export const register = (payload, avatar) => {
   return async (dispatch) => {
     const baseEndPoint = `https://occupational-rubia-cecchy-98f537b0.koyeb.app/authorization/register`;
-    const formData = new FormData();
 
+    const formData = new FormData();
     Object.keys(payload).forEach((key) => {
       formData.append(key, payload[key]);
     });
@@ -59,16 +59,15 @@ export const register = (payload, avatar) => {
         body: formData,
       });
       if (!resp.ok) {
-        throw new Error("Registrazione fallita");
+        const errorData = await resp.json();
+        console.log("Errore dal server:", errorData);
+        throw new Error(`Registrazione fallita: ${errorData.message || "Errore generico"}`);
       }
       const data = await resp.json();
-      dispatch({
-        type: REGISTER,
-        payload: data,
-      });
+      dispatch({ type: REGISTER, payload: data });
       return { success: true, userId: data.id };
     } catch (error) {
-      console.log(error);
+      console.error("Errore durante la registrazione:", error.message);
     }
   };
 };

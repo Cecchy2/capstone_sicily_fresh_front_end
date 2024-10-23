@@ -8,6 +8,8 @@ const RegistrazionePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -35,6 +37,7 @@ const RegistrazionePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const result = await dispatch(register(formValues, avatar));
 
     if (result.success) {
@@ -43,6 +46,7 @@ const RegistrazionePage = () => {
     } else {
       alert("Registrazione fallita, riprova.");
     }
+    setLoading(false);
   };
 
   return (
@@ -154,8 +158,15 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <div className="d-flex justify-content-center">
-                    <Button variant="primary" type="submit" className="px-5">
-                      Registrati
+                    <Button variant="primary" type="submit" className="px-5" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          Registrazione in corso...
+                        </>
+                      ) : (
+                        "Registrati"
+                      )}
                     </Button>
                   </div>
                 </Form>

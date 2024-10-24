@@ -7,10 +7,11 @@ import { useState } from "react";
 const AbbonamentiPage = () => {
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
 
   const handleSubscription = (priceId) => {
-    setLoading(true);
     dispatch(createCheckoutSession(priceId));
   };
 
@@ -40,9 +41,12 @@ const AbbonamentiPage = () => {
                   <Button
                     className="rounded-pill mt-3 w-50"
                     variant="outline-dark"
-                    onClick={() => handleSubscription("price_1QBMhyRtBWiMZPoBvhrdx9AT")}
+                    onClick={() => {
+                      handleSubscription("price_1QBMhyRtBWiMZPoBvhrdx9AT");
+                      setLoading1(true);
+                    }}
                   >
-                    {loading ? (
+                    {loading1 ? (
                       <>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
@@ -81,9 +85,12 @@ const AbbonamentiPage = () => {
                   <Button
                     className="rounded-pill mt-3 w-50"
                     variant="outline-dark"
-                    onClick={() => handleSubscription("price_1QAYbBRtBWiMZPoBmqPekkR2")}
+                    onClick={() => {
+                      handleSubscription("price_1QAYbBRtBWiMZPoBmqPekkR2");
+                      setLoading2(true);
+                    }}
                   >
-                    {loading ? (
+                    {loading2 ? (
                       <>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
@@ -122,9 +129,12 @@ const AbbonamentiPage = () => {
                   <Button
                     className="rounded-pill mt-3 w-50"
                     variant="outline-dark"
-                    onClick={() => handleSubscription("price_1QCGyfRtBWiMZPoBVKE9pyhj")}
+                    onClick={() => {
+                      handleSubscription("price_1QCGyfRtBWiMZPoBVKE9pyhj");
+                      setLoading3(true);
+                    }}
                   >
-                    {loading ? (
+                    {loading3 ? (
                       <>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...

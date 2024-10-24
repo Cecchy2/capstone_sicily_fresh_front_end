@@ -48,5 +48,5 @@ L'interfaccia utente è **intuitiva** e **responsive**, consentendo agli utenti 
    ```bash
    git clone https://github.com/Cecchy2/capstone_sicily_fresh_front_end.git (FrontEnd)
 
-   git clone https://github.com/Cecchy2/capstone_sicily_fresh.git
+   git clone https://github.com/Cecchy2/capstone_sicily_fresh.git (BackEnd)
    ```

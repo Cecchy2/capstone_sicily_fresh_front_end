@@ -21,7 +21,7 @@ const HomePage = () => {
   return (
     <>
       <div className="homePage position-relative">
-        <div className="f-lato-thin">
+        <div className="f-lato-thin mx-2">
           <h1 className=" mt-5 text-warning">SCEGLI LE TUE RICETTE</h1>
 
           <h2 className="mb-3 mb-md-0 ">TI PORTIAMO LA SPESA A CASA</h2>

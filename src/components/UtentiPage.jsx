@@ -37,7 +37,7 @@ const UtentiPage = () => {
   return (
     <>
       <div className="utentiPage">
-        <h1>
+        <h1 className="mx-5">
           <span className="text-warning">Acquista il tuo abbonamento </span>
           <br />
           aggiungi le tue ricette preferite al carrello,

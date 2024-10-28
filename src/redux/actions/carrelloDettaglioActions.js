@@ -139,8 +139,11 @@ export const changeStatoCarrelloDettaglio = (carrelloDettaglioId, nuovoStatoOrdi
         type: CHANGE_STATO_CARRELLO_DETTAGLIO,
         payload: data,
       });
+
+      return data;
     } catch (error) {
-      console.log(error);
+      console.error("Errore durante l'aggiornamento dello stato:", error);
+      throw error;
     }
   };
 };

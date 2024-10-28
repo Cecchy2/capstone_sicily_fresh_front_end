@@ -39,11 +39,16 @@ const CarrelloPage = () => {
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
     alert("Hai ordinato le ricette  🍽️");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
-      dispatch(findCarrelliDettagliByCarrelloId(carrello.id))
-    );
-
-    navigate(`/utenti/${user.utenteId}`);
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine))
+      .then(() => {
+        return dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
+      })
+      .then(() => {
+        navigate(`/utenti/${user.utenteId}`);
+      })
+      .catch((error) => {
+        console.error("Errore durante l'aggiornamento dello stato:", error);
+      });
   };
 
   useEffect(() => {

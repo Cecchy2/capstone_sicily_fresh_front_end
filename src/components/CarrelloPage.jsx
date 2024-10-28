@@ -20,6 +20,7 @@ const CarrelloPage = () => {
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId));
+    window.location.reload();
   };
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {

@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeStatoCarrelloDettaglio, deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
+import { useNavigate } from "react-router-dom";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 import { getRicette } from "../redux/actions/ricetteActions";
 
 const CarrelloPage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const carrello = useSelector((state) => state.carrello);
@@ -17,9 +20,8 @@ const CarrelloPage = () => {
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId));
-    window.location.reload();
+    navigate(`/utenti/${user.utenteId}`);
   };
-
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
       dispatch(getCarrelloByClienteId(user.utenteId)).then(() => {
@@ -34,7 +36,7 @@ const CarrelloPage = () => {
     const nuovoStatoOrdine = "ORDINATO";
     alert("Hai ordinato le ricette  🍽️");
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
-    window.location.reload();
+    navigate(`/utenti/${user.utenteId}`);
   };
 
   useEffect(() => {

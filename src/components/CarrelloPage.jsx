@@ -1,6 +1,10 @@
 import { Badge, Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changeStatoCarrelloDettaglio, deleteCarrelloDettaglio } from "../redux/actions/carrelloDettaglioActions";
+import {
+  changeStatoCarrelloDettaglio,
+  deleteCarrelloDettaglio,
+  findCarrelliDettagliByCarrelloId,
+} from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +23,7 @@ const CarrelloPage = () => {
   const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
-    dispatch(deleteCarrelloDettaglio(dettaglioId));
+    dispatch(deleteCarrelloDettaglio(dettaglioId)).then(() => dispatch(findCarrelliDettagliByCarrelloId(carrello.id)));
     navigate(`/utenti/${user.utenteId}`);
   };
   useEffect(() => {
@@ -35,7 +39,10 @@ const CarrelloPage = () => {
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
     alert("Hai ordinato le ricette  🍽️");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
+      dispatch(findCarrelliDettagliByCarrelloId(carrello.id))
+    );
+
     navigate(`/utenti/${user.utenteId}`);
   };
 

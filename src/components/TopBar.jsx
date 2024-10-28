@@ -3,7 +3,7 @@ import { HiMiniShoppingCart } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 import {
   findCarrelliDettagliByCarrelloId,
@@ -24,6 +24,8 @@ const Topbar = () => {
   const ricette = useSelector((state) => state.ricette);
   const carrelliDettaglioFornitore = useSelector((state) => state.carrelliDettagli.carrelloDettagliFornitore);
   const carrelloId = useSelector((state) => state.carrelli.carrelli[0]?.id);
+
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     dispatch(getRicette());
@@ -63,6 +65,7 @@ const Topbar = () => {
       dispatch(logout());
       dispatch(resetCarrelloDettaglio());
       navigate("/");
+      setExpanded(false);
     }
   };
 
@@ -82,37 +85,42 @@ const Topbar = () => {
 
   return (
     <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary" expanded={expanded}>
         <Container>
           <Navbar.Brand as={Link} to={isAuthenticated && user.role !== "FORNITORE" ? `/utenti/${user.utenteId}` : "/"}>
             <Image src="/assets/limoni.svg" alt="Logo limoni" width={40} fluid />
             Sicily•Fresh
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded ? false : true)} />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto align-items-center d-flex">
-              <Nav.Link as={Link} to={userPath} className="translate">
+              <Nav.Link as={Link} to={userPath} onClick={() => setExpanded(false)} className="translate">
                 🏠 Home
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
-                <Nav.Link as={Link} to={isAuthenticated ? "/abbonamenti" : "/registrazione"} className="translate">
+                <Nav.Link
+                  as={Link}
+                  to={isAuthenticated ? "/abbonamenti" : "/registrazione"}
+                  onClick={() => setExpanded(false)}
+                  className="translate"
+                >
                   💳 Abbonamenti
                 </Nav.Link>
               ) : (
                 ""
               )}
-              <Nav.Link as={Link} to="/chi_siamo" className="translate">
+              <Nav.Link as={Link} to="/chi_siamo" className="translate" onClick={() => setExpanded(false)}>
                 👩🏼‍🍳 Chi Siamo
               </Nav.Link>
               {isAuthenticated && user.role === "CLIENTE" ? (
-                <Nav.Link as={Link} to="/allRicettePage" className="translate">
+                <Nav.Link as={Link} to="/allRicettePage" className="translate" onClick={() => setExpanded(false)}>
                   🍝 Ricette
                 </Nav.Link>
               ) : (
                 ""
               )}
               {isAuthenticated && user.role === "CLIENTE" ? (
-                <Nav.Link as={Link} to="/ordini" className="translate">
+                <Nav.Link as={Link} to="/ordini" className="translate" onClick={() => setExpanded(false)}>
                   🧺 Ordini
                 </Nav.Link>
               ) : (
@@ -125,7 +133,10 @@ const Topbar = () => {
                     <HiMiniShoppingCart
                       fill="black"
                       size={30}
-                      onClick={() => navigate(`/carrello/${user.utenteId}`)}
+                      onClick={() => {
+                        navigate(`/carrello/${user.utenteId}`);
+                        setExpanded(false);
+                      }}
                       className="translate"
                     />
                     <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
@@ -140,7 +151,10 @@ const Topbar = () => {
                     <FaSackDollar
                       fill="black"
                       size={30}
-                      onClick={() => navigate(`/carrello/fornitore/${user.utenteId}`)}
+                      onClick={() => {
+                        navigate(`/carrello/fornitore/${user.utenteId}`);
+                        setExpanded(false);
+                      }}
                       className="translate"
                     />
                     <Badge pill bg="danger" className="position-absolute top-0 start-90 translate-middle">
@@ -160,19 +174,20 @@ const Topbar = () => {
                     style={{ objectFit: "cover" }}
                   />
                   id="basic-nav-dropdown"
+                  onClick={() => setExpanded(false)}
                 >
-                  <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`}>
+                  <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`} onClick={() => setExpanded(false)}>
                     Profilo
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/come-funziona">
+                  <NavDropdown.Item as={Link} to="/come-funziona" onClick={() => setExpanded(false)}>
                     Come Funziona?
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item as={Link} to="/contattaci">
+                  <NavDropdown.Item as={Link} to="/contattaci" onClick={() => setExpanded(false)}>
                     Contattaci
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to="/fornitori">
+                  <NavDropdown.Item as={Link} to="/fornitori" onClick={() => setExpanded(false)}>
                     Fornitori
                   </NavDropdown.Item>
                 </NavDropdown>

@@ -24,8 +24,7 @@ const CarrelloPage = () => {
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId)).then(() => dispatch(findCarrelliDettagliByCarrelloId(carrello.id)));
-    /* navigate(`/utenti/${user.utenteId}`); */
-    window.location.reload();
+    navigate(`/utenti/${user.utenteId}`);
   };
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
@@ -43,9 +42,7 @@ const CarrelloPage = () => {
     dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
       dispatch(findCarrelliDettagliByCarrelloId(carrello.id))
     );
-
-    /* navigate(`/utenti/${user.utenteId}`); */
-    window.location.reload();
+    navigate(`/utenti/${user.utenteId}`);
   };
 
   useEffect(() => {

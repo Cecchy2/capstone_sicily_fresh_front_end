@@ -22,7 +22,7 @@ const AbbonamentiPage = () => {
           <h1 className="text-center mt-5 mb-0 titoloAbbonamenti">Scegli il tuo Abbonamento</h1>
           <h2 className="text-center mt-0 mb-5">(Ogni ricetta equivale a 2 porzioni)</h2>
           <Col lg={4}>
-            <Card className="cardsAbbonamenti">
+            <Card className="cardsAbbonamenti mb-3 mb-lg-0">
               <Card.Body>
                 <Card.Title>
                   {" "}
@@ -66,7 +66,7 @@ const AbbonamentiPage = () => {
             </Card>
           </Col>
           <Col lg={4}>
-            <Card className="cardsAbbonamenti">
+            <Card className="cardsAbbonamenti mb-3 mb-lg-0">
               <Card.Body>
                 <Card.Title>
                   {" "}
@@ -110,7 +110,7 @@ const AbbonamentiPage = () => {
             </Card>
           </Col>
           <Col lg={4}>
-            <Card className="cardsAbbonamenti">
+            <Card className="cardsAbbonamenti mb-3 mb-lg-0">
               <Card.Body>
                 <Card.Title>
                   {" "}

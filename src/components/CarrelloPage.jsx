@@ -23,10 +23,9 @@ const CarrelloPage = () => {
   const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
-    dispatch(deleteCarrelloDettaglio(dettaglioId));
+    dispatch(deleteCarrelloDettaglio(dettaglioId)).then(() => dispatch(findCarrelliDettagliByCarrelloId(carrello.id)));
     navigate(`/utenti/${user.utenteId}`);
   };
-
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
       dispatch(getCarrelloByClienteId(user.utenteId)).then(() => {
@@ -40,13 +39,15 @@ const CarrelloPage = () => {
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
     alert("Hai ordinato le ricette  🍽️");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
+    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
+      dispatch(findCarrelliDettagliByCarrelloId(carrello.id))
+    );
     navigate(`/utenti/${user.utenteId}`);
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
-  }, [dispatch, carrello.id]); */
+  }, [dispatch, carrello.id]);
 
   useEffect(() => {
     if (user && user.utenteId) {

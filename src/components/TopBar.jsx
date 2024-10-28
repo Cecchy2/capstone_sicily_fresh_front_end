@@ -174,7 +174,6 @@ const Topbar = () => {
                     style={{ objectFit: "cover" }}
                   />
                   id="basic-nav-dropdown"
-                  onClick={() => setExpanded(false)}
                 >
                   <NavDropdown.Item as={Link} to={`/profili/${utente.utente.id}`} onClick={() => setExpanded(false)}>
                     Profilo

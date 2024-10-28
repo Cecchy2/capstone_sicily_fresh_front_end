@@ -46,10 +46,6 @@ const CarrelloPage = () => {
   };
 
   useEffect(() => {
-    dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
-  }, [dispatch, carrello.id]);
-
-  useEffect(() => {
     if (user && user.utenteId) {
       dispatch(GetAbbonamentiByClienteId(user.utenteId));
     }

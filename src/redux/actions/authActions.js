@@ -64,7 +64,7 @@ export const register = (payload, avatar) => {
       if (!resp.ok) {
         const errorData = await resp.json();
         console.log("Errore dal server:", errorData);
-        throw new Error(`Registrazione fallita: ${errorData.message || "Errore generico"}`);
+        return { success: false, message: errorData.message || "Errore riprova con altri dati" };
       }
       const data = await resp.json();
       dispatch({ type: REGISTER, payload: data });

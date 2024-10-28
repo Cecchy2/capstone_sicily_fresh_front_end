@@ -12,7 +12,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { isAuthenticated, user, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +39,11 @@ const LoginPage = () => {
         >
           <Col xs={12}>
             <h2 className="text-center mb-4 fw-bold">Accedi</h2>
+            {error && (
+              <div className="alert alert-danger" role="alert">
+                {error}
+              </div>
+            )}
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-4" controlId="formGroupEmail">
                 <Form.Label className="fw-bold">Email address</Form.Label>

@@ -44,7 +44,7 @@ const RegistrazionePage = () => {
       alert("Registrazione avvenuta con successo");
       navigate(`/login`);
     } else {
-      alert("Registrazione fallita, riprova.");
+      alert(`Registrazione fallita: ${result.message || "Errore sconosciuto"}`);
     }
     setLoading(false);
   };

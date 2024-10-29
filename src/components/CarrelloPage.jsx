@@ -7,7 +7,7 @@ import {
 } from "../redux/actions/carrelloDettaglioActions";
 import { useEffect } from "react";
 import { GetAbbonamentiByClienteId } from "../redux/actions/abbonamentiActions";
-import { useNavigate } from "react-router-dom";
+
 import { creaCarrello, getCarrelloByClienteId } from "../redux/actions/carrelloAction";
 import { getRicette } from "../redux/actions/ricetteActions";
 
@@ -15,16 +15,14 @@ const CarrelloPage = () => {
   const carrelloDettagli = useSelector((state) => state.carrelliDettagli);
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const { isAuthenticated, user } = useSelector((state) => state.auth);
-  const carrello = useSelector((state) => state.carrello);
+  const carrello = useSelector((state) => state.carrelli);
 
   const abbonamenti = useSelector((state) => state.abbonamenti.abbonamenti || []);
 
   const handleDeleteCarrelloDettaglio = (dettaglioId) => {
     dispatch(deleteCarrelloDettaglio(dettaglioId)).then(() => dispatch(findCarrelliDettagliByCarrelloId(carrello.id)));
-    navigate(`/utenti/${user.utenteId}`);
+    /* navigate(`/utenti/${user.utenteId}`); */
   };
   useEffect(() => {
     if (isAuthenticated && user && user.utenteId) {
@@ -34,15 +32,16 @@ const CarrelloPage = () => {
         }
       });
     }
-  }, [isAuthenticated, user, dispatch, carrello]);
+  }, [isAuthenticated, user, dispatch]);
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "ORDINATO";
-    alert("Hai ordinato le ricette  🍽️");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
-      dispatch(findCarrelliDettagliByCarrelloId(carrello.id))
-    );
-    navigate(`/utenti/${user.utenteId}`);
+    alert("Hai ordinato le ricette 🍽️");
+    if (carrello?.carrelli?.length > 0) {
+      dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine)).then(() =>
+        dispatch(findCarrelliDettagliByCarrelloId(carrello.carrelli[0].id))
+      );
+    }
   };
 
   useEffect(() => {
@@ -56,8 +55,10 @@ const CarrelloPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
-  }, [dispatch, carrello.id]);
+    if (carrello?.carrelli?.length > 0) {
+      dispatch(findCarrelliDettagliByCarrelloId(carrello.carrelli[0].id));
+    }
+  }, [dispatch, carrello.carrelli]);
 
   const numeroRicetteRimanenti = abbonamenti
     .map((abbonamento) => abbonamento.numeroRicette)

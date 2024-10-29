@@ -120,7 +120,7 @@ export const getRicettaById = (ricettaId) => {
 
       if (resp.ok) {
         const result = await resp.json();
-        console.log(result);
+
         dispatch({ type: GET_RICETTA_BY_ID, payload: result });
       }
     } catch (error) {

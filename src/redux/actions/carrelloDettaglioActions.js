@@ -25,7 +25,6 @@ export const aggiungiCarrelloDettaglio = (carrelloDettaglioPayload) => {
 
       if (resp.ok) {
         const result = await resp.json();
-        console.log("CarrelloDettaglio creato:", result);
 
         dispatch({ type: CREA_CARRELLO_DETTAGLIO, payload: result });
       } else {

@@ -63,7 +63,7 @@ const UtentiPage = () => {
                   >
                     <Card.Img variant="top" src={ricetta.immaginePiatto} className="cardImageFornitori" />
                     <Card.Body>
-                      <Card.Title className="fw-bold ">{ricetta.titolo}</Card.Title>
+                      <Card.Title className="fw-bold text-ellipsis text-truncate">{ricetta.titolo}</Card.Title>
                     </Card.Body>
                   </Card>
                 </Col>

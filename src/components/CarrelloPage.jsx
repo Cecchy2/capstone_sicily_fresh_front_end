@@ -55,6 +55,10 @@ const CarrelloPage = () => {
     dispatch(getRicette());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(findCarrelliDettagliByCarrelloId(carrello.id));
+  }, [dispatch, carrello.id]);
+
   const numeroRicetteRimanenti = abbonamenti
     .map((abbonamento) => abbonamento.numeroRicette)
     .reduce((total, ricette) => total + ricette, 0);

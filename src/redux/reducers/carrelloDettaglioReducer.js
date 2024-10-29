@@ -18,7 +18,9 @@ const carrelliDettagliReducer = (state = initialState, action) => {
     case CHANGE_STATO_CARRELLO_DETTAGLIO:
       return {
         ...state,
-        carrelloDettaglio: action.payload,
+        carrelliDettagli: state.carrelliDettagli.map((carrelloDettaglio) =>
+          carrelloDettaglio.id === action.payload.id ? { ...carrelloDettaglio, ...action.payload } : carrelloDettaglio
+        ),
       };
     case GET_CARRELLO_DETTAGLIO_BY_RICETTA:
       return {

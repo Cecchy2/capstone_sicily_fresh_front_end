@@ -16,18 +16,20 @@ const CarrelloFornitorePage = () => {
 
   const handleChangeStato = (dettaglioId) => {
     const nuovoStatoOrdine = "SPEDITO";
-    window.confirm("Hai spedito gli ingredienti al cliente?");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
-    dispatch(getRicetteByFornitoreId(fornitoreId));
-    dispatch(getCarrelloDettagliFornitore(fornitoreId));
+    if (window.confirm("Hai spedito gli ingredienti al cliente?")) {
+      dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine))
+        .then(() => dispatch(getRicetteByFornitoreId(fornitoreId)))
+        .then(() => dispatch(getCarrelloDettagliFornitore(fornitoreId)));
+    }
   };
 
   const handleChangeStatoConsegnato = (dettaglioId) => {
     const nuovoStatoOrdine = "CONSEGNATO";
-    window.confirm("Gli ingredienti sono stati consegnati?");
-    dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine));
-    dispatch(getRicetteByFornitoreId(fornitoreId));
-    dispatch(getCarrelloDettagliFornitore(fornitoreId));
+    if (window.confirm("Gli ingredienti sono stati consegnati?")) {
+      dispatch(changeStatoCarrelloDettaglio(dettaglioId, nuovoStatoOrdine))
+        .then(() => dispatch(getRicetteByFornitoreId(fornitoreId)))
+        .then(() => dispatch(getCarrelloDettagliFornitore(fornitoreId)));
+    }
   };
 
   const handleFilterChange = (e) => {
